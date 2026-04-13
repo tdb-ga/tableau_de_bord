@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -234,6 +235,7 @@ td:first-child{text-align:left;font-weight:600}
     <div class="nt" data-p="dos-pf">🏠 Dossiers — PF</div>
     <div class="nt" data-p="dos-rp">⚠️ Dossiers — RP</div>
     <div class="nt" data-p="localite">🗺️ Par Localité</div>
+    <div class="nt" data-p="delais">⏱️ Délais de Traitement</div>
     <div class="nt" data-p="br-pvid">📊 Branche PVID</div>
     <div class="nt" data-p="br-pf">📊 Branche PF</div>
     <div class="nt" data-p="br-rp">📊 Branche RP</div>
@@ -461,6 +463,49 @@ td:first-child{text-align:left;font-weight:600}
       <div class="tw"><div class="twh"><div class="twt">📋 Tableau Détaillé par Localité (2023–2025)</div></div><div style="overflow-x:auto"><table id="tLoc"></table></div></div>
     </div>
 
+
+    <!-- DÉLAIS DE TRAITEMENT -->
+    
+    <!-- DÉLAIS DE TRAITEMENT -->
+    <div id="p-delais" class="ps">
+      <div class="st">Délais de Traitement — Dossiers Validés</div>
+      <div class="sd">Répartition des dossiers validés selon le délai de traitement · Statut "Validé" uniquement · 2023–2025</div>
+      <div class="src">Source : Service Actuariat / Pool Statistique — CNSS</div>
+
+      <div class="hl" style="background:linear-gradient(135deg,#1E40AF,#6D28D9)" id="hl-del"></div>
+      <div class="kg" id="kg-del"></div>
+
+      <!-- Graphique 1 : Barres groupées par tranche et par année -->
+      <div class="cf cc">
+        <div class="ch"><div><div class="ct">Répartition des Délais par Année — Toutes Branches</div><div class="cd">Volumes validés par tranche de délai · 2023 · 2024 · 2025</div></div><span class="cb" style="background:#EDE9FE;color:#6D28D9;border-color:#C4B5FD" id="cb-del"></span></div>
+        <div style="position:relative;height:260px"><canvas id="cDelBar"></canvas></div>
+      </div>
+
+      <!-- Graphique 2 : Évolution % par tranche -->
+      <div class="c2">
+        <div class="cc"><div class="ch"><div><div class="ct">Évolution du Taux par Tranche de Délai (%)</div><div class="cd">Part de chaque tranche sur le total validé · 2023–2025</div></div></div><div style="position:relative;height:230px"><canvas id="cDelPct"></canvas></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Évolution par Branche — 3 Tranches de Délai</div><div class="cd">< 15 j · 15–45 j · > 45 j par branche · Année sélectionnée</div></div><span class="cb" style="background:#EDE9FE;color:#6D28D9;border-color:#C4B5FD" id="cb-del2"></span></div><div style="position:relative;height:230px"><canvas id="cDelBranch3"></canvas></div></div>
+      </div>
+
+      <!-- Indicateurs de performance — 3 tranches visibles par branche -->
+      <div class="tw" style="margin-bottom:15px">
+        <div class="twh"><div class="twt">⚡ Indicateurs de Performance Traitement — <span id="del-perf-yr">Dernière Année</span></div></div>
+        <div style="padding:16px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px" id="del-perf-grid"></div>
+        </div>
+      </div>
+
+      <!-- Tableau synthèse -->
+      <div class="tw"><div class="twh"><div class="twt">📋 Synthèse par Délai — Toutes Branches (2023–2025)</div></div>
+        <div style="overflow-x:auto"><table id="tDel"></table></div>
+      </div>
+
+      <!-- Tableau détail par branche -->
+      <div class="tw"><div class="twh"><div class="twt">📋 Détail par Année et par Branche (2023–2025)</div></div>
+        <div style="overflow-x:auto"><table id="tDelDetail"></table></div>
+      </div>
+    </div>
+
     <!-- 6. BRANCHE PVID -->
     <div id="p-br-pvid" class="ps">
       <div class="st">Branche PVID — Effectifs &amp; Montants</div>
@@ -608,13 +653,13 @@ const PVID_EFF_TOT=[40767,40448,44410];
 // ENCAISSEMENTS
 const ENC={
   periodes:['1T 2024','2T 2024','3T 2024','4T 2024','1T 2025','2T 2025','3T 2025','4T 2025'],
-  attendu: [40852386456,35701473291,34027018311,30338200963,35232486834,35317869052,33142778139,47709691648],
-  recouvre:[32376345384,28579709182,28769609029,24293287386,29247287490,29418308853,25943865895,36907773291],
+  attendu: [42972615514,38118712116,37606792031,31849719279, 40875221611,39800146579,40615117145,49043261876],
+  recouvre:[32376345384,28579709182,28769609029,24293287386, 29247287490,29418308853,25943865895,36907773291],
   an:      [0,0,0,0,1,1,1,1],
 };
 const ENC_TOT={
-  attendu2024:140919079021,recouvre2024:114018950981,
-  attendu2025:151402825674,recouvre2025:121517235529
+  attendu2024:150547838939,recouvre2024:114018950981,
+  attendu2025:170333747211,recouvre2025:121517235529
 };
 
 // ════ HELPERS ════
@@ -683,7 +728,7 @@ function idx(){return curAn==='all'?[0,1,2]:[parseInt(curAn)];}
 function anL(){return idx().map(i=>AN[i]);}
 
 function buildSec(id){
-  const m={global:bGlobal,'dos-pvid':bDosPvid,'dos-pf':bDosPf,'dos-rp':bDosRp,localite:bLoc,'br-pvid':bBrPvid,'br-pf':bBrPf,'br-rp':bBrRp,encaiss:bEncaiss};
+  const m={global:bGlobal,'dos-pvid':bDosPvid,'dos-pf':bDosPf,'dos-rp':bDosRp,localite:bLoc,delais:bDelais,'br-pvid':bBrPvid,'br-pf':bBrPf,'br-rp':bBrRp,encaiss:bEncaiss};
   if(m[id])m[id]();
 }
 
@@ -1093,6 +1138,209 @@ function bEncaiss(){
 
   document.getElementById('tEnc').innerHTML=hd+'<tbody>'+bodyRows.join('')+'</tbody>';
 }
+
+
+// ══ DÉLAIS DE TRAITEMENT ══
+const DELAIS = {
+  global:{ d15:[689,777,1638],  d45:[1186,2112,3023], dp:[3993,3678,3508], nd:[6,1,313],   tot:[5874,6568,8482]},
+  pf:    { d15:[627,694,1490],  d45:[892,1820,1964],   dp:[2175,1834,1166], nd:[5,1,313],   tot:[3699,4349,4933]},
+  pvid:  { d15:[61,81,117],     d45:[273,264,918],     dp:[1629,1521,2047], nd:[1,0,0],     tot:[1964,1866,3082]},
+  rp:    { d15:[1,2,31],        d45:[21,28,141],       dp:[189,323,295],    nd:[0,0,0],     tot:[211,353,467]},
+  totaux:{ d15:3104, d45:6321, dp:11179, nd:320, tot:20924}
+};
+
+function bDelais(){
+  const I=idx(), ANS=anL(), li=I[I.length-1];
+  const D=DELAIS;
+  const totLi=D.global.tot[li];
+
+  // ── HL ──
+  const p15=(D.global.d15[li]/totLi*100).toFixed(1);
+  const p45=(D.global.d45[li]/totLi*100).toFixed(1);
+  const pp=(D.global.dp[li]/totLi*100).toFixed(1);
+  document.getElementById('hl-del').innerHTML=
+    `<div class="hi"><div class="hv">${FN(totLi)}</div><div class="hlt">Total Validés ${AN[li]}</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(D.global.d15[li])}</div><div class="hlt">< 15 jours (${p15}%)</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(D.global.d45[li])}</div><div class="hlt">15–45 jours (${p45}%)</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(D.global.dp[li])}</div><div class="hlt">> 45 jours (${pp}%)</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(D.global.nd[li])}</div><div class="hlt">Non déterminé</div></div>`;
+
+  document.getElementById('cb-del').textContent=ANS.join(' · ');
+  document.getElementById('cb-del2').textContent=AN[li];
+  document.getElementById('del-perf-yr').textContent=AN[li];
+
+  // ── KPI ──
+  document.getElementById('kg-del').innerHTML=
+    kC('Traitement Rapide < 15 j',FN(D.global.d15[li]),p15+'% du total validé',trH(D.global.d15[0],D.global.d15[li]),.04,'#15803D')+
+    kC('Délai Intermédiaire 15–45 j',FN(D.global.d45[li]),p45+'% du total validé',trH(D.global.d45[0],D.global.d45[li]),.08,'#D97706')+
+    kC('Délai Excessif > 45 j',FN(D.global.dp[li]),pp+'% du total validé',trH(D.global.dp[li],D.global.dp[0]),.12,'#DC2626')+
+    kC('Non Déterminé',FN(D.global.nd[li]),'délai inconnu','',0.16,'#6B7280')+
+    kC('Total Validés '+AN[li],FN(totLi),'toutes branches','',0.20,'#6D28D9');
+
+  // ── Graphique 1 : Barres groupées par tranche/année ──
+  mkC('cDelBar','bar',['< 15 jours','15–45 jours','> 45 jours','Non déterminé'],[
+    {label:'2023',data:[D.global.d15[0],D.global.d45[0],D.global.dp[0],D.global.nd[0]],backgroundColor:'rgba(30,58,138,.8)',borderRadius:5,borderSkipped:false},
+    {label:'2024',data:[D.global.d15[1],D.global.d45[1],D.global.dp[1],D.global.nd[1]],backgroundColor:'rgba(8,145,178,.8)',borderRadius:5,borderSkipped:false},
+    {label:'2025',data:[D.global.d15[2],D.global.d45[2],D.global.dp[2],D.global.nd[2]],backgroundColor:'rgba(109,40,217,.8)',borderRadius:5,borderSkipped:false},
+  ],{scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#374151'}},y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10}}}}});
+
+  // ── Graphique 2 : % par tranche ──
+  mkC('cDelPct','line',ANS,[
+    {label:'% < 15 j',  data:I.map(i=>(D.global.d15[i]/D.global.tot[i]*100).toFixed(1)), borderColor:'#15803D',backgroundColor:'rgba(21,128,61,.1)',  borderWidth:3,fill:false,tension:.4,pointRadius:6,pointBackgroundColor:'#15803D',pointBorderColor:'#fff',pointBorderWidth:2},
+    {label:'% 15–45 j', data:I.map(i=>(D.global.d45[i]/D.global.tot[i]*100).toFixed(1)), borderColor:'#D97706',backgroundColor:'rgba(217,119,6,.1)',  borderWidth:3,fill:false,tension:.4,pointRadius:6,pointBackgroundColor:'#D97706',pointBorderColor:'#fff',pointBorderWidth:2},
+    {label:'% > 45 j',  data:I.map(i=>(D.global.dp[i]/D.global.tot[i]*100).toFixed(1)),  borderColor:'#DC2626',backgroundColor:'rgba(220,38,38,.1)',  borderWidth:3,fill:false,tension:.4,pointRadius:6,pointBackgroundColor:'#DC2626',pointBorderColor:'#fff',pointBorderWidth:2},
+  ],{scales:{x:{grid:{display:false},ticks:{font:{size:11},color:'#374151'}},y:{max:100,grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10},callback:v=>v+'%'}}}});
+
+  // ── Graphique 3 : 3 tranches par branche (année sélectionnée) ──
+  // Barres groupées : pour chaque branche, les 3 tranches
+  const branches3=['PVID','PF','RP'];
+  mkC('cDelBranch3','bar',branches3,[
+    {label:'< 15 jours',  data:[D.pvid.d15[li],D.pf.d15[li],D.rp.d15[li]],  backgroundColor:'#15803D',borderRadius:5,borderSkipped:false},
+    {label:'15–45 jours', data:[D.pvid.d45[li],D.pf.d45[li],D.rp.d45[li]],  backgroundColor:'#D97706',borderRadius:5,borderSkipped:false},
+    {label:'> 45 jours',  data:[D.pvid.dp[li], D.pf.dp[li], D.rp.dp[li]],   backgroundColor:'#DC2626',borderRadius:5,borderSkipped:false},
+  ],{scales:{x:{grid:{display:false},ticks:{font:{size:12},color:'#374151'}},y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10}}}}});
+
+  // ── Indicateurs de performance : 4 blocs (Global + 3 branches) avec 3 tranches chacun ──
+  const perfs=[
+    {n:'Toutes Branches',c:'#6D28D9',d:D.global},
+    {n:'Branche PVID',   c:'#1E3A8A',d:D.pvid},
+    {n:'Branche PF',     c:'#059669',d:D.pf},
+    {n:'Branche RP',     c:'#DC2626',d:D.rp},
+  ];
+  document.getElementById('del-perf-grid').innerHTML=perfs.map(b=>{
+    const t=b.d.tot[li];
+    if(t===0) return'';
+    const p15b=(b.d.d15[li]/t*100).toFixed(1);
+    const p45b=(b.d.d45[li]/t*100).toFixed(1);
+    const ppb=(b.d.dp[li]/t*100).toFixed(1);
+    const pndb=(b.d.nd[li]/t*100).toFixed(1);
+    // Codes couleur selon seuils
+    const col15=parseFloat(p15b)>=20?'#15803D':parseFloat(p15b)>=10?'#D97706':'#DC2626';
+    const colpp=parseFloat(ppb)<=40?'#15803D':parseFloat(ppb)<=60?'#D97706':'#DC2626';
+
+    const bar=(pct,col)=>`<div style="height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden;margin-top:2px;margin-bottom:8px"><div style="height:100%;width:${Math.min(pct,100)}%;background:${col};border-radius:4px"></div></div>`;
+
+    return`<div style="background:#fff;border-radius:12px;border:2px solid ${b.c};box-shadow:var(--sh);overflow:hidden">
+      <!-- En-tête coloré -->
+      <div style="background:${b.c};padding:10px 13px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:11.5px;font-weight:800;color:#fff">${b.n}</span>
+        <span style="font-size:10px;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);padding:2px 8px;border-radius:10px">${FN(t)} validés</span>
+      </div>
+      <!-- 3 tranches -->
+      <div style="padding:12px 14px">
+        <!-- Tranche 1 -->
+        <div style="margin-bottom:4px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:10px;font-weight:700;color:#374151">🟢 &lt; 15 jours</span>
+          <span style="font-size:12px;font-weight:800;color:${col15}">${FN(b.d.d15[li])} <span style="font-size:10px;color:${col15}">(${p15b}%)</span></span>
+        </div>
+        ${bar(p15b, col15)}
+        <!-- Tranche 2 -->
+        <div style="margin-bottom:4px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:10px;font-weight:700;color:#374151">🟡 15–45 jours</span>
+          <span style="font-size:12px;font-weight:800;color:#D97706">${FN(b.d.d45[li])} <span style="font-size:10px;color:#D97706">(${p45b}%)</span></span>
+        </div>
+        ${bar(p45b, '#D97706')}
+        <!-- Tranche 3 -->
+        <div style="margin-bottom:4px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:10px;font-weight:700;color:#374151">🔴 &gt; 45 jours</span>
+          <span style="font-size:12px;font-weight:800;color:${colpp}">${FN(b.d.dp[li])} <span style="font-size:10px;color:${colpp}">(${ppb}%)</span></span>
+        </div>
+        ${bar(ppb, colpp)}
+        <!-- Non déterminé -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:4px;border-top:1px solid #F3F4F6">
+          <span style="font-size:9.5px;color:#9CA3AF">⬜ Non déterminé</span>
+          <span style="font-size:10.5px;font-weight:700;color:#9CA3AF">${FN(b.d.nd[li])} (${pndb}%)</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // ── Tableau synthèse ──
+  const clrs={'<15':'#15803D','15-45':'#D97706','>45':'#DC2626','nd':'#6B7280'};
+  const hdSyn=`<thead><tr>
+    <th style="text-align:left;min-width:65px">Année</th>
+    <th style="background:linear-gradient(135deg,#14532D,#15803D)">&lt; 15 jours</th>
+    <th style="background:linear-gradient(135deg,#14532D,#15803D)">%</th>
+    <th style="background:linear-gradient(135deg,#92400E,#D97706)">15–45 jours</th>
+    <th style="background:linear-gradient(135deg,#92400E,#D97706)">%</th>
+    <th style="background:linear-gradient(135deg,#7F1D1D,#DC2626)">&gt; 45 jours</th>
+    <th style="background:linear-gradient(135deg,#7F1D1D,#DC2626)">%</th>
+    <th style="background:#4B5563">Non dét.</th>
+    <th>Total Validé</th>
+  </tr></thead>`;
+  const rowsSyn=I.map(i=>{
+    const t=D.global.tot[i];
+    return`<tr>
+      <td style="text-align:left;font-weight:800;color:var(--navy)">${AN[i]}</td>
+      <td class="nv">${FN(D.global.d15[i])}</td><td class="nv">${(D.global.d15[i]/t*100).toFixed(1)}%</td>
+      <td class="ng">${FN(D.global.d45[i])}</td><td class="ng">${(D.global.d45[i]/t*100).toFixed(1)}%</td>
+      <td class="nj">${FN(D.global.dp[i])}</td><td class="nj">${(D.global.dp[i]/t*100).toFixed(1)}%</td>
+      <td style="color:#6B7280;font-weight:700">${FN(D.global.nd[i])}</td>
+      <td style="font-weight:800;color:var(--navy)">${FN(t)}</td>
+    </tr>`;
+  });
+  rowsSyn.push(`<tr class="tot">
+    <td style="text-align:left">TOTAL 3 ANS</td>
+    <td>${FN(D.totaux.d15)}</td><td>${(D.totaux.d15/D.totaux.tot*100).toFixed(1)}%</td>
+    <td>${FN(D.totaux.d45)}</td><td>${(D.totaux.d45/D.totaux.tot*100).toFixed(1)}%</td>
+    <td>${FN(D.totaux.dp)}</td><td>${(D.totaux.dp/D.totaux.tot*100).toFixed(1)}%</td>
+    <td>${FN(D.totaux.nd)}</td>
+    <td>${FN(D.totaux.tot)}</td>
+  </tr>`);
+  document.getElementById('tDel').innerHTML=hdSyn+'<tbody>'+rowsSyn.join('')+'</tbody>';
+
+  // ── Tableau détail hiérarchique ──
+  const hdDet=`<thead><tr>
+    <th style="text-align:left;min-width:110px">Année / Branche</th>
+    <th style="background:linear-gradient(135deg,#14532D,#15803D)">&lt; 15 j</th>
+    <th style="background:linear-gradient(135deg,#14532D,#15803D)">%</th>
+    <th style="background:linear-gradient(135deg,#92400E,#D97706)">15–45 j</th>
+    <th style="background:linear-gradient(135deg,#92400E,#D97706)">%</th>
+    <th style="background:linear-gradient(135deg,#7F1D1D,#DC2626)">&gt; 45 j</th>
+    <th style="background:linear-gradient(135deg,#7F1D1D,#DC2626)">%</th>
+    <th style="background:#4B5563">Non dét.</th>
+    <th>Total</th>
+  </tr></thead>`;
+  const brDet=[
+    {n:'PF',  col:'#059669',d:D.pf},
+    {n:'PVID',col:'#1E3A8A',d:D.pvid},
+    {n:'RP',  col:'#DC2626',d:D.rp},
+  ];
+  const rowsDet=[];
+  I.forEach(i=>{
+    const t=D.global.tot[i];
+    rowsDet.push(`<tr style="background:#F1F5F9;font-weight:800">
+      <td style="text-align:left;color:var(--navy);font-weight:800">📅 ${AN[i]}</td>
+      <td class="nv">${FN(D.global.d15[i])}</td><td class="nv">${(D.global.d15[i]/t*100).toFixed(1)}%</td>
+      <td class="ng">${FN(D.global.d45[i])}</td><td class="ng">${(D.global.d45[i]/t*100).toFixed(1)}%</td>
+      <td class="nj">${FN(D.global.dp[i])}</td><td class="nj">${(D.global.dp[i]/t*100).toFixed(1)}%</td>
+      <td style="color:#6B7280;font-weight:700">${FN(D.global.nd[i])}</td>
+      <td style="font-weight:800;color:var(--navy)">${FN(t)}</td>
+    </tr>`);
+    brDet.forEach(b=>{
+      const tb=b.d.tot[i];
+      if(tb===0) return;
+      rowsDet.push(`<tr>
+        <td style="padding-left:22px;color:${b.col};font-weight:700">↳ ${b.n}</td>
+        <td class="nv">${FN(b.d.d15[i])}</td><td style="color:#15803D;font-size:10px">${(b.d.d15[i]/tb*100).toFixed(1)}%</td>
+        <td class="ng">${FN(b.d.d45[i])}</td><td style="color:#D97706;font-size:10px">${(b.d.d45[i]/tb*100).toFixed(1)}%</td>
+        <td class="nj">${FN(b.d.dp[i])}</td><td style="color:#DC2626;font-size:10px">${(b.d.dp[i]/tb*100).toFixed(1)}%</td>
+        <td style="color:#6B7280;font-weight:700">${FN(b.d.nd[i])}</td>
+        <td style="font-weight:700">${FN(tb)}</td>
+      </tr>`);
+    });
+  });
+  rowsDet.push(`<tr class="tot">
+    <td style="text-align:left">TOTAL GÉNÉRAL</td>
+    <td>${FN(D.totaux.d15)}</td><td>${(D.totaux.d15/D.totaux.tot*100).toFixed(1)}%</td>
+    <td>${FN(D.totaux.d45)}</td><td>${(D.totaux.d45/D.totaux.tot*100).toFixed(1)}%</td>
+    <td>${FN(D.totaux.dp)}</td><td>${(D.totaux.dp/D.totaux.tot*100).toFixed(1)}%</td>
+    <td>${FN(D.totaux.nd)}</td>
+    <td>${FN(D.totaux.tot)}</td>
+  </tr>`);
+  document.getElementById('tDelDetail').innerHTML=hdDet+'<tbody>'+rowsDet.join('')+'</tbody>';
+}
+
 </script>
 </body>
 </html>
