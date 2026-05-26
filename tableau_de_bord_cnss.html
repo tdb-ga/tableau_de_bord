@@ -3035,7 +3035,7 @@ async function _saveToLocalStorage(){
 // ── Chargement GitHub — async ──
 // Récupère le dernier snapshot sauvegardé depuis GitHub.
 async function _loadFromLocalStorage(){
-  if(_GH_TOKEN === 'VOTRE_TOKEN_ICI') return false; // pas encore configuré
+  if(_GH_TOKEN === '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') return false; // pas encore configuré
   try {
     const r = await fetch(
       'https://api.github.com/repos/'+_GH_OWNER+'/'+_GH_REPO+'/contents/'+_GH_FILE,
