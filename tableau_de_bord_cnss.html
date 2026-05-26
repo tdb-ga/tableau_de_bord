@@ -1074,25 +1074,20 @@ function goP(id,el){
   buildSec(id);
 }
 
-async function entrer(){
+function entrer(){
   document.getElementById('garde').style.display='none';
   document.getElementById('dash').style.display='block';
 
-  // ── Restaurer les données persistées (cloud) ──
-  const siEl = document.getElementById('saveIndicator');
-  if(siEl){ siEl.textContent='⏳ Chargement des données…'; siEl.style.opacity='1'; }
-  const savedAt = await _loadFromLocalStorage();
+  // ── Restaurer les données persistées ──
+  const savedAt = _loadFromLocalStorage();
   if(savedAt){
     recomputeEncTot();
     _showSaveIndicator(typeof savedAt==='string' ? savedAt : new Date().toISOString());
-  } else if(siEl){
-    siEl.textContent='☁️ Aucune donnée cloud trouvée';
-    siEl.style.opacity='1';
   }
 
   rebuildYearFilter();
   _rebuildIdxMaps();
-  document.getElementById('dhd').innerHTML=new Date().toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+'<br><small>☁️ Stockage partagé (cloud)</small>';
+  document.getElementById('dhd').innerHTML=new Date().toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+'<br><small>Données sauvegardées</small>';
   buildSec('global');
 }
 function retour(){document.getElementById('dash').style.display='none';document.getElementById('garde').style.display='flex';}
@@ -2446,7 +2441,7 @@ function addYear(){
   _rebuildIdxMaps();
   // Sauvegarder les années modifiées
   _saveToLocalStorage();
-  notify('✅ Année '+yr+' ajoutée et sauvegardée (cloud)');
+  notify('✅ Année '+yr+' ajoutée et sauvegardée');
 }
 
 // ── Supprimer une année (n'affecte que le groupe de l'onglet actif) ──
@@ -2586,7 +2581,7 @@ async function removeYrAt(idx){
   if(a)buildSec(a.id.replace('p-',''));
   // Sauvegarder après suppression
   _saveToLocalStorage();
-  notify('✅ Année supprimée et sauvegardée (cloud)');
+  notify('✅ Année supprimée et sauvegardée');
 }
 
 // ── Étendre les séries du groupe de l'onglet (+1 valeur=0 à l'index pos) ──
@@ -2886,19 +2881,15 @@ function renderPanel(tab){
 // ════════════════════════════════════════════════════════
 
 // ══════════════════════════════════════════════════════════════════════
-// PERSISTANCE CLOUD — JSONBin.io
-// Toutes les modifications sont partagées entre tous les navigateurs et utilisateurs.
+// PERSISTANCE LOCALE — localStorage
+// Toutes les modifications restent après fermeture du navigateur.
 // ══════════════════════════════════════════════════════════════════════
-// ⚙️ CONFIGURATION : Créez un compte gratuit sur https://jsonbin.io
-//    puis renseignez votre clé API et l'ID du bin ci-dessous.
-//    Si BIN_ID est vide, un nouveau bin sera créé automatiquement au 1er enregistrement.
-const _JSONBIN_API_KEY = '$2a$10$REMPLACEZ_PAR_VOTRE_CLE_API'; // ← votre X-Master-Key
-const _JSONBIN_BIN_ID  = '';  // ← laissez vide pour créer, ou collez un ID existant
-let   _binId = _JSONBIN_BIN_ID.trim();   // sera renseigné après création auto
+const _LS_KEY = 'tdb_masse_sal_data_v1';
 
 // ── Sérialisation : capture l'état complet de toutes les données ──
-function _buildSnap(){
-  return {
+function _saveToLocalStorage(){
+  try {
+    const snap = {
       // Tableaux d'années
       AN:      [...AN],
       AN3:     [...AN3],
@@ -2965,58 +2956,20 @@ function _buildSnap(){
       // Horodatage
       savedAt: new Date().toISOString(),
     };
-}
-
-// ── Sauvegarde cloud (JSONBin.io) — async ──
-async function _saveToLocalStorage(){
-  const snap = _buildSnap();
-  const headers = {
-    'Content-Type': 'application/json',
-    'X-Master-Key': _JSONBIN_API_KEY,
-    'X-Bin-Private': 'false'
-  };
-  try {
-    if(!_binId){
-      // Première fois : créer un nouveau bin
-      const r = await fetch('https://api.jsonbin.io/v3/b', {
-        method: 'POST',
-        headers: {...headers, 'X-Bin-Name': 'tdb_masse_sal_cnss'},
-        body: JSON.stringify(snap)
-      });
-      const j = await r.json();
-      if(j && j.metadata && j.metadata.id){
-        _binId = j.metadata.id;
-        console.info('📦 Bin créé :', _binId,
-          '— Collez cet ID dans _JSONBIN_BIN_ID pour le réutiliser.');
-        _showBinIdBanner(_binId);
-      } else { throw new Error('Création bin échouée'); }
-    } else {
-      // Bin existant : mise à jour
-      await fetch('https://api.jsonbin.io/v3/b/'+_binId, {
-        method: 'PUT',
-        headers,
-        body: JSON.stringify(snap)
-      });
-    }
-    return snap.savedAt;
+    localStorage.setItem(_LS_KEY, JSON.stringify(snap));
+    return true;
   } catch(e){
-    console.warn('Sauvegarde cloud échouée:', e);
-    // Fallback localStorage en cas d'erreur réseau
-    try { localStorage.setItem('tdb_masse_sal_fallback', JSON.stringify(snap)); } catch(_){}
+    console.warn('Sauvegarde localStorage échouée:', e);
     return false;
   }
 }
 
-// ── Chargement cloud (JSONBin.io) — async ──
-async function _loadFromLocalStorage(){
-  if(!_binId) return false;
+// ── Désérialisation : restaure toutes les données depuis le snapshot ──
+function _loadFromLocalStorage(){
   try {
-    const r = await fetch('https://api.jsonbin.io/v3/b/'+_binId+'/latest', {
-      headers:{ 'X-Master-Key': _JSONBIN_API_KEY }
-    });
-    const j = await r.json();
-    if(!j || !j.record) return false;
-    const s = j.record;
+    const raw = localStorage.getItem(_LS_KEY);
+    if(!raw) return false;
+    const s = JSON.parse(raw);
 
     // Helper : sync un tableau const avec un snapshot
     const sync = (arr, src) => { while(arr.length)arr.pop(); src.forEach(v=>arr.push(v)); };
@@ -3077,30 +3030,14 @@ async function _loadFromLocalStorage(){
 
     return s.savedAt || true;
   } catch(e){
-    console.warn('Chargement cloud échoué:', e);
+    console.warn('Chargement localStorage échoué:', e);
     return false;
   }
 }
 
-// ── Effacer les données cloud (réinitialisation) ──
-async function _clearLocalStorage(){
-  if(!_binId) return;
-  try {
-    const snap = _buildSnap();
-    await fetch('https://api.jsonbin.io/v3/b/'+_binId, {
-      method: 'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':_JSONBIN_API_KEY},
-      body: JSON.stringify(snap)
-    });
-  } catch(e){ console.warn('Reset cloud échoué:', e); }
-}
-
-// ── Bannière affichant l'ID du bin créé automatiquement ──
-function _showBinIdBanner(id){
-  const b = document.createElement('div');
-  b.style.cssText='position:fixed;top:70px;left:50%;transform:translateX(-50%);background:#1E3A8A;color:#fff;padding:12px 20px;border-radius:10px;font-size:12px;font-weight:700;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.4);max-width:500px;text-align:center;border:2px solid #FCD116';
-  b.innerHTML='📦 <b>Bin cloud créé !</b> ID : <code style="background:rgba(255,255,255,.15);padding:2px 6px;border-radius:4px">'+id+'</code><br><small style="font-weight:400;opacity:.8">Copiez cet ID dans <b>_JSONBIN_BIN_ID</b> du fichier HTML pour que tous les utilisateurs partagent ce bin.</small><br><button onclick="this.parentNode.remove()" style="margin-top:8px;padding:4px 14px;border:none;border-radius:6px;background:#FCD116;color:#0D1F12;font-weight:800;cursor:pointer">Fermer</button>';
-  document.body.appendChild(b);
+// ── Effacer toutes les données persistées (utilisé par resetAllData) ──
+function _clearLocalStorage(){
+  try { localStorage.removeItem(_LS_KEY); } catch(e){}
 }
 
 // ── Indicateur visuel "Données sauvegardées" ──
@@ -3114,7 +3051,7 @@ function _showSaveIndicator(savedAt){
   el.style.opacity='1';
 }
 
-async function applyAllData(){
+function applyAllData(){
   document.querySelectorAll('.etabpan input[data-ds]').forEach(inp=>{
     const ds=inp.dataset.ds,sub=inp.dataset.sub,i=parseInt(inp.dataset.i);
     const idx2=inp.dataset.idx!==undefined?parseInt(inp.dataset.idx):null;
@@ -3151,15 +3088,12 @@ async function applyAllData(){
   apF();
   const activePane = document.querySelector('.ps.on');
   if(activePane) buildSec(activePane.id.replace('p-',''));
-  // Sauvegarder dans le cloud (partagé entre tous les utilisateurs)
-  notify('⏳ Sauvegarde en cours…');
-  const savedAt = await _saveToLocalStorage();
-  if(savedAt){
-    _showSaveIndicator(typeof savedAt==='string' ? savedAt : new Date().toISOString());
-    notify('✅ Données appliquées et sauvegardées (cloud)');
-  } else {
-    notify('⚠️ Sauvegarde cloud échouée — vérifiez la configuration JSONBin');
+  // Sauvegarder dans localStorage (persistance après fermeture)
+  const savedAt = new Date().toISOString();
+  if(_saveToLocalStorage()){
+    _showSaveIndicator(savedAt);
   }
+  notify('✅ Données appliquées et sauvegardées automatiquement');
 }
 
 // ════════════════════════════════════════════════════════
