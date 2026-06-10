@@ -1,12 +1,12 @@
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CNSS — Tableau de Bord · Dossiers Liquidés 2021–2025</title>
+<title>CNSS — Tableau de Bord Actuariel</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root{
@@ -193,13 +193,13 @@ td:first-child{text-align:left;font-weight:600}
 .etab.on{color:var(--navy);border-bottom-color:var(--gj);background:rgba(30,58,138,.04)}
 .etab:hover:not(.on){color:var(--navy);background:rgba(30,58,138,.04)}
 .egrid{display:grid;gap:5px;align-items:center;margin-bottom:6px}
-.egrid label{font-size:10px;font-weight:800;color:var(--navy);padding-right:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.egrid input{padding:5px 7px;border:1.5px solid var(--brd);border-radius:6px;font-size:11px;font-weight:700;text-align:right;outline:none;width:100%;min-width:0}
+.egrid label{font-size:12px;font-weight:800;color:var(--navy);padding-right:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.egrid input{padding:6px 9px;border:1.5px solid var(--brd);border-radius:6px;font-size:12px;font-weight:700;text-align:right;outline:none;width:100%;min-width:0}
 .egrid input:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(37,99,235,.15)}
 .egrid-hdr{display:grid;gap:5px;margin-bottom:4px}
-.egrid-hdr span{font-size:9px;font-weight:800;text-align:center;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.egrid-hdr span{font-size:11px;font-weight:800;text-align:center;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 .egrid-hdr span:first-child{text-align:left}
-.ed-section-title{font-size:11px;font-weight:800;color:var(--navy);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;padding:6px 10px;background:rgba(30,58,138,.06);border-radius:7px;border-left:4px solid var(--navy)}
+.ed-section-title{font-size:13px;font-weight:800;color:var(--navy);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px;padding:6px 10px;background:rgba(30,58,138,.06);border-radius:7px;border-left:4px solid var(--navy)}
 .yr-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--navy);color:#fff;border-radius:20px;font-size:10px;font-weight:700}
 .yr-pill button{background:rgba(255,255,255,.3);border:none;color:#fff;border-radius:50%;width:16px;height:16px;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:900}
 .yr-pill button:hover{background:rgba(220,38,38,.7)}
@@ -234,9 +234,9 @@ td:first-child{text-align:left;font-weight:600}
   <header class="dh">
     <div class="dhl">
       <div class="dhlo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABPAFUDASIAAhEBAxEB/8QAHQAAAgMBAQEBAQAAAAAAAAAAAAgFBgcECQMBAv/EADwQAAEDAwEFBwEECgEFAAAAAAECAwQABREGBxIhMUEIEyJRYXGBFBVScpEjMjNCU2KCoaLB0RZDY7Gy/8QAGwEAAgMBAQEAAAAAAAAAAAAABQYDBAcAAQL/xAAwEQABAwIEAgkFAAMAAAAAAAABAAIDBBEFEiFBMWETIjJRcYGRodEGscHh8BQj8f/aAAwDAQACEQMRAD8Acuiiue4zYlugPz58huNFjoLjrrisJQkcyTXLibLozVbTrawyNRDT1skm6XIcXmoY7xMdI5qcX+qn2Jz6UuO0fa5qPaRqRvR+he/iW6U93CFIJQ9LzzUo80N4yceXE+VMJsq0Pa9CaXatkEJdkOALmSseJ9zHP8I6DoPmow/MbBDoqw1MpbCOqOJ/A+VT+0Jtma2bJhWy1w2blfZg7xLDhO401nG8oJ4kk8ABzwfmrao2+X7RelrexqexQXdYzz9R9msLUhESMr9TveZDiuPhHzjrT9DQ0a77Zt9mXhKXmbO++600viP0BS00MehIV7iuXZbGiau7YmoJd9QHlQ5Ut6M07xG+ysNtjB+6niPYUXbDG0WcL2Fzz5L4dNI43abXNhy5pk9C6k1FddIRL3qPS7lnkPgqVEQ73jjaP3VFJAIyOO7zFWW3z4k9gPRH0OoPkeIPkR0roI4VRdVw5NuuCpsKMplLpyVsqO6T6p6H1HClfE62SiHTgZmbjccx+/VHqSBs/wDrJs7Y9/j+vRXuioHT18+raitSikOuslW/nAKknCh6Hkfmp4HNXaWqjqoxJGbg/wDVDLE6Jxa5FFFFWFGilM7Xe0p243s6CtEgpgwlBVxUg/tnuYbP8qeo+97UzGu763pjRl41A6ARAiOPhJ/eUEndHycCvOWTKkTpr86Y6p2TIcU66tRyVLUck/maildbRB8YnLIsjd0xPZc0spnTl31u63h5avs+CojikHHerHqchOfxUx+iZZkWVDKzlyOe7Pt0/t/6qm7JrUi3bB9ORUgZdiokL4c1OErP/wBVP6XcMS6bhOEPDdPv0pWqKx1LjMYJ6rmgep+bJgwukYzC8gGo19tUuurJStkXa3VqGWlaLNeyXnV9O6ewlw/0ODex5AedRe2dufsr7RsXXtsT31vujguDSkHwPBQ3X28jhxyT/WDW+dpDQULXmjm4oLbV5jOFdseVwBXjxNqPRKgAPQ7p6ViezOXF2h6Nf2M65UqFeretX2HLfThxh1GR3Ks8eHEY6pyOYFaFTTxyjMDctFnDkeBQGohex2TgHG7Tz7k12m7zb9Q2KFerU+H4UxoOsrHUHofIjkR0Ir6XWEzPiKZdSeHFJScEH0NKrsH1rd9k+tJWzrXCVxret/CVLOUxnFcnEnq0vhx+fOm1SUqSFJIIPEEdaoVtG0XY7VrvcK/SVJeA7g4ceRWautMxHlHvnlqShxPdOJIUhakke3PrV7scv6mG0hxWX0Mtqd/qGRUTqyGtTodQG194Mbqh4gQOaT/qv40w6ph9Lj533pzm6Bn9VCEnj7chSNhofh2IOpz2T4+vE75R5o/UuFTAH7j++VaaKKKdEHWRdryW7F2IXJDaiPqZMdlXqkuAkf40kLVO72vYjknYhcltpKvp5Md5WOiQ4AT/AJUkTVVpe0l3Gu0PBP5sqmM3DYrpiQg+H7PZbP4kDcI/NJoaW4jUL7BP6NQSplXktKQVD8iD8Gsy7K+qRO2aXDTLq8ybRI75tPUsOHOfhe9+YrUmmHJdpuMpgFUiJIQ+0B13WxvJ+UkikzHYHVFcGt4htx5XTjg0ofRiTY6eei79Vr+pXa8clh1RHqAP+TWNdorZ44uzxtpNh32bpB3TcC1wUtCThLwx+8jhk9Rx6VrSpSZci3LT4mglxQUOWFJTirKzEjzbEuDJbDkeQ0tpxB5KSrII/I0R+ncQdJijqhp4tF/a/wCV5iEANMInDf5WB3i2R9umxxq/MtNp1hZUKaWUDBeUkZLZ9FjxJ8lemameyjr9+92R3SV2eUudbWwqKtw+JbGcbpzxyg4HsR5VWuyauRaNoWp9MLWS2htQKT1Wy7uZ/JRqKtLadJdrNyHCSG2HrmUbg5bkhsKI9gV/2rRXxtPSQbWzN5boC0kFsm/ApnL+205CSl1OUlYG99znxqBtrSY09taVpXIW6G0DOcDPiV7Yzj1NT98BUw3z3UuZUAemD/uoe3JbVPSmGFFxTnjcKfClIPHnzJ9OWc1m2KhpxJlhrp/W35c+OiYadxEJCtIooFFN6HKD19YW9T6LvGn3CAJ8NxlKj+6ojwn4Vg/Fecr8aRCmPQ5TampDDimnUKGClSTgg/Ir02pSO11s2dtV/Vru0xybfcFAXBKB+xf5BZ9F+f3veoZW31QfGIC+LO3b7LLdmWqpejNWRL7FQXkIy3Kj5wH2FcFo98cR5ECne2bPw59mcuttkolW6etL0V0HipG6BhQ6KBBBHmKQCN0rVNiO0+47Pripl1Dk2wyV70qIk+JtX8Vr+bzHJWPPBql0cZmbI4atvY+PFCcIxn/EzU8h6jvYpknUG1XSVbDkNtr32M/w1cQPg5HxV0sjqfsZl1SgEhJJJ6AE1Ub5Lt+qbJbtUaZkJuLBPdlTHElCuhHMFKsZB4jJqJ24ao/6F2PvMF8JulwbMGIkHjvrB31D8KSo588edB8Fw2SnxaVjW9UjQ7akWHlr6LQa2pjkpGS3138v6/ms27LLi7vtb1PfU7xacZfc3iP4r4Un+wNcEgi+9r9SovjSzdmwoj/wMp3/AMigip/YnIi7MthN213c0hL09WYbKuBd3QUMoH4lFR9uNR/ZDsEu46hu+uLiFOKb320OH/uPunfdUPYH/KtGe4NfLJs0ZfPglxty1jNybrftQzfppW8gBwdyptScZIJ4j/Vfmm1vyHA4llLEdAwSritw+vRI9BmqrcLi7PmKU0h8OvkBTbQzlQGOHx1q9WOAiBCSjKy6vCnFLVklWOXxyrM8OnfiOIulb2G7/ax52B9Uy1EQp4A13aKkKKKKcUKRXNdbfCulukW64xm5USQ2W3mXE5StJ5giumiuXhF9Ck42zbELto+U9dtPNPXKwElWEgqeiDyWOakj7w+fOsvi8q9FyARg1Srhsr0DOv6L3I05E+qSreUEApbcV5qQPCo+4qtJBm7KWMQ+nuldmgda+x/Cw3YLFmaNjS9oWoLu7YtLoaIcaWrAuCyCE7rfUg8iOJPAcM1Tbvfp22raQ7drq/8AY+lbWgqcceVhEGIDxUo8i64QBgcScAZArXNcbA79rrWblz1Nr91dmQ6owrfHi7ojNZ8KEZVuggYG9ukmoJzs36huckWqZqi32rSrEhTjEGA0tbjgzhLjqlYCnSMeI5A4hIA4UWoRDTNvm632/auw0ckELYG3LR7/AAFRNUX277atc2zSekIK4unraA1b45BCW20jdMh3y8PADoOHMmmc09a4mmrBD0LpfxOsNYkycfss/ruK/nUc4H/Fdeg9num9EafctGnYy4peTh+WVAyHT95S8c/IDgOgqx2q2w7ZG7iGyG0k7yjnKlHqSTxJ9ap4jLJUBsEPVj3O5/Z79tteBejjEV5ZdX7DYf3uvnarRBtrSUx2U76RguEZUr5rvooqKKGOFgZGAAO5TPe55zONyiiiipF8r//Z" alt="CNSS"/></div>
-      <div><div class="dht">CNSS — Dossiers Liquidés 2021–2025</div><div class="dhs">Caisse Nationale de Sécurité Sociale · République Gabonaise</div></div>
+      <div><div class="dht">CNSS — Tableau de Bord Actuariel</div><div class="dhs">Caisse Nationale de Sécurité Sociale · République Gabonaise</div></div>
     </div>
-    <div class="dhr"><div class="dhd" id="dhd"></div><button class="hb hbr" onclick="retour()">⬅ Garde</button></div>
+    <div class="dhr"><div class="dhd" id="dhd"></div><button class="hb" onclick="openEditorFromDash()" style="background:linear-gradient(135deg,#D97706,#FBBF24);color:#1E3A8A;border:none;font-weight:800;letter-spacing:.3px">✏️ Modifier données</button><button class="hb hbr" onclick="retour()">⬅ Garde</button></div>
   </header>
 
   <nav class="dn" id="nav">
@@ -250,9 +250,8 @@ td:first-child{text-align:left;font-weight:600}
     <div class="nt" data-p="br-pf">📊 Branche PF</div>
     <div class="nt" data-p="br-rp">📊 Branche RP</div>
     <div class="nt" data-p="encaiss">💳 Encaissements</div>
-    <div class="nt" data-p="emp-categ">🏢 Immatriculation Employeurs</div>
-    <div class="nt" data-p="immat-sexe">👥 Immatriculations Employés</div>
-    <div class="nt" data-p="cotisants">📈 Effectifs Cotisants</div>
+    <div class="nt" data-p="emp-categ">🏢 Employeurs Cotisants</div>
+    <div class="nt" data-p="sal-cotisants">👥 Salariés Cotisants</div>
     <div class="nt" data-p="masse-sal">💼 Masse Salariale</div>
   </nav>
 
@@ -361,9 +360,7 @@ td:first-child{text-align:left;font-weight:600}
       <div class="map-wrap">
         <div class="map-title">🗺️ Carte Interactive des Provinces du Gabon — Dossiers Liquidés</div>
         <div class="map-yr-sel" id="map-yr-sel">
-          <button class="myrb on" onclick="setMapYr(0,this)">2023</button>
-          <button class="myrb" onclick="setMapYr(1,this)">2024</button>
-          <button class="myrb" onclick="setMapYr(2,this)">2025</button>
+          <div id="map-yr-btns" style="display:flex;gap:6px;flex-wrap:wrap"></div>
         </div>
         <div class="map-container">
           <div class="map-svg-wrap">
@@ -580,125 +577,198 @@ td:first-child{text-align:left;font-weight:600}
     <!-- 9. ENCAISSEMENTS -->
     <div id="p-encaiss" class="ps">
       <div class="st">Suivi des Encaissements par Période</div>
-      <div class="sd">Montants attendus vs montants recouvrés · 2024 – 2025</div>
+      <div class="sd">Montants attendus vs montants recouvrés </div>
       <div class="src">Source : Service Actuariat / Pool Statistique — CNSS</div>
       <div class="hl" style="background:linear-gradient(135deg,#92400E,#D97706)" id="hl-enc"></div>
       <div class="kg" id="kg-enc"></div>
       <div class="c2">
-        <div class="cc"><div class="ch"><div><div class="ct">Attendu vs Recouvré par Trimestre</div><div class="cd">Comparaison 2024 et 2025</div></div></div><div style="position:relative;height:250px"><canvas id="cEncBar"></canvas></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Attendu vs Recouvré par Trimestre</div><div class="cd">Comparaison Trimestrielle Par Année</div></div></div><div style="position:relative;height:250px"><canvas id="cEncBar"></canvas></div></div>
         <div class="cc"><div class="ch"><div><div class="ct">Taux de Recouvrement par Trimestre</div><div class="cd">Recouvré / Attendu (%)</div></div></div><div style="position:relative;height:250px"><canvas id="cEncTaux"></canvas></div></div>
       </div>
       <div class="c2">
         <div class="cc"><div class="ch"><div><div class="ct">Évolution Cumulative des Encaissements</div><div class="cd">Montants cumulés par année</div></div></div><div style="position:relative;height:230px"><canvas id="cEncCum"></canvas></div></div>
         <div class="cc"><div class="ch"><div><div class="ct">Écart Attendu – Recouvré</div><div class="cd">Montant non recouvré par trimestre</div></div></div><div style="position:relative;height:230px"><canvas id="cEncEcart"></canvas></div></div>
       </div>
-      <div class="tw"><div class="twh"><div class="twt">📋 Tableau des Encaissements par Période (2024–2025)</div></div><div style="overflow-x:auto"><table id="tEnc"></table></div></div>
+      <div class="tw"><div class="twh"><div class="twt">📋 Tableau des Encaissements par Période</div></div><div style="overflow-x:auto"><table id="tEnc"></table></div></div>
     </div>
 
 
-    <!-- 10. EMPLOYEURS COTISANTS -->
+    <!-- 10. EMPLOYEURS PAR CATÉGORIE -->
     <div id="p-emp-categ" class="ps">
-      <div class="st">Évolution du Nombre d'Employeurs par Catégorie</div>
-      <div class="sd">Employeurs ayant fait l'objet d'au moins une déclaration dans l'année</div>
-      <div class="src">Source : CNSS Gabon \ Base de données</div>
+      <div class="st">Employeurs Cotisants</div>
+      <div class="sd">Stocks et Flux (nouvelles immatriculations) par régime</div>
+      <div class="src">Source : CNSS Gabon — Base de données</div>
       <div class="hl" style="background:linear-gradient(135deg,#065F46,#10B981)" id="hl-ec"></div>
       <div class="kg" id="kg-ec"></div>
       <div class="c2">
-        <div class="cc"><div class="ch"><div><div class="ct">Évolution par Catégorie</div><div class="cd">Volumes annuels</div></div></div><div style="position:relative;height:260px"><canvas id="cEcBar"></canvas></div></div>
-        <div class="cc"><div class="ch"><div><div class="ct">Structure (dernière année sélectionnée)</div><div class="cd">Répartition par catégorie</div></div></div><div class="pw"><div class="pc" style="height:260px"><canvas id="cEcPie"></canvas></div><div id="lg-ecpie" class="plg"></div></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Évolution des Stocks par Régime</div><div class="cd">Employeurs cotisants cumulés</div></div></div><div style="position:relative;height:260px"><canvas id="cEcBar"></canvas></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Évolution des Flux par Régime</div><div class="cd">Nouvelles immatriculations annuelles</div></div></div><div style="position:relative;height:260px"><canvas id="cEcFlux"></canvas></div></div>
       </div>
-      <div class="cf cc"><div class="ch"><div><div class="ct">Évolution du Total des Employeurs</div><div class="cd">Ensemble des catégories</div></div></div><div style="position:relative;height:200px"><canvas id="cEcTot"></canvas></div></div>
-      <div class="tw"><div class="twh"><div class="twt">📋 Tableau — Employeurs par Catégorie</div></div><div style="overflow-x:auto"><table id="tEc"></table></div></div>
-      <p class="src" style="margin-top:8px">NB : Il s'agit des employeurs qui ont fait l'objet d'au moins une déclaration dans l'année.</p>
+      <div class="cf cc"><div class="ch"><div><div class="ct">Évolution du Total Stocks & Flux</div><div class="cd">Ensemble des régimes</div></div></div><div style="position:relative;height:200px"><canvas id="cEcTot"></canvas></div></div>
+      <div class="tw">
+        <div class="twh"><div class="twt">📋 Tableau — Employeurs Cotisants : Stocks &amp; Flux par Régime</div></div>
+        <div style="overflow-x:auto"><table id="tEc"></table></div>
+      </div>
+      <p class="src" style="margin-top:8px">Stocks : nombre total d'employeurs immatriculés à fin d'année. Flux : nouvelles immatriculations dans l'année. — : données non disponibles.</p>
     </div>
 
     <!-- 11. IMMATRICULATIONS PAR SEXE -->
-    <div id="p-immat-sexe" class="ps">
-      <div class="st">Évolution des Nouvelles Immatriculations des Travailleurs par Sexe</div>
-      <div class="sd">Par catégorie d'employeurs · 5 dernières années</div>
-      <div class="src">Source : CNSS Gabon \ Base de données</div>
-      <div class="hl" style="background:linear-gradient(135deg,#1E3A8A,#7C3AED)" id="hl-is"></div>
-      <div class="kg" id="kg-is"></div>
+    <!-- 11. SALARIÉS COTISANTS (Stocks & Flux) -->
+    <div id="p-sal-cotisants" class="ps">
+      <div class="st">Salariés Cotisants des 5 dernières années</div>
+      <div class="sd">Stocks &amp; Flux (nouvelles immatriculations) · Par régime</div>
+      <div class="src">Source : Service Actuariat / Pool Statistique — CNSS</div>
+      <div class="hl" style="background:linear-gradient(135deg,#0C4A6E,#0369A1)" id="hl-sc"></div>
+      <div class="kg" id="kg-sc"></div>
       <div class="c2">
-        <div class="cc"><div class="ch"><div><div class="ct">Total Immatriculations F vs H</div><div class="cd">Années sélectionnées</div></div></div><div style="position:relative;height:260px"><canvas id="cIsTotal"></canvas></div></div>
-        <div class="cc"><div class="ch"><div><div class="ct">Répartition F/H (dernière année)</div><div class="cd">Structure par sexe</div></div></div><div class="pw"><div class="pc" style="height:260px"><canvas id="cIsPie"></canvas></div><div id="lg-ispie" class="plg"></div></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Évolution des Stocks de Cotisants</div><div class="cd">Effectifs annuels par régime</div></div></div><div style="position:relative;height:260px"><canvas id="cScStock"></canvas></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Évolution des Flux (Nouvelles immatriculations)</div><div class="cd">Par régime · 2021–2025</div></div></div><div style="position:relative;height:260px"><canvas id="cScFlux"></canvas></div></div>
       </div>
       <div class="c2">
-        <div class="cc"><div class="ch"><div><div class="ct">Immatriculations — Régime Privé</div><div class="cd">F vs H</div></div></div><div style="position:relative;height:200px"><canvas id="cIsPriv"></canvas></div></div>
-        <div class="cc"><div class="ch"><div><div class="ct">Immatriculations — Régime Public &amp; GDM</div><div class="cd">F vs H</div></div></div><div style="position:relative;height:200px"><canvas id="cIsPubGdm"></canvas></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Structure Stocks (dernière année)</div><div class="cd">Répartition par régime</div></div></div><div class="pw"><div class="pc" style="height:220px"><canvas id="cScStockPie"></canvas></div><div id="lg-scstockpie" class="plg"></div></div></div>
+        <div class="cc"><div class="ch"><div><div class="ct">Taux de Croissance Annuel — Total Stocks</div><div class="cd">Variation % par rapport à l'année précédente</div></div></div><div style="position:relative;height:220px"><canvas id="cScTx"></canvas></div></div>
       </div>
-      <div class="tw"><div class="twh"><div class="twt">📋 Tableau — Immatriculations par Sexe et Catégorie</div></div><div style="overflow-x:auto"><table id="tIs"></table></div></div>
-    </div>
-
-    <!-- 12. EFFECTIFS SALARIÉS COTISANTS -->
-    <div id="p-cotisants" class="ps">
-      <div class="st">Effectifs des Salariés Cotisants en 2025</div>
-      <div class="sd">Travailleurs actifs cotisant à la Sécurité Sociale</div>
-      <div class="src" id="src-cot">Sources : Secusur — CNSS</div>
-      <div class="hl" style="background:linear-gradient(135deg,#0C4A6E,#0369A1)" id="hl-cot"></div>
-      <div class="kg" id="kg-cot"></div>
-      <div class="c2">
-        <div class="cc"><div class="ch"><div><div class="ct">Évolution des Effectifs Cotisants</div><div class="cd">Par régime · 2021–2025</div></div></div><div style="position:relative;height:260px"><canvas id="cCotBar"></canvas></div></div>
-        <div class="cc"><div class="ch"><div><div class="ct">Structure (dernière année sélectionnée)</div><div class="cd">Répartition des cotisants par régime</div></div></div><div class="pw"><div class="pc" style="height:260px"><canvas id="cCotPie"></canvas></div><div id="lg-cotpie" class="plg"></div></div></div>
-      </div>
-      <div class="cf cc"><div class="ch"><div><div class="ct">Taux de Croissance Annuel</div><div class="cd">Variation % par rapport à l'année précédente</div></div></div><div style="position:relative;height:180px"><canvas id="cCotTx"></canvas></div></div>
-      <div class="tw"><div class="twh"><div class="twt">📋 Tableau — Effectifs Salariés Cotisants 2021-2025</div></div><div style="overflow-x:auto"><table id="tCot"></table></div></div>
+      <div class="tw"><div class="twh"><div class="twt">📋 Tableau — Salariés Cotisants (Stocks &amp; Flux) des 5 dernières années</div></div><div style="overflow-x:auto"><table id="tSc"></table></div></div>
     </div>
 
     <!-- 13. MASSE SALARIALE -->
     <div id="p-masse-sal" class="ps">
-      <div class="st">Répartition de la Masse Salariale Déclarée par Régime</div>
-      <div class="sd">Montants en FCFA · 2021–2025</div>
-      <div class="src">Source : CNSS Gabon \ Base de données</div>
-      <div class="hl" style="background:linear-gradient(135deg,#92400E,#D97706)" id="hl-ms"></div>
-      <div class="kg" id="kg-ms"></div>
-      <div class="c2">
-        <div class="cc"><div class="ch"><div><div class="ct">Masse Salariale par Régime (Mds FCFA)</div><div class="cd">Évolution annuelle</div></div></div><div style="position:relative;height:260px"><canvas id="cMsBar"></canvas></div></div>
-        <div class="cc"><div class="ch"><div><div class="ct">Structure (dernière année sélectionnée)</div><div class="cd">Répartition par régime</div></div></div><div class="pw"><div class="pc" style="height:260px"><canvas id="cMsPie"></canvas></div><div id="lg-mspie" class="plg"></div></div></div>
+
+      <!-- BOUTON ÉDITEUR -->
+      <div style="display:flex;justify-content:flex-end;margin-bottom:18px">
+
       </div>
-      <div class="cf cc"><div class="ch"><div><div class="ct">Évolution du Total de la Masse Salariale</div><div class="cd">Tous régimes confondus · en Milliards FCFA</div></div></div><div style="position:relative;height:180px"><canvas id="cMsTot"></canvas></div></div>
-      <div class="tw"><div class="twh"><div class="twt">📋 Tableau — Masse Salariale Plafonné soumis à cotisation (FCFA)</div></div><div style="overflow-x:auto"><table id="tMs"></table></div></div>
+
+      <!-- ═══════════════════════════════════════════════════ -->
+      <!-- SECTION A — MASSE SALARIALE PLAFONNÉE (DÉCLARÉE)   -->
+      <!-- ═══════════════════════════════════════════════════ -->
+      <div style="margin-bottom:28px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="width:5px;height:48px;border-radius:3px;background:linear-gradient(180deg,#D97706,#92400E);flex-shrink:0"></div>
+          <div>
+            <div class="st" style="margin-bottom:0">Section A — Masse Salariale Déclarée (Plafonnée)</div>
+            <div class="sd" style="margin-bottom:0">Assiette de cotisation plafonnée · Montants en FCFA</div>
+          </div>
+        </div>
+        <div class="src" style="margin-bottom:14px">Source : CNSS Gabon — Secusur / Base de données</div>
+
+        <div class="hl" style="background:linear-gradient(135deg,#92400E,#D97706)" id="hl-ms"></div>
+        <div class="kg" id="kg-ms"></div>
+
+        <div class="c2">
+          <div class="cc">
+            <div class="ch"><div><div class="ct">Masse Salariale Plafonnée par Régime (Mds FCFA)</div><div class="cd">Évolution annuelle · 2021–2025</div></div></div>
+            <div style="position:relative;height:260px"><canvas id="cMsBar"></canvas></div>
+          </div>
+          <div class="cc">
+            <div class="ch"><div><div class="ct">Structure par Régime</div><div class="cd">Répartition proportionnelle · Dernière année sélectionnée</div></div></div>
+            <div class="pw"><div class="pc" style="height:260px"><canvas id="cMsPie"></canvas></div><div id="lg-mspie" class="plg"></div></div>
+          </div>
+        </div>
+
+        <div class="cf cc">
+          <div class="ch"><div><div class="ct">Évolution du Total — Masse Salariale Plafonnée</div><div class="cd">Tous régimes confondus · en Milliards FCFA</div></div></div>
+          <div style="position:relative;height:180px"><canvas id="cMsTot"></canvas></div>
+        </div>
+
+        <div class="tw">
+          <div class="twh" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7)">
+            <div class="twt" style="color:#92400E">📋 Tableau A — Masse Salariale Déclarée Plafonnée par Régime (FCFA)</div>
+          </div>
+          <div style="overflow-x:auto"><table id="tMs"></table></div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════════════════════ -->
+      <!-- SECTION B — MASSE SALARIALE DÉPLAFONNÉE            -->
+      <!-- ════════════════════════════════════════════════════ -->
+      <div style="margin-top:10px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+          <div style="width:5px;height:48px;border-radius:3px;background:linear-gradient(180deg,#1E3A8A,#2563EB);flex-shrink:0"></div>
+          <div>
+            <div class="st" style="margin-bottom:0">Section B — Masse Salariale Déplafonnée</div>
+            <div class="sd" style="margin-bottom:0">Assiette brute réelle sans plafond · Montants en FCFA</div>
+          </div>
+        </div>
+        <div class="src" style="margin-bottom:14px">Source : CNSS Gabon — Secusur / Base de données</div>
+
+        <div class="hl" style="background:linear-gradient(135deg,#1E3A8A,#2563EB)" id="hl-msd"></div>
+        <div class="kg" id="kg-msd"></div>
+
+        <div class="c2">
+          <div class="cc">
+            <div class="ch"><div><div class="ct">Masse Salariale Déplafonnée par Régime (Mds FCFA)</div><div class="cd">Évolution annuelle · 2021–2025</div></div></div>
+            <div style="position:relative;height:260px"><canvas id="cMsdBar"></canvas></div>
+          </div>
+          <div class="cc">
+            <div class="ch"><div><div class="ct">Structure par Régime — Déplafonnée</div><div class="cd">Répartition proportionnelle · Dernière année sélectionnée</div></div></div>
+            <div class="pw"><div class="pc" style="height:260px"><canvas id="cMsdPie"></canvas></div><div id="lg-msdpie" class="plg"></div></div>
+          </div>
+        </div>
+
+        <div class="c2">
+          <div class="cc">
+            <div class="ch"><div><div class="ct">Évolution du Total — Masse Salariale Déplafonnée</div><div class="cd">Tous régimes confondus · en Milliards FCFA</div></div></div>
+            <div style="position:relative;height:200px"><canvas id="cMsdTot"></canvas></div>
+          </div>
+          <div class="cc">
+            <div class="ch"><div><div class="ct">Comparaison Plafonnée vs Déplafonnée</div><div class="cd">Écart entre les deux assiettes · Mds FCFA</div></div></div>
+            <div style="position:relative;height:200px"><canvas id="cMsComp"></canvas></div>
+          </div>
+        </div>
+
+        <div class="tw">
+          <div class="twh" style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE)">
+            <div class="twt" style="color:#1E3A8A">📋 Tableau B — Masse Salariale Déplafonnée par Régime (FCFA)</div>
+          </div>
+          <div style="overflow-x:auto"><table id="tMsd"></table></div>
+        </div>
+      </div>
+
     </div>
 
   </div>
-  <div class="dft"><span>CNSS — Caisse Nationale de Sécurité Sociale</span> · République Gabonaise · Source : Service Actuariat / Pool Statistique · 2021–2025</div>
+  <div class="dft"><span>CNSS — Caisse Nationale de Sécurité Sociale</span> · République Gabonaise · Source : Service Actuariat / Pool Statistique</div>
 </div>
 
 <!-- MODAL ÉDITEUR UNIVERSEL -->
-<div id="editorModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,30,60,.72);overflow-y:auto;padding:20px 12px">
-<div style="background:#fff;border-radius:18px;max-width:1100px;margin:0 auto;box-shadow:0 24px 80px rgba(0,0,0,.45);overflow:hidden">
+<div id="editorModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,30,60,.72);overflow-y:auto;padding:0">
+<div style="background:#fff;min-height:100vh;width:100%;margin:0 auto;box-shadow:none;overflow:hidden;font-size:14px">
 
   <!-- HEADER -->
   <div style="background:linear-gradient(135deg,#1E3A8A,#2563EB);padding:20px 28px;display:flex;justify-content:space-between;align-items:center">
     <div>
       <div style="font-size:17px;font-weight:800;color:#fff;letter-spacing:.3px">✏️ Éditeur Universel de Données</div>
-      <div style="font-size:10.5px;color:rgba(255,255,255,.6);margin-top:3px">Modifiez les valeurs, ajoutez ou supprimez des années — tous les onglets se mettent à jour</div>
+      <div style="font-size:10.5px;color:rgba(255,255,255,.6);margin-top:3px">Les années ajoutées/supprimées s'appliquent uniquement à l'onglet sélectionné · Les valeurs modifiées sont figées par onglet</div>
     </div>
     <button onclick="closeEditor()" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.3);border-radius:9px;padding:8px 18px;cursor:pointer;font-weight:700;font-size:12px;letter-spacing:.5px">✕ FERMER</button>
   </div>
 
   <!-- ONGLETS ÉDITEUR -->
   <div style="background:#F8FAFC;border-bottom:2px solid #E5E7EB;padding:0 28px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none">
-    <button class="etab on" onclick="showETab('ed-global',this)">📋 Vue Globale</button>
-    <button class="etab" onclick="showETab('ed-pvid',this)">💼 PVID</button>
-    <button class="etab" onclick="showETab('ed-pf',this)">🏠 PF</button>
-    <button class="etab" onclick="showETab('ed-rp',this)">⚠️ RP</button>
+    <button class="etab on" onclick="showETab('ed-global',this)">📋 Dossiers Ensemble</button>
+    <button class="etab" onclick="showETab('ed-dos-pvid',this)">💼 Doss. PVID</button>
+    <button class="etab" onclick="showETab('ed-dos-pf',this)">🏠 Doss. PF</button>
+    <button class="etab" onclick="showETab('ed-dos-rp',this)">⚠️ Doss. RP</button>
+    <button class="etab" onclick="showETab('ed-localite',this)">🗺️ Localité</button>
     <button class="etab" onclick="showETab('ed-del',this)">⏱️ Délais</button>
+    <button class="etab" onclick="showETab('ed-pvid',this)">📊 Branche PVID</button>
+    <button class="etab" onclick="showETab('ed-pf',this)">📊 Branche PF</button>
+    <button class="etab" onclick="showETab('ed-rp',this)">📊 Branche RP</button>
     <button class="etab" onclick="showETab('ed-enc',this)">💳 Encaissements</button>
     <button class="etab" onclick="showETab('ed-emp',this)">🏢 Employeurs</button>
-    <button class="etab" onclick="showETab('ed-is',this)">👥 Immatriculations</button>
-    <button class="etab" onclick="showETab('ed-cot',this)">📈 Cotisants</button>
+    <button class="etab" onclick="showETab('ed-cot',this)">👥 Salariés Cotisants</button>
     <button class="etab" onclick="showETab('ed-ms',this)">💼 Masse Sal.</button>
   </div>
 
-  <div style="padding:22px 28px">
+  <div style="padding:22px 28px;max-width:1440px;margin:0 auto">
 
     <!-- GESTION DES ANNÉES — partagée et visible dans chaque onglet -->
     <div id="yr-manager" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border:2px solid #FCD116;border-radius:12px;padding:14px 18px;margin-bottom:18px">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
         <div>
           <div style="font-size:12px;font-weight:800;color:#92400E;margin-bottom:4px">📅 Gestion des Années — Onglet actif : <span id="yrTabName" style="color:#1E3A8A">Vue Globale</span></div>
-          <div style="font-size:10px;color:#92400E;opacity:.8">Les années s'appliquent à l'onglet sélectionné. Utilisez ＋ / − pour ajouter ou retirer une année.</div>
+          <div style="font-size:10px;color:#92400E;opacity:.8">⚠️ Chaque onglet gère ses propres années indépendamment. L'ajout/suppression d'une année sur cet onglet n'affecte <b>pas</b> les autres onglets.</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <input id="newYrInput" type="number" placeholder="ex: 2026" min="2000" max="2099" style="padding:6px 10px;border:2px solid #FCD116;border-radius:7px;font-size:12px;font-weight:700;width:100px;outline:none">
@@ -709,37 +779,53 @@ td:first-child{text-align:left;font-weight:600}
       <div id="yrPills" style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"></div>
     </div>
 
-    <!-- PAN : VUE GLOBALE -->
+    <!-- PAN : DOSSIERS ENSEMBLE -->
     <div id="ed-global" class="etabpan">
       <div class="ed-section-title">Statut global des dossiers (Reçus / Validés / Instances / Rejetés)</div>
       <div id="eg-statut"></div>
-      <div class="ed-section-title" style="margin-top:16px">Localités — Totaux (Reçus / Instances / Validés)</div>
-      <div id="eg-loctot"></div>
     </div>
 
-    <!-- PAN : PVID -->
-    <div id="ed-pvid" class="etabpan" style="display:none">
+    <!-- PAN : DOSSIERS PVID -->
+    <div id="ed-dos-pvid" class="etabpan" style="display:none">
       <div class="ed-section-title">Dossiers PVID par prestation (Reçus / Instances / Validés)</div>
-      <div id="eg-pvid-dos"></div>
-      <div class="ed-section-title" style="margin-top:16px">Montants PVID par prestation (FCFA)</div>
+      <div id="eg-dos-pvid"></div>
+    </div>
+
+    <!-- PAN : DOSSIERS PF -->
+    <div id="ed-dos-pf" class="etabpan" style="display:none">
+      <div class="ed-section-title">Dossiers PF par prestation (Reçus / Instances / Validés)</div>
+      <div id="eg-dos-pf"></div>
+    </div>
+
+    <!-- PAN : DOSSIERS RP -->
+    <div id="ed-dos-rp" class="etabpan" style="display:none">
+      <div class="ed-section-title">Dossiers RP par prestation (Reçus / Instances / Validés)</div>
+      <div id="eg-dos-rp"></div>
+    </div>
+
+    <!-- PAN : LOCALITÉ -->
+    <div id="ed-localite" class="etabpan" style="display:none">
+      <div class="ed-section-title">Localités — Totaux (Reçus / Instances / Validés)</div>
+      <div id="eg-localite"></div>
+    </div>
+
+    <!-- PAN : BRANCHE PVID -->
+    <div id="ed-pvid" class="etabpan" style="display:none">
+      <div class="ed-section-title">Montants PVID par prestation (FCFA)</div>
       <div id="eg-pvid-mnt"></div>
       <div class="ed-section-title" style="margin-top:16px">Effectifs PVID par prestation</div>
       <div id="eg-pvid-eff"></div>
     </div>
 
-    <!-- PAN : PF -->
+    <!-- PAN : BRANCHE PF -->
     <div id="ed-pf" class="etabpan" style="display:none">
-      <div class="ed-section-title">Dossiers PF par prestation (Reçus / Instances / Validés)</div>
-      <div id="eg-pf-dos"></div>
-      <div class="ed-section-title" style="margin-top:16px">Effectifs &amp; Montants PF globaux</div>
+      <div class="ed-section-title">Effectifs &amp; Montants PF globaux</div>
       <div id="eg-pf-agg"></div>
     </div>
 
-    <!-- PAN : RP -->
+    <!-- PAN : BRANCHE RP -->
     <div id="ed-rp" class="etabpan" style="display:none">
-      <div class="ed-section-title">Dossiers RP par prestation (Reçus / Instances / Validés)</div>
-      <div id="eg-rp-dos"></div>
-      <div class="ed-section-title" style="margin-top:16px">Effectifs &amp; Montants RP globaux</div>
+      <div class="ed-section-title">Effectifs &amp; Montants RP globaux</div>
       <div id="eg-rp-agg"></div>
     </div>
 
@@ -767,16 +853,12 @@ td:first-child{text-align:left;font-weight:600}
       <div id="eg-emp"></div>
     </div>
 
-    <!-- PAN : IMMATRICULATIONS -->
-    <div id="ed-is" class="etabpan" style="display:none">
-      <div class="ed-section-title">Immatriculations Femmes &amp; Hommes par catégorie</div>
-      <div id="eg-is"></div>
-    </div>
-
-    <!-- PAN : COTISANTS -->
+    <!-- PAN : SALARIÉS COTISANTS -->
     <div id="ed-cot" class="etabpan" style="display:none">
-      <div class="ed-section-title">Effectifs cotisants annuels</div>
+      <div class="ed-section-title">Stocks &amp; Flux Salariés Cotisants (2021–2025)</div>
       <div id="eg-cot"></div>
+    </div>
+      <p style="font-size:11px;color:var(--muted);padding:8px 10px">Pour modifier ces données, veuillez éditer directement le fichier source.</p>
     </div>
 
     <!-- PAN : MASSE SALARIALE -->
@@ -802,6 +884,10 @@ td:first-child{text-align:left;font-weight:600}
 // ════════════════════════════════════════════
 const AN=['2021','2022','2023','2024','2025'];
 const AN3=['2023','2024','2025']; // pour les onglets dossiers (données 2023-2025 uniquement)
+// Maps d'index — seront reconstruits par rebuildYearFilter()
+window._AN_MAP  = {'a2021':0,'a2022':1,'a2023':2,'a2024':3,'a2025':4};
+window._AN3_MAP = {'a2023':0,'a2024':1,'a2025':2};
+window._AN5_MAP = {'a2021':0,'a2022':1,'a2023':2,'a2024':3,'a2025':4};
 const STATUT={Reçus:[13943,13621,12971],Validés:[5874,6568,8482],Instances:[7894,6845,4158],Rejetés:[175,208,331]};
 const PVID_DOS=[
   {n:'Alloc. Survivant',   r:[17,52,38],    i:[0,29,7],     v:[12,23,31]},
@@ -873,14 +959,29 @@ const PVID_EFF_TOT=[38360,40607,40767,40448,44410];
 const ENC={
   periodes:['1T 2024','2T 2024','3T 2024','4T 2024','1T 2025','2T 2025','3T 2025','4T 2025','1T 2026'],
   attendu: [34351114853,36383397590,35145224062,35592873112,37159140275,38164155663,37189786387,38992411390,45211262136],
-  recouvre:[28264412328,28363892368,28082660348,30602387757,30757487071,32651084678,29465022954,28010281799,0],
+  recouvre:[28264412328,28363892368,28082660348,30602387757,30757487071,32615084678,29465022954,28010281799,37000000000],
   an:      [0,0,0,0,1,1,1,1,2],
 };
+// ENC_YRS : liste des années présentes dans ENC (dans l'ordre)
+// Chaque année correspond à 4 trimestres consécutifs dans ENC.periodes/attendu/recouvre
+const ENC_YRS=['2024','2025','2026'];
+
 const ENC_TOT={
   attendu2024:141472609617,recouvre2024:115313352801,
   attendu2025:151505493715,recouvre2025:120883876502,
-  attendu2026:45211262136,recouvre2026:0
+  attendu2026:45211262136,recouvre2026:37000000000
 };
+
+// Recalcule ENC_TOT depuis ENC.attendu/recouvre selon ENC_YRS
+function recomputeEncTot(){
+  ENC_YRS.forEach((yr,yi)=>{
+    const base=yi*4;
+    let sa=0,sr=0;
+    for(let t=0;t<4;t++){sa+=ENC.attendu[base+t]||0;sr+=ENC.recouvre[base+t]||0;}
+    ENC_TOT['attendu'+yr]=sa;
+    ENC_TOT['recouvre'+yr]=sr;
+  });
+}
 
 // ════ HELPERS ════
 const CH={};
@@ -931,25 +1032,35 @@ function goP(id,el){
 function entrer(){
   document.getElementById('garde').style.display='none';
   document.getElementById('dash').style.display='block';
+  rebuildYearFilter();
+  _rebuildIdxMaps();
   document.getElementById('dhd').innerHTML=new Date().toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+'<br><small>Données 2021–2025</small>';
   buildSec('global');
 }
 function retour(){document.getElementById('dash').style.display='none';document.getElementById('garde').style.display='flex';}
 
 let curAn='all',curLoc='all',curCat='all';
-// idx3() : onglets 1-5 avec données 2023-2025 seulement (index 0,1,2)
+// idx3() : onglets dossiers — tableau AN3 indépendant
 function idx3(){
-  if(curAn==='all') return [0,1,2];
-  const map={'0':0,'1':1,'2':2};
-  return map[curAn]!==undefined ? [map[curAn]] : [0,1,2];
+  if(curAn==='all') return AN3.map((_,i)=>i);
+  const m = window._AN3_MAP || {};
+  if(m[curAn]!==undefined) return [m[curAn]];
+  // Legacy : "0"=2023, "1"=2024, "2"=2025
+  const legacy={'0':0,'1':1,'2':2};
+  if(legacy[curAn]!==undefined && legacy[curAn]<AN3.length) return [legacy[curAn]];
+  return AN3.map((_,i)=>i);
 }
 function anL3(){return idx3().map(i=>AN3[i]);}
 
 // idx() : onglets BR PVID/PF/RP avec données 2021-2025 (index 0..4)
 function idx(){
-  if(curAn==='all') return [0,1,2,3,4];
-  const map={'a2021':0,'a2022':1,'0':2,'1':3,'2':4};
-  return map[curAn]!==undefined ? [map[curAn]] : [0,1,2,3,4];
+  if(curAn==='all') return AN.map((_,i)=>i);
+  const m = window._AN_MAP || {};
+  if(m[curAn]!==undefined) return [m[curAn]];
+  // Legacy support
+  const legacy={'a2021':0,'a2022':1,'0':2,'1':3,'2':4};
+  if(legacy[curAn]!==undefined && legacy[curAn]<AN.length) return [legacy[curAn]];
+  return AN.map((_,i)=>i);
 }
 function anL(){return idx().map(i=>AN[i]);}
 
@@ -1105,11 +1216,17 @@ function bDosRp(){
 
 // ══ 5. LOCALITÉ ══
 let mapYrI=0;
+function renderMapYrBtns(){
+  const c=document.getElementById('map-yr-btns');
+  if(!c)return;
+  c.innerHTML=AN3.map((y,i)=>`<button class="myrb${i===mapYrI?' on':''}" onclick="setMapYr(${i},this)">${y}</button>`).join('');
+}
 function setMapYr(i,btn){
-  mapYrI=i;
+  mapYrI=Math.min(i,AN3.length-1);
   document.querySelectorAll('.myrb').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  document.getElementById('map-yr-lbl').textContent=AN3[i];
+  if(btn)btn.classList.add('on');
+  const lbl=document.getElementById('map-yr-lbl');
+  if(lbl)lbl.textContent=AN3[mapYrI]||AN3[AN3.length-1];
   updateMap();
 }
 function updateMap(){
@@ -1151,39 +1268,64 @@ document.querySelectorAll('.prv').forEach(p=>{
 
 function bLoc(){
   const I=idx3(),ANS=anL3(),li=I[I.length-1];
-  document.getElementById('loc-yr-lbl').textContent=curAn==='all'?'Toutes années':AN3[{'0':0,'1':1,'2':2}[curAn]??0];
+  // Filtre par localité : si curLoc!='all', on n'affiche que la province sélectionnée
+  const locIdx = curLoc==='all' ? null : parseInt(curLoc);
+  const LOCS = locIdx!==null ? [LOC[locIdx]] : LOC;
+
+  document.getElementById('loc-yr-lbl').textContent=curAn==='all'?'Toutes années':AN3[idx3()[idx3().length-1]]||AN3[AN3.length-1];
+  renderMapYrBtns();
   // Sync carte avec l'année sélectionnée globalement
   mapYrI=li;
   document.querySelectorAll('.myrb').forEach((b,i)=>{b.classList.toggle('on',i===li);});
   document.getElementById('map-yr-lbl').textContent=AN3[li];
   updateMap();
-  document.getElementById('hl-loc').innerHTML=
-    `<div class="hi"><div class="hv">${FN(LOC_TOT.r[li])}</div><div class="hlt">Total Reçus ${AN3[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(LOC[0].r[li])}</div><div class="hlt">Estuaire ${AN3[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(LOC[7].r[li])}</div><div class="hlt">Ogooué-Maritime ${AN3[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${pct(LOC_TOT.v[li],LOC_TOT.r[li])}</div><div class="hlt">Taux Valid. National</div></div>`;
-  document.getElementById('kg-loc').innerHTML=
-    kC('Total Reçus',FN(LOC_TOT.r[li]),'toutes provinces',trH(LOC_TOT.r[0],LOC_TOT.r[li]),.04,'#7C3AED')+
-    kC('Estuaire',FN(LOC[0].r[li]),'dossiers',trH(LOC[0].r[0],LOC[0].r[li]),.08,'#1E3A8A')+
-    kC('Ogooué-Maritime',FN(LOC[7].r[li]),'dossiers',trH(LOC[7].r[0],LOC[7].r[li]),.12,'#7C3AED')+
-    kC('Taux Valid. National',pct(LOC_TOT.v[li],LOC_TOT.r[li]),'Validés/Reçus','',0.16,'#15803D');
-  mkC('cLocBar','bar',LOC.map(l=>l.n),[
-    {label:'2023',data:LOC.map(l=>l.r[0]),backgroundColor:'rgba(30,58,138,.65)',borderRadius:3,borderSkipped:false},
-    {label:'2024',data:LOC.map(l=>l.r[1]),backgroundColor:'rgba(8,145,178,.65)',borderRadius:3,borderSkipped:false},
-    {label:'2025',data:LOC.map(l=>l.r[2]),backgroundColor:'rgba(21,128,61,.65)',borderRadius:3,borderSkipped:false},
+
+  if(locIdx!==null){
+    // ── Mode localité unique ──
+    const l = LOC[locIdx];
+    document.getElementById('hl-loc').innerHTML=
+      `<div class="hi"><div class="hv" style="color:#FCD116">${l.n}</div><div class="hlt">Province sélectionnée</div></div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(l.r[li])}</div><div class="hlt">Reçus ${AN3[li]}</div></div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(l.i[li])}</div><div class="hlt">En Instance ${AN3[li]}</div></div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(l.v[li])}</div><div class="hlt">Validés ${AN3[li]}</div></div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${pct(l.v[li],l.r[li])}</div><div class="hlt">Taux Validation</div></div>`;
+    document.getElementById('kg-loc').innerHTML=
+      kC('Reçus — '+l.n,FN(l.r[li]),'dossiers '+AN3[li],trH(l.r[0],l.r[li]),.04,l.c)+
+      kC('En Instance',FN(l.i[li]),'dossiers '+AN3[li],trH(l.i[0],l.i[li]),.08,'#D97706')+
+      kC('Validés',FN(l.v[li]),'dossiers '+AN3[li],trH(l.v[0],l.v[li]),.12,'#15803D')+
+      kC('Taux Validation',pct(l.v[li],l.r[li]),'Validés/Reçus','',0.16,'#059669');
+  } else {
+    // ── Mode toutes localités ──
+    document.getElementById('hl-loc').innerHTML=
+      `<div class="hi"><div class="hv">${FN(LOC_TOT.r[li])}</div><div class="hlt">Total Reçus ${AN3[li]}</div></div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(LOC[0].r[li])}</div><div class="hlt">Estuaire ${AN3[li]}</div></div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(LOC[7].r[li])}</div><div class="hlt">Ogooué-Maritime ${AN3[li]}</div></div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${pct(LOC_TOT.v[li],LOC_TOT.r[li])}</div><div class="hlt">Taux Valid. National</div></div>`;
+    document.getElementById('kg-loc').innerHTML=
+      kC('Total Reçus',FN(LOC_TOT.r[li]),'toutes provinces',trH(LOC_TOT.r[0],LOC_TOT.r[li]),.04,'#7C3AED')+
+      kC('Estuaire',FN(LOC[0].r[li]),'dossiers',trH(LOC[0].r[0],LOC[0].r[li]),.08,'#1E3A8A')+
+      kC('Ogooué-Maritime',FN(LOC[7].r[li]),'dossiers',trH(LOC[7].r[0],LOC[7].r[li]),.12,'#7C3AED')+
+      kC('Taux Valid. National',pct(LOC_TOT.v[li],LOC_TOT.r[li]),'Validés/Reçus','',0.16,'#15803D');
+  }
+
+  // Graphiques basés sur LOCS (filtrées ou toutes)
+  mkC('cLocBar','bar',LOCS.map(l=>l.n),[
+    {label:'2023',data:LOCS.map(l=>l.r[0]),backgroundColor:'rgba(30,58,138,.65)',borderRadius:3,borderSkipped:false},
+    {label:'2024',data:LOCS.map(l=>l.r[1]),backgroundColor:'rgba(8,145,178,.65)',borderRadius:3,borderSkipped:false},
+    {label:'2025',data:LOCS.map(l=>l.r[2]),backgroundColor:'rgba(21,128,61,.65)',borderRadius:3,borderSkipped:false},
   ],{scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:35,color:'#374151'}},y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10}}}}});
-  mkC('cLocTaux','bar',LOC.map(l=>l.n),[
-    {label:'Taux valid. '+AN3[li]+'%',data:LOC.map(l=>l.r[li]>0?(l.v[li]/l.r[li]*100).toFixed(1):'0'),
-     backgroundColor:LOC.map(l=>{const t=l.r[li]>0?l.v[li]/l.r[li]:0;return t>0.7?'#15803D':t>0.4?'#D97706':'#DC2626';}),borderRadius:4,borderSkipped:false},
+  mkC('cLocTaux','bar',LOCS.map(l=>l.n),[
+    {label:'Taux valid. '+AN3[li]+'%',data:LOCS.map(l=>l.r[li]>0?(l.v[li]/l.r[li]*100).toFixed(1):'0'),
+     backgroundColor:LOCS.map(l=>{const t=l.r[li]>0?l.v[li]/l.r[li]:0;return t>0.7?'#15803D':t>0.4?'#D97706':'#DC2626';}),borderRadius:4,borderSkipped:false},
   ],{plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9},maxRotation:35,color:'#374151'}},y:{max:110,grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10},callback:v=>v+'%'}}}});
-  const maxR=Math.max(...LOC.map(l=>l.r[li]));
-  document.getElementById('loc-bars').innerHTML=LOC.map(l=>{
+  const maxR=Math.max(...LOCS.map(l=>l.r[li]));
+  document.getElementById('loc-bars').innerHTML=LOCS.map(l=>{
     const r=l.r[li],v=l.v[li],w=maxR>0?Math.round(r/maxR*100):0,tx=r>0?(v/r*100).toFixed(0)+'%':'—';
     return`<div class="locb"><div class="locn">${l.n}</div><div class="loct"><div class="locf" style="width:${w}%;background:${l.c}">${FN(r)}</div></div><div class="locv">${FN(v)}</div><div class="locpct">${tx}</div></div>`;
   }).join('');
   const hd='<thead><tr><th style="text-align:left;min-width:140px">Province</th>'+ANS.map(a=>`<th colspan="3" class="hloc" style="text-align:center">${a}</th>`).join('')+'</tr><tr><th></th>'+ANS.map(()=>'<th>Reçus</th><th>Inst.</th><th>Validés</th>').join('')+'</tr></thead>';
-  const rows=LOC.map(l=>`<tr><td style="color:${l.c};font-weight:700">${l.n}</td>${I.map(i=>`<td class="nr">${FN(l.r[i])}</td><td class="ni">${FN(l.i[i])}</td><td class="nv">${FN(l.v[i])}</td>`).join('')}</tr>`);
-  rows.push(`<tr class="tot"><td>TOTAL</td>${I.map(i=>`<td>${FN(LOC_TOT.r[i])}</td><td>${FN(LOC_TOT.i[i])}</td><td>${FN(LOC_TOT.v[i])}</td>`).join('')}</tr>`);
+  const rows=LOCS.map(l=>`<tr><td style="color:${l.c};font-weight:700">${l.n}</td>${I.map(i=>`<td class="nr">${FN(l.r[i])}</td><td class="ni">${FN(l.i[i])}</td><td class="nv">${FN(l.v[i])}</td>`).join('')}</tr>`);
+  if(locIdx===null) rows.push(`<tr class="tot"><td>TOTAL</td>${I.map(i=>`<td>${FN(LOC_TOT.r[i])}</td><td>${FN(LOC_TOT.i[i])}</td><td>${FN(LOC_TOT.v[i])}</td>`).join('')}</tr>`);
   document.getElementById('tLoc').innerHTML=hd+'<tbody>'+rows.join('')+'</tbody>';
 }
 
@@ -1267,132 +1409,121 @@ function bBrRp(){
 
 // ══ 9. ENCAISSEMENTS ══
 function bEncaiss(){
-  const trimestresFull=ENC.periodes;
-  const attendu=ENC.attendu, recouvre=ENC.recouvre;
+  // Filtrage par année : si curAn!='all', on ne garde que l'année sélectionnée dans ENC_YRS
+  const ENC_YRS_F = curAn==='all' ? ENC_YRS : ENC_YRS.filter(y=>'a'+y===curAn);
+  // Indices de base dans ENC.periodes/attendu/recouvre pour chaque année filtrée
+  const ENC_YRS_IDX = ENC_YRS_F.map(y=>ENC_YRS.indexOf(y));
+  // Données filtrées : seulement les trimestres des années sélectionnées
+  const trimestresFull = ENC_YRS_IDX.flatMap(yi=>[0,1,2,3].map(t=>ENC.periodes[yi*4+t]));
+  const attendu  = ENC_YRS_IDX.flatMap(yi=>[0,1,2,3].map(t=>ENC.attendu[yi*4+t]||0));
+  const recouvre = ENC_YRS_IDX.flatMap(yi=>[0,1,2,3].map(t=>ENC.recouvre[yi*4+t]||0));
   const taux=attendu.map((a,i)=>a>0?(recouvre[i]/a*100).toFixed(1):'—');
   const ecart=attendu.map((a,i)=>a-recouvre[i]);
 
-  // Totaux
-  const totA2024=ENC_TOT.attendu2024, totR2024=ENC_TOT.recouvre2024;
-  const totA2025=ENC_TOT.attendu2025, totR2025=ENC_TOT.recouvre2025;
-  const totA2026=ENC_TOT.attendu2026||0, totR2026=ENC_TOT.recouvre2026||0;
-  const tx2024=(totR2024/totA2024*100).toFixed(1);
-  const tx2025=(totR2025/totA2025*100).toFixed(1);
-  const tx2026=totA2026>0?(totR2026/totA2026*100).toFixed(1):'—';
+  // Totaux dynamiques depuis ENC_TOT (recalculé à chaque apply)
+  const yrColors=['#D97706','#0891B2','#EA580C','#7C3AED','#DC2626'];
+  const yrColsBg=['rgba(217,119,6,.8)','rgba(8,145,178,.8)','rgba(234,88,12,.8)','rgba(124,58,237,.8)','rgba(220,38,38,.8)'];
+  const yrColsRec=['rgba(21,128,61,.8)','rgba(30,58,138,.8)','rgba(154,52,18,.8)','rgba(67,20,148,.8)','rgba(127,29,29,.8)'];
 
-  document.getElementById('hl-enc').innerHTML=
-    `<div class="hi"><div class="hv">${FB(totA2024)}</div><div class="hlt">Attendu 2024</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FB(totR2024)}</div><div class="hlt">Recouvré 2024</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${tx2024}%</div><div class="hlt">Taux Reco. 2024</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FB(totA2025)}</div><div class="hlt">Attendu 2025</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FB(totR2025)}</div><div class="hlt">Recouvré 2025</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${tx2025}%</div><div class="hlt">Taux Reco. 2025</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${totA2026>0?FB(totA2026):'0'}</div><div class="hlt">Attendu 2026</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${totR2026>0?FB(totR2026):'0'}</div><div class="hlt">Recouvré 2026</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${tx2026}</div><div class="hlt">Taux Reco. 2026</div></div>`;
+  // HL dynamique
+  let hlHtml='';
+  ENC_YRS_F.forEach((yr,yi)=>{
+    const totA=ENC_TOT['attendu'+yr]||0, totR=ENC_TOT['recouvre'+yr]||0;
+    const tx=totA>0?(totR/totA*100).toFixed(1):'—';
+    if(yi>0)hlHtml+=`<div class="hvr"></div>`;
+    hlHtml+=`<div class="hi"><div class="hv">${FB(totA)}</div><div class="hlt">Attendu ${yr}</div></div><div class="hvr"></div>`;
+    hlHtml+=`<div class="hi"><div class="hv">${FB(totR)}</div><div class="hlt">Recouvré ${yr}</div></div><div class="hvr"></div>`;
+    hlHtml+=`<div class="hi"><div class="hv">${tx==='—'?'—':tx+'%'}</div><div class="hlt">Taux Reco. ${yr}</div></div>`;
+  });
+  document.getElementById('hl-enc').innerHTML=hlHtml;
 
-  document.getElementById('kg-enc').innerHTML=
-    kC('Total Attendu 2024',FB(totA2024),'montant attendu','',0.04,'#D97706')+
-    kC('Total Recouvré 2024',FB(totR2024),'montant recouvré','',.08,'#15803D')+
-    kC('Taux Reco. 2024',tx2024+'%','Recouvré/Attendu','',0.12,'#D97706')+
-    kC('Total Attendu 2025',FB(totA2025),'montant attendu','',0.16,'#0891B2')+
-    kC('Total Recouvré 2025',FB(totR2025),'montant recouvré','',0.20,'#15803D')+
-    kC('Taux Reco. 2025',tx2025+'%','Recouvré/Attendu','',0.24,'#0891B2')+
-    kC('Total Attendu 2026',totA2026>0?FB(totA2026):'0 FCFA','montant attendu 2026','',0.28,'#D97706')+
-    kC('Total Recouvré 2026',totR2026>0?FB(totR2026):'0 FCFA','montant recouvré 2026','',0.32,'#15803D')+
-    kC('Taux Reco. 2026',tx2026==='—'?'—':tx2026+'%','Recouvré/Attendu 2026','',0.36,'#EA580C');
+  // KG dynamique
+  let kgHtml='';
+  ENC_YRS_F.forEach((yr,yi)=>{
+    const totA=ENC_TOT['attendu'+yr]||0, totR=ENC_TOT['recouvre'+yr]||0;
+    const tx=totA>0?(totR/totA*100).toFixed(1):'—';
+    const c=yrColors[yi%yrColors.length];
+    const delay=yi*0.12;
+    kgHtml+=kC(`Total Attendu ${yr}`,FB(totA),'montant attendu','',delay,c);
+    kgHtml+=kC(`Total Recouvré ${yr}`,FB(totR),'montant recouvré','',delay+0.04,'#15803D');
+    kgHtml+=kC(`Taux Reco. ${yr}`,tx==='—'?'—':tx+'%','Recouvré/Attendu','',delay+0.08,c);
+  });
+  document.getElementById('kg-enc').innerHTML=kgHtml;
 
   // Couleurs par année
-  const barColA=attendu.map((_,i)=>ENC.an[i]===0?'rgba(217,119,6,.8)':ENC.an[i]===1?'rgba(8,145,178,.8)':'rgba(234,88,12,.8)');
-  const barColR=attendu.map((_,i)=>ENC.an[i]===0?'rgba(21,128,61,.8)':ENC.an[i]===1?'rgba(30,58,138,.8)':'rgba(154,52,18,.8)');
+  const barColA=attendu.map((_,i)=>yrColsBg[ENC.an[i]%yrColsBg.length]);
+  const barColR=attendu.map((_,i)=>yrColsRec[ENC.an[i]%yrColsRec.length]);
 
-  // Barres attendu vs recouvré
   mkC('cEncBar','bar',trimestresFull,[
     {label:'Attendu',  data:attendu.map(v=>v/1e9),  backgroundColor:barColA, borderRadius:4,borderSkipped:false},
     {label:'Recouvré', data:recouvre.map(v=>v/1e9), backgroundColor:barColR, borderRadius:4,borderSkipped:false},
   ],{plugins:{legend:{position:'bottom',labels:{font:{size:10,weight:'700'},padding:8,boxWidth:12}}},
      scales:{x:{grid:{display:false},ticks:{font:{size:9.5},color:'#374151'}},y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10},callback:v=>v.toFixed(1)+' Mds'}}}});
 
-  // Taux de recouvrement — lignes par année
-  const taux26Data=Array(8).fill(null).concat(taux.slice(8));
-  mkC('cEncTaux','line',trimestresFull,[
-    {label:'Taux 2024',data:[taux[0],taux[1],taux[2],taux[3],...Array(trimestresFull.length-4).fill(null)],borderColor:'#D97706',backgroundColor:'rgba(217,119,6,.1)',borderWidth:3,fill:false,tension:.3,pointRadius:6,pointBackgroundColor:'#D97706',pointBorderColor:'#fff',pointBorderWidth:2,spanGaps:false},
-    {label:'Taux 2025',data:[null,null,null,null,taux[4],taux[5],taux[6],taux[7],...Array(trimestresFull.length-8).fill(null)],borderColor:'#0891B2',backgroundColor:'rgba(8,145,178,.1)',borderWidth:3,fill:false,tension:.3,pointRadius:6,pointBackgroundColor:'#0891B2',pointBorderColor:'#fff',pointBorderWidth:2,spanGaps:false},
-    {label:'Taux 2026',data:[...Array(8).fill(null),...taux26Data.slice(8)],borderColor:'#EA580C',backgroundColor:'rgba(234,88,12,.1)',borderWidth:3,fill:false,tension:.3,pointRadius:6,pointBackgroundColor:'#EA580C',pointBorderColor:'#fff',pointBorderWidth:2,spanGaps:false},
-  ],{scales:{x:{grid:{display:false},ticks:{font:{size:9.5},color:'#374151'}},y:{min:0,max:100,grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10},callback:v=>v+'%'}}}});
+  // Taux de recouvrement — une ligne par année
+  const tauDatasets=ENC_YRS_F.map((yr,yi)=>{
+    const base=yi*4;
+    const d=Array(attendu.length).fill(null);
+    for(let t=0;t<4;t++){const idx=base+t;if(idx<taux.length)d[idx]=parseFloat(taux[idx])||null;}
+    return{label:`Taux ${yr}`,data:d,borderColor:yrColors[yi%yrColors.length],backgroundColor:'transparent',borderWidth:3,fill:false,tension:.3,pointRadius:6,pointBackgroundColor:yrColors[yi%yrColors.length],pointBorderColor:'#fff',pointBorderWidth:2,spanGaps:false};
+  });
+  mkC('cEncTaux','line',trimestresFull,tauDatasets,{scales:{x:{grid:{display:false},ticks:{font:{size:9.5},color:'#374151'}},y:{min:0,max:100,grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10},callback:v=>v+'%'}}}});
 
-  // Cumulatif
-  let cum2024=0,cum2025=0,cum2026=0;
-  const labs24=['1T','2T','3T','4T'],cum24=[],cum25=[],cum26=[];
-  [0,1,2,3].forEach(i=>{cum2024+=recouvre[i];cum24.push((cum2024/1e9).toFixed(2));});
-  [4,5,6,7].forEach(i=>{cum2025+=recouvre[i];cum25.push((cum2025/1e9).toFixed(2));});
-  const idx26=ENC.an.map((a,i)=>a===2?i:null).filter(x=>x!==null);
-  idx26.slice(0,4).forEach(i=>{cum2026+=recouvre[i];cum26.push((cum2026/1e9).toFixed(2));});
-  const cum26Padded=[...cum26,...Array(4-cum26.length).fill(null)];
-  mkC('cEncCum','line',labs24,[
-    {label:'Cumulatif 2024 (Mds)',data:cum24,borderColor:'#D97706',backgroundColor:'rgba(217,119,6,.12)',borderWidth:3,fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#D97706'},
-    {label:'Cumulatif 2025 (Mds)',data:cum25,borderColor:'#0891B2',backgroundColor:'rgba(8,145,178,.12)',borderWidth:3,fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#0891B2'},
-    {label:'Cumulatif 2026 (Mds)',data:cum26Padded,borderColor:'#EA580C',backgroundColor:'rgba(234,88,12,.12)',borderWidth:3,fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#EA580C'},
-  ]);
+  // Cumulatif par année
+  const labs14=['1T','2T','3T','4T'];
+  const cumDatasets=ENC_YRS_F.map((yr,yi)=>{
+    const base=yi*4; let cum=0;
+    const d=[];
+    for(let t=0;t<4;t++){cum+=recouvre[base+t]||0;d.push((cum/1e9).toFixed(2));}
+    return{label:`Cumulatif ${yr} (Mds)`,data:d,borderColor:yrColors[yi%yrColors.length],backgroundColor:yrColors[yi%yrColors.length].replace(')',', .12)').replace('rgba','rgba').replace('#','rgba(').replace(/^rgba\(#/,'rgba('),borderWidth:3,fill:true,tension:.4,pointRadius:5,pointBackgroundColor:yrColors[yi%yrColors.length]};
+  });
+  mkC('cEncCum','line',labs14,cumDatasets);
 
   // Écart
-  const ecartColors=ENC.an.map(a=>a===0?'rgba(217,119,6,.75)':a===1?'rgba(8,145,178,.75)':'rgba(234,88,12,.75)');
+  const ecartColors=ENC.an.map(a=>yrColsBg[a%yrColsBg.length]);
   mkC('cEncEcart','bar',trimestresFull,[
-    {label:'Écart non recouvré (Mds)',data:ecart.map(v=>v/1e9),
-     backgroundColor:ecartColors,borderRadius:4,borderSkipped:false},
+    {label:'Écart non recouvré (Mds)',data:ecart.map(v=>v/1e9),backgroundColor:ecartColors,borderRadius:4,borderSkipped:false},
   ],{plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{font:{size:9.5},color:'#374151'}},y:{grid:{color:'rgba(0,0,0,.06)'},ticks:{font:{size:10},callback:v=>v.toFixed(1)+' Mds'}}}});
 
-  // ── Tableau trimestriel — une ligne par trimestre, colonnes 2024 | 2025 | 2026 ──
-  const hd=`<thead>
-    <tr>
-      <th style="text-align:left;min-width:70px" rowspan="2">Trimestre</th>
-      <th colspan="3" class="henc" style="text-align:center">2024</th>
-      <th colspan="3" class="henc" style="text-align:center;background:linear-gradient(135deg,#0C4A6E,#0891B2)">2025</th>
-      <th colspan="3" class="henc" style="text-align:center;background:linear-gradient(135deg,#7C2D12,#EA580C)">2026</th>
-    </tr>
-    <tr>
-      <th class="henc">Attendu (FCFA)</th><th class="henc">Recouvré (FCFA)</th><th class="henc">Taux</th>
-      <th class="henc" style="background:linear-gradient(135deg,#0C4A6E,#0891B2)">Attendu (FCFA)</th>
-      <th class="henc" style="background:linear-gradient(135deg,#0C4A6E,#0891B2)">Recouvré (FCFA)</th>
-      <th class="henc" style="background:linear-gradient(135deg,#0C4A6E,#0891B2)">Taux</th>
-      <th class="henc" style="background:linear-gradient(135deg,#7C2D12,#EA580C)">Attendu (FCFA)</th>
-      <th class="henc" style="background:linear-gradient(135deg,#7C2D12,#EA580C)">Recouvré (FCFA)</th>
-      <th class="henc" style="background:linear-gradient(135deg,#7C2D12,#EA580C)">Taux</th>
-    </tr>
-  </thead>`;
+  // ── Tableau — lignes = Trimestres, colonnes = Années (dynamique) ──
+  const yrGrads=['linear-gradient(135deg,#92400E,#D97706)','linear-gradient(135deg,#0C4A6E,#0891B2)','linear-gradient(135deg,#7C2D12,#EA580C)','linear-gradient(135deg,#4C1D95,#7C3AED)'];
+  let hd=`<thead><tr><th style="text-align:left;min-width:70px" rowspan="2">Trimestre</th>`;
+  ENC_YRS_F.forEach((yr,yi)=>{
+    const g=yrGrads[yi%yrGrads.length];
+    hd+=`<th colspan="3" class="henc" style="text-align:center;background:${g}">${yr}</th>`;
+  });
+  hd+=`</tr><tr>`;
+  ENC_YRS_F.forEach((yr,yi)=>{
+    const g=yrGrads[yi%yrGrads.length];
+    hd+=`<th class="henc" style="background:${g}">Attendu (FCFA)</th><th class="henc" style="background:${g}">Recouvré (FCFA)</th><th class="henc" style="background:${g}">Taux</th>`;
+  });
+  hd+=`</tr></thead>`;
 
   const trNames=['1T','2T','3T','4T'];
-  const bodyRows=trNames.map((t,i)=>{
-    const a24=ENC.attendu[i]||0, r24=ENC.recouvre[i]||0;
-    const a25=ENC.attendu[i+4]||0, r25=ENC.recouvre[i+4]||0;
-    const a26=ENC.attendu[i+8]||0, r26=ENC.recouvre[i+8]||0;
-    const tx24=a24>0?(r24/a24*100).toFixed(1):'—';
-    const tx25=a25>0?(r25/a25*100).toFixed(1):'—';
-    const tx26=a26>0?(r26/a26*100).toFixed(1):'—';
-    const cls24=parseFloat(tx24)>=76?'taux-good':'taux-warn';
-    const cls25=parseFloat(tx25)>=76?'taux-good':'taux-warn';
-    const cls26=a26>0?(parseFloat(tx26)>=76?'taux-good':'taux-warn'):'';
-    return`<tr>
-      <td style="font-weight:700;text-align:left">${t}</td>
-      <td class="ng">${a24>0?FN(a24):'—'}</td><td class="nv">${r24>0?FN(r24):'—'}</td>
-      <td>${a24>0?`<span class="${cls24}">${tx24}%</span><div class="progress-bar"><div class="progress-fill" style="width:${tx24}%;background:${parseFloat(tx24)>=76?'#15803D':'#D97706'}"></div></div>`:'—'}</td>
-      <td class="ng">${a25>0?FN(a25):'—'}</td><td class="nv">${r25>0?FN(r25):'—'}</td>
-      <td>${a25>0?`<span class="${cls25}">${tx25}%</span><div class="progress-bar"><div class="progress-fill" style="width:${tx25}%;background:${parseFloat(tx25)>=76?'#15803D':'#D97706'}"></div></div>`:'—'}</td>
-      <td class="ng" style="background:#FFF7ED">${a26>0?FN(a26):'0'}</td>
-      <td class="nv" style="background:#FFF7ED">${r26>0?FN(r26):'0'}</td>
-      <td style="background:#FFF7ED">${a26>0?`<span class="${cls26}">${tx26}%</span><div class="progress-bar"><div class="progress-fill" style="width:${tx26}%;background:${parseFloat(tx26)>=76?'#15803D':'#EA580C'}"></div></div>`:'<span style="color:#9CA3AF;font-style:italic">En cours</span>'}</td>
-    </tr>`;
+  const bodyRows=trNames.map((t,ti)=>{
+    let row=`<tr><td style="font-weight:700;text-align:left">${t}</td>`;
+    ENC_YRS_F.forEach((yr,yi)=>{
+      const gi=ENC_YRS_IDX[yi]*4+ti;
+      const a=ENC.attendu[gi]||0, r=ENC.recouvre[gi]||0;
+      const tx=a>0?(r/a*100).toFixed(1):'—';
+      const cls=parseFloat(tx)>=76?'taux-good':'taux-warn';
+      const bg=yi%2===0?'':'background:#F0F9FF';
+      row+=`<td class="ng" style="${bg}">${a>0?FN(a):'—'}</td><td class="nv" style="${bg}">${r>0?FN(r):'—'}</td>`;
+      row+=`<td style="${bg}">${a>0?`<span class="${cls}">${tx}%</span><div class="progress-bar"><div class="progress-fill" style="width:${Math.min(parseFloat(tx)||0,100)}%;background:${parseFloat(tx)>=76?'#15803D':'#D97706'}"></div></div>`:'<span style="color:#9CA3AF;font-style:italic">—</span>'}</td>`;
+    });
+    row+=`</tr>`;
+    return row;
   });
 
-  const totTx24=(totR2024/totA2024*100).toFixed(1);
-  const totTx25=(totR2025/totA2025*100).toFixed(1);
-  const totTx26=totA2026>0?(totR2026/totA2026*100).toFixed(1):'—';
-  bodyRows.push(`<tr class="enc-tot">
-    <td style="text-align:left">TOTAL GLOBAL</td>
-    <td>${FN(totA2024)}</td><td>${FN(totR2024)}</td><td style="color:#FCD116;font-weight:800">${totTx24}%</td>
-    <td>${FN(totA2025)}</td><td>${FN(totR2025)}</td><td style="color:#FCD116;font-weight:800">${totTx25}%</td>
-    <td>${totA2026>0?FN(totA2026):'0'}</td><td>${totR2026>0?FN(totR2026):'0'}</td><td style="color:#FCD116;font-weight:800">${totTx26}</td>
-  </tr>`);
+  // Ligne total
+  let totRow=`<tr class="enc-tot"><td style="text-align:left">TOTAL GLOBAL</td>`;
+  ENC_YRS_F.forEach((yr,yi)=>{
+    const totA=ENC_TOT['attendu'+yr]||0, totR=ENC_TOT['recouvre'+yr]||0;
+    const tx=totA>0?(totR/totA*100).toFixed(1):'—';
+    totRow+=`<td>${FN(totA)}</td><td>${FN(totR)}</td><td style="color:#FCD116;font-weight:800">${tx==='—'?tx:tx+'%'}</td>`;
+  });
+  totRow+=`</tr>`;
+  bodyRows.push(totRow);
 
   document.getElementById('tEnc').innerHTML=hd+'<tbody>'+bodyRows.join('')+'</tbody>';
 }
@@ -1606,15 +1737,28 @@ const AN5=['2021','2022','2023','2024','2025'];
 
 // Index de AN5 correspondant à chaque valeur de fAn
 // 'all' → [0,1,2,3,4]  'a2021'→[0]  'a2022'→[1]  '0'(2023)→[2]  '1'(2024)→[3]  '2'(2025)→[4]
-const AN5_MAP={'a2021':0,'a2022':1,'0':2,'1':3,'2':4};
+const AN5_MAP={'a2021':0,'a2022':1,'a2023':2,'a2024':3,'a2025':4,'0':2,'1':3,'2':4};
 
 // Sources éditables (initialisées par défaut, écraseables par l'éditeur)
+// EMP_CAT : stocks (S) et flux (F) par régime pour 2021-2025
+// null = donnée non disponible (2025 flux, etc.)
 let EMP_CAT={
-  prive:  [5507,5739,6438,7623,8263],
-  public: [110,147,168,155,154],
-  gdm:    [684,617,646,637,618],
-  vol:    [66,62,76,77,68],
-  get total(){return this.prive.map((v,i)=>v+this.public[i]+this.gdm[i]+this.vol[i]);}
+ priveS:  [5507,5739,6438,7623,8263],
+  priveF:  [1626,1644,1768,4586,4165],
+  pubS:    [110,147,168,155,154],
+  pubF:    [5,10,13,12,21],
+  gdmS:    [684,617,646,637,618],
+  gdmF:    [129,null,7,166,154],
+  volS:    [66,62,76,77,68],
+  volF:    [29,null,null,20,30],
+  get totalS(){return this.priveS.map((v,i)=>v+this.pubS[i]+this.gdmS[i]+this.volS[i]);},
+  get totalF(){return this.priveF.map((v,i)=>(v===null&&this.pubF[i]===null&&this.gdmF[i]===null&&this.volF[i]===null)?null:(v||0)+(this.pubF[i]||0)+(this.gdmF[i]||0)+(this.volF[i]||0));},
+  // Compat backwards (pour les fonctions qui utilisent .prive, .public, etc.)
+  get prive(){return this.priveS;},
+  get public(){return this.pubS;},
+  get gdm(){return this.gdmS;},
+  get vol(){return this.volS;},
+  get total(){return this.totalS;}
 };
 let IMMAT={
   priveF:[4646,5359,6398,8369,8353],priveH:[12366,14067,16424,17929,20353],
@@ -1637,6 +1781,13 @@ let MS={
   gdm: [1981701083,1687035261,2040094874,2015105176,1901812455],
   get tot(){return this.pub.map((v,i)=>v+this.priv[i]+this.vol[i]+this.gdm[i]);}
 };
+let MSD={
+  pub: [36817413391,43807283529,48173001473,49882820549,55853892353],
+  priv:[926262428300,993805707658,1071980746312,1077420009162,1070842474345],
+  vol: [425728497,414935159,514453568,503317160,438817783],
+  gdm: [1945055150,1669179383,2016508277,1986741444,1878104563],
+  get tot(){return this.pub.map((v,i)=>v+this.priv[i]+this.vol[i]+this.gdm[i]);}
+};
 
 // ══════════════════════════════════════════════════════
 // HELPERS COMMUNS AUX 4 NOUVEAUX ONGLETS
@@ -1645,9 +1796,11 @@ let MS={
 // idx5() : retourne la liste des index dans AN5 selon le filtre année
 // AN5_MAP : {'a2021':0,'a2022':1,'0':2,'1':3,'2':4}
 function idx5(){
-  if(curAn==='all') return [0,1,2,3,4];
+  if(curAn==='all') return AN5.map((_,i)=>i);
+  const m = window._AN5_MAP || {};
+  if(m[curAn]!==undefined) return [m[curAn]];
   if(AN5_MAP[curAn]!==undefined) return [AN5_MAP[curAn]];
-  return [0,1,2,3,4];
+  return AN5.map((_,i)=>i);
 }
 function anL5(){ return idx5().map(i=>AN5[i]); }
 
@@ -1687,187 +1840,211 @@ function buildSec(id){
     global:bGlobal,'dos-pvid':bDosPvid,'dos-pf':bDosPf,'dos-rp':bDosRp,
     localite:bLoc,delais:bDelais,'br-pvid':bBrPvid,'br-pf':bBrPf,'br-rp':bBrRp,
     encaiss:bEncaiss,
-    'emp-categ':bEmpCateg,'immat-sexe':bImmatSexe,cotisants:bCotisants,'masse-sal':bMasseSal
+    'emp-categ':bEmpCateg,'sal-cotisants':bSalCotisants,'masse-sal':bMasseSal
   };
   if(m[id])m[id]();
 }
 
 // ══════════════════════════════════════════════════════
-// ONGLET 10 — EMPLOYEURS PAR CATÉGORIE
+// ONGLET 10 — EMPLOYEURS COTISANTS (STOCKS & FLUX)
 // ══════════════════════════════════════════════════════
 function bEmpCateg(){
-  const I=idx5(),ANS=anL5(),li=I[I.length-1],pi=prevIdx5();
-  const CATS=[
-    {k:'prive', l:'Rég. Privé',   c:'#1E3A8A'},
-    {k:'public',l:'Rég. Public',  c:'#059669'},
-    {k:'gdm',   l:'Gens Maison',  c:'#D97706'},
-    {k:'vol',   l:'Volontaire',   c:'#7C3AED'},
-  ].filter(x=>catOK(x.k));
-  const totL=EMP_CAT.total[li],totP=pi!==null?EMP_CAT.total[pi]:null;
+  const I=idx5(), ANS=anL5(), li=I[I.length-1], pi=prevIdx5();
+  const FNn=v=>v===null?'—':FN(v);
+
+  const REGS=[
+    {l:'Privé',    sK:'priveS', fK:'priveF', c:'#1E3A8A', ck:'prive'},
+    {l:'Public',   sK:'pubS',   fK:'pubF',   c:'#059669', ck:'public'},
+    {l:'Gens de Maison', sK:'gdmS', fK:'gdmF', c:'#D97706', ck:'gdm'},
+    {l:'Volontaire',sK:'volS',  fK:'volF',   c:'#7C3AED', ck:'vol'},
+  ].filter(x=>catOK(x.ck));
+
+  const totSL=EMP_CAT.totalS[li], totSP=pi!==null?EMP_CAT.totalS[pi]:null;
+  const totFL=EMP_CAT.totalF[li], totFP=pi!==null?EMP_CAT.totalF[pi]:null;
 
   // Bandeau
   document.getElementById('hl-ec').innerHTML=
-    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(totL)}</div><div class="hlt">Total Employeurs ${AN5[li]}</div></div><div class="hvr"></div>`+
-    CATS.map(c=>`<div class="hi"><div class="hv" style="color:#fff">${FN(EMP_CAT[c.k][li])}</div><div class="hlt">${c.l} ${AN5[li]}</div></div><div class="hvr"></div>`).join('')+
-    (pi!==null?`<div class="hi"><div class="hv" style="color:#6EE7A0">${((totL-totP)/totP*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
+    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(totSL)}</div><div class="hlt">Total Stock ${AN5[li]}</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#6EE7A0">${FNn(totFL)}</div><div class="hlt">Total Flux ${AN5[li]}</div></div><div class="hvr"></div>`+
+    REGS.map(r=>`<div class="hi"><div class="hv" style="color:#fff">${FN(EMP_CAT[r.sK][li])}</div><div class="hlt">Stock ${r.l} ${AN5[li]}</div></div><div class="hvr"></div>`).join('')+
+    (pi!==null&&totSP?`<div class="hi"><div class="hv" style="color:#93C5FD">${((totSL-totSP)/totSP*100).toFixed(1)}%</div><div class="hlt">Var. Stock vs ${AN5[pi]}</div></div>`:'');
 
-  // KPI cards — flèche ▲/▼ toujours vs N-1
+  // KPI cards
   document.getElementById('kg-ec').innerHTML=
-    kC('Total Employeurs '+AN5[li],FN(totL),'Ensemble catégories',pi!==null?trH(totP,totL):'',.0,'#10B981')+
-    CATS.map((c,j)=>kC(c.l+' '+AN5[li],FN(EMP_CAT[c.k][li]),'',pi!==null?trH(EMP_CAT[c.k][pi],EMP_CAT[c.k][li]):'',(j+1)*.07,c.c)).join('');
+    kC('Total Stock '+AN5[li],FN(totSL),'Stocks cumulés',pi!==null?trH(totSP,totSL):'',.0,'#10B981')+
+    kC('Total Flux '+AN5[li],FNn(totFL),'Nouvelles immat.','',.07,'#2563EB')+
+    REGS.map((r,j)=>kC('Stock '+r.l+' '+AN5[li],FN(EMP_CAT[r.sK][li]),'',pi!==null?trH(EMP_CAT[r.sK][pi],EMP_CAT[r.sK][li]):'',(j+2)*.07,r.c)).join('');
 
-  // Graphiques
-  mkC('cEcBar','bar',ANS,CATS.map(c=>({label:c.l,data:I.map(i=>EMP_CAT[c.k][i]),backgroundColor:c.c,borderRadius:4})),{plugins:{legend:{position:'bottom'}}});
-  const pV=CATS.map(c=>EMP_CAT[c.k][li]);
-  mkC('cEcPie','doughnut',CATS.map(c=>c.l),[{data:pV,backgroundColor:CATS.map(c=>c.c),borderWidth:2,borderColor:'#fff'}]);
-  pieLg('lg-ecpie',CATS.map(c=>c.l),pV,CATS.map(c=>c.c));
-  mkC('cEcTot','line',ANS,[{label:'Total Employeurs',data:I.map(i=>EMP_CAT.total[i]),borderColor:'#10B981',backgroundColor:'rgba(16,185,129,.15)',fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#10B981'}]);
+  // Graphique Stocks par régime
+  mkC('cEcBar','bar',ANS,REGS.map(r=>({
+    label:r.l,data:I.map(i=>EMP_CAT[r.sK][i]),backgroundColor:r.c,borderRadius:4
+  })),{plugins:{legend:{position:'bottom'}}});
 
-  // Tableau avec colonne tendance vs N-1
-  const hdCols=['Catégorie',...ANS,...(pi!==null?[`vs ${AN5[pi]}`]:[])];
-  const hd='<thead><tr>'+hdCols.map((h,j)=>`<th${j===0?' style="text-align:left"':j===hdCols.length-1&&pi!==null?' style="background:#F0FDF4;color:#14532D"':''}>${h}</th>`).join('')+'</tr></thead>';
-  const rows=CATS.map(c=>{
-    const vL=EMP_CAT[c.k][li],vP=pi!==null?EMP_CAT[c.k][pi]:null;
-    return`<tr><td>${c.l}</td>${I.map(i=>`<td class="nr">${FN(EMP_CAT[c.k][i])}</td>`).join('')}${pi!==null?`<td class="${vL>=vP?'nv':'nj'}" style="font-weight:800">${vL>=vP?'▲':'▼'} ${Math.abs(((vL-vP)/vP*100)).toFixed(1)}%</td>`:''}</tr>`;
+  // Graphique Flux par régime
+  mkC('cEcFlux','bar',ANS,REGS.map(r=>({
+    label:r.l,data:I.map(i=>EMP_CAT[r.fK][i]??0),backgroundColor:r.c+'CC',borderRadius:4
+  })),{plugins:{legend:{position:'bottom'}}});
+
+  // Graphique total stocks + flux
+  mkC('cEcTot','line',ANS,[
+    {label:'Total Stock',data:I.map(i=>EMP_CAT.totalS[i]),borderColor:'#10B981',backgroundColor:'rgba(16,185,129,.15)',fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#10B981'},
+    {label:'Total Flux', data:I.map(i=>EMP_CAT.totalF[i]??0),borderColor:'#2563EB',backgroundColor:'rgba(37,99,235,.08)',fill:false,tension:.4,pointRadius:4,pointBackgroundColor:'#2563EB',borderDash:[5,3]}
+  ]);
+
+  // ── Tableau Stocks & Flux — respecte filtres année ET catégorie ──
+  const showTotEc = curCat==='all';
+  let hd='<thead>';
+  hd+='<tr><th rowspan="2" style="text-align:left;vertical-align:middle">Année</th>';
+  REGS.forEach(r=>{ hd+=`<th colspan="2" style="text-align:center;background:${r.c};color:#fff">${r.l}</th>`; });
+  if(showTotEc) hd+='<th colspan="2" style="text-align:center;background:linear-gradient(135deg,#065F46,#10B981);color:#fff">TOTAL</th>';
+  hd+='</tr><tr>';
+  REGS.forEach(()=>{ hd+='<th>Stocks</th><th>Flux</th>'; });
+  if(showTotEc) hd+='<th>Stocks</th><th>Flux</th>';
+  hd+='</tr></thead>';
+
+  const rows=I.map(i=>{
+    const isLast=(i===I[I.length-1]);
+    const cls=isLast?' style="background:#F0FDF4"':'';
+    let row=`<tr${cls}><td style="text-align:left;font-weight:700">${AN5[i]}</td>`;
+    REGS.forEach(r=>{ row+=`<td class="nr">${FN(EMP_CAT[r.sK][i])}</td><td class="ng">${FNn(EMP_CAT[r.fK][i])}</td>`; });
+    if(showTotEc) row+=`<td style="font-weight:800;color:#065F46">${FN(EMP_CAT.totalS[i])}</td><td class="ng" style="font-weight:800">${FNn(EMP_CAT.totalF[i])}</td>`;
+    row+='</tr>';
+    return row;
   });
-  rows.push(`<tr class="tot"><td>TOTAL</td>${I.map(i=>`<td>${FN(EMP_CAT.total[i])}</td>`).join('')}${pi!==null?`<td class="${totL>=totP?'nv':'nj'}" style="font-weight:800">${totL>=totP?'▲':'▼'} ${Math.abs(((totL-totP)/totP*100)).toFixed(1)}%</td>`:''}</tr>`);
+
+  // Ligne variation si plusieurs années
+  if(I.length>1){
+    const iPrev=I[I.length-2], iLast=I[I.length-1];
+    let varRow='<tr style="background:#FFFBEB;font-style:italic"><td style="color:var(--muted);text-align:left">vs '+AN5[iPrev]+'</td>';
+    REGS.forEach(r=>{
+      const sv=EMP_CAT[r.sK][iLast],sp=EMP_CAT[r.sK][iPrev];
+      const fv=EMP_CAT[r.fK][iLast]??0,fp=EMP_CAT[r.fK][iPrev]??0;
+      varRow+=`<td class="${sv>=sp?'nv':'nj'}" style="font-weight:800">${sv>=sp?'&#9650;':'&#9660;'}${Math.abs(((sv-sp)/sp*100)).toFixed(1)}%</td>`;
+      varRow+=fp>0?`<td class="${fv>=fp?'nv':'nj'}" style="font-weight:800">${fv>=fp?'&#9650;':'&#9660;'}${Math.abs(((fv-fp)/fp*100)).toFixed(1)}%</td>`:'<td style="color:#9CA3AF">—</td>';
+    });
+    if(showTotEc){
+      const tsv=EMP_CAT.totalS[iLast],tsp=EMP_CAT.totalS[iPrev];
+      varRow+=`<td class="${tsv>=tsp?'nv':'nj'}" style="font-weight:800" colspan="2">${tsv>=tsp?'&#9650;':'&#9660;'}${Math.abs(((tsv-tsp)/tsp*100)).toFixed(1)}%</td>`;
+    }
+    varRow+='</tr>';
+    rows.push(varRow);
+  }
+
   document.getElementById('tEc').innerHTML=hd+'<tbody>'+rows.join('')+'</tbody>';
 }
 
 // ══════════════════════════════════════════════════════
-// ONGLET 11 — IMMATRICULATIONS PAR SEXE
+// ONGLET 11 — SALARIÉS COTISANTS (STOCKS & FLUX)
 // ══════════════════════════════════════════════════════
-function bImmatSexe(){
-  const I=idx5(),ANS=anL5(),li=I[I.length-1],pi=prevIdx5();
-  const tFL=IMMAT.totF[li],tHL=IMMAT.totH[li],totL=tFL+tHL;
-  const totP=pi!==null?IMMAT.totF[pi]+IMMAT.totH[pi]:null;
+function bSalCotisants(){
+  // Données figées — Stocks et Flux par régime 2021–2025
+  const ANNEES = ['2021','2022','2023','2024','2025'];
+  const DATA = {
+    priv:  { stock:[129019,138153,150775,162947,171898], flux:[17012,19426,22822,26298,28706], ck:'prive' },
+    pub:   { stock:[8060,9849,10677,11156,19039],         flux:[970,943,874,1035,1268],         ck:'public' },
+    gdm:   { stock:[1110,1002,1045,1049,995],             flux:[142,94,127,140,155],            ck:'gdm' },
+    vol:   { stock:[66,63,76,77,69],                      flux:[0,0,0,0,0],                     ck:'vol' },
+    tot:   { stock:[138255,149067,162573,175229,192001],  flux:[18124,20463,23823,27473,30129],  ck:null }
+  };
 
-  document.getElementById('hl-is').innerHTML=
-    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(totL)}</div><div class="hlt">Total ${AN5[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#F9A8D4">${FN(tFL)}</div><div class="hlt">Femmes ${AN5[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#93C5FD">${FN(tHL)}</div><div class="hlt">Hommes ${AN5[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#6EE7A0">${(tFL/totL*100).toFixed(1)}%</div><div class="hlt">Part Femmes</div></div>`+
-    (pi!==null?`<div class="hvr"></div><div class="hi"><div class="hv" style="color:#FCA5A5">${((totL-totP)/totP*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
+  // Régimes filtrés selon catOK
+  const REGS = [
+    {k:'priv', l:'Privé',          c:'#1E3A8A', ck:'prive'},
+    {k:'pub',  l:'Public',         c:'#059669', ck:'public'},
+    {k:'gdm',  l:'Gens de Maison', c:'#D97706', ck:'gdm'},
+    {k:'vol',  l:'Volontaire',     c:'#7C3AED', ck:'vol'},
+  ].filter(r=>catOK(r.ck));
 
-  document.getElementById('kg-is').innerHTML=
-    kC('Total Immat. '+AN5[li],FN(totL),'Nouvelles immatriculations',pi!==null?trH(totP,totL):'',.0,'#1E3A8A')+
-    kC('Femmes '+AN5[li],FN(tFL),'',pi!==null?trH(IMMAT.totF[pi],tFL):'',.07,'#BE185D')+
-    kC('Hommes '+AN5[li],FN(tHL),'',pi!==null?trH(IMMAT.totH[pi],tHL):'',.14,'#2563EB')+
-    kC('Privé — Femmes '+AN5[li],FN(IMMAT.priveF[li]),'',pi!==null?trH(IMMAT.priveF[pi],IMMAT.priveF[li]):'',.21,'#D97706')+
-    kC('Privé — Hommes '+AN5[li],FN(IMMAT.priveH[li]),'',pi!==null?trH(IMMAT.priveH[pi],IMMAT.priveH[li]):'',.28,'#059669');
+  // Filter by year selection (utilise AN5 global)
+  const I = idx5();
+  const ANS = anL5();
+  const li = I[I.length-1];
+  const pi = prevIdx5();
 
-  mkC('cIsTotal','bar',ANS,[
-    {label:'Femmes',data:I.map(i=>IMMAT.totF[i]),backgroundColor:'rgba(190,24,93,.75)',borderRadius:4},
-    {label:'Hommes',data:I.map(i=>IMMAT.totH[i]),backgroundColor:'rgba(37,99,235,.75)',borderRadius:4},
-  ],{plugins:{legend:{position:'bottom'}}});
-  mkC('cIsPie','doughnut',['Femmes','Hommes'],[{data:[tFL,tHL],backgroundColor:['#BE185D','#2563EB'],borderWidth:2,borderColor:'#fff'}]);
-  pieLg('lg-ispie',['Femmes','Hommes'],[tFL,tHL],['#BE185D','#2563EB']);
-  mkC('cIsPriv','bar',ANS,[
-    {label:'Privé — F',data:I.map(i=>IMMAT.priveF[i]),backgroundColor:'rgba(190,24,93,.7)',borderRadius:3},
-    {label:'Privé — H',data:I.map(i=>IMMAT.priveH[i]),backgroundColor:'rgba(37,99,235,.7)',borderRadius:3},
-  ],{plugins:{legend:{position:'bottom'}}});
-  const dsPG=[];
-  if(catOK('public')){dsPG.push({label:'Public F',data:I.map(i=>IMMAT.pubF[i]),backgroundColor:'rgba(5,150,105,.7)',borderRadius:3});
-                       dsPG.push({label:'Public H',data:I.map(i=>IMMAT.pubH[i]),backgroundColor:'rgba(8,145,178,.7)',borderRadius:3});}
-  if(catOK('gdm')){   dsPG.push({label:'GDM F',   data:I.map(i=>IMMAT.gdmF[i]),backgroundColor:'rgba(217,119,6,.7)',borderRadius:3});
-                       dsPG.push({label:'GDM H',   data:I.map(i=>IMMAT.gdmH[i]),backgroundColor:'rgba(124,58,237,.7)',borderRadius:3});}
-  if(!dsPG.length)dsPG.push({label:'(filtré)',data:I.map(()=>0),backgroundColor:'#eee'});
-  mkC('cIsPubGdm','bar',ANS,dsPG,{plugins:{legend:{position:'bottom'}}});
+  // Calcul totaux filtrés (seulement les régimes sélectionnés)
+  const filtStockL = REGS.reduce((s,r)=>s+DATA[r.k].stock[li],0);
+  const filtFluxL  = REGS.reduce((s,r)=>s+DATA[r.k].flux[li],0);
+  const filtStockP = pi!==null ? REGS.reduce((s,r)=>s+DATA[r.k].stock[pi],0) : null;
+  const filtFluxP  = pi!==null ? REGS.reduce((s,r)=>s+DATA[r.k].flux[pi],0) : null;
+  const totStockL = DATA.tot.stock[li];
+  const totFluxL  = DATA.tot.flux[li];
+  const totStockP = pi!==null ? DATA.tot.stock[pi] : null;
+  const totFluxP  = pi!==null ? DATA.tot.flux[pi]  : null;
 
-  // Tableau avec ligne tendance vs N-1
-  const hd='<thead><tr><th style="text-align:left">Année</th><th colspan="2" style="text-align:center">Privé</th><th colspan="2" style="text-align:center">Public</th><th colspan="2" style="text-align:center">GDM</th><th colspan="2" style="text-align:center">TOTAL F/H</th><th style="text-align:center">TOTAL GÉNÉRAL</th></tr>'+
-    '<tr><th></th><th>F</th><th>H</th><th>F</th><th>H</th><th>F</th><th>H</th><th>F</th><th>H</th><th>F+H</th></tr></thead>';
-  const rows=I.map(i=>{
-    const totFH=IMMAT.totF[i]+IMMAT.totH[i];
-    return`<tr><td style="font-weight:800;color:var(--navy)">${AN5[i]}</td>`+
-    `<td class="nv">${FN(IMMAT.priveF[i])}</td><td class="nr">${FN(IMMAT.priveH[i])}</td>`+
-    `<td class="nv">${FN(IMMAT.pubF[i])}</td><td class="nr">${FN(IMMAT.pubH[i])}</td>`+
-    `<td class="nv">${FN(IMMAT.gdmF[i])}</td><td class="nr">${FN(IMMAT.gdmH[i])}</td>`+
-    `<td class="nv" style="font-weight:800">${FN(IMMAT.totF[i])}</td><td class="nr" style="font-weight:800">${FN(IMMAT.totH[i])}</td>`+
-    `<td style="font-weight:800;color:var(--navy)">${FN(totFH)}</td></tr>`;
-  });
-  // Ligne TOTAL sur la période visible
-  const totFperiod=I.reduce((s,i)=>s+IMMAT.totF[i],0);
-  const totHperiod=I.reduce((s,i)=>s+IMMAT.totH[i],0);
-  rows.push(`<tr class="tot"><td>TOTAL PÉRIODE</td>`+
-    `<td>${FN(I.reduce((s,i)=>s+IMMAT.priveF[i],0))}</td><td>${FN(I.reduce((s,i)=>s+IMMAT.priveH[i],0))}</td>`+
-    `<td>${FN(I.reduce((s,i)=>s+IMMAT.pubF[i],0))}</td><td>${FN(I.reduce((s,i)=>s+IMMAT.pubH[i],0))}</td>`+
-    `<td>${FN(I.reduce((s,i)=>s+IMMAT.gdmF[i],0))}</td><td>${FN(I.reduce((s,i)=>s+IMMAT.gdmH[i],0))}</td>`+
-    `<td>${FN(totFperiod)}</td><td>${FN(totHperiod)}</td><td style="font-weight:800;color:var(--navy)">${FN(totFperiod+totHperiod)}</td></tr>`);
-  if(pi!==null){
-    const pctC=(a,b)=>`<td class="${a>=b?'nv':'nj'}" style="font-weight:800">${a>=b?'▲':'▼'}${Math.abs(((a-b)/b*100)).toFixed(1)}%</td>`;
-    const totLFH=tFL+tHL, totPFH=IMMAT.totF[pi]+IMMAT.totH[pi];
-    rows.push(`<tr style="background:#F0FDF4;font-style:italic"><td style="color:var(--muted)">vs ${AN5[pi]}</td>`+
-      pctC(IMMAT.priveF[li],IMMAT.priveF[pi])+pctC(IMMAT.priveH[li],IMMAT.priveH[pi])+
-      pctC(IMMAT.pubF[li],IMMAT.pubF[pi])+pctC(IMMAT.pubH[li],IMMAT.pubH[pi])+
-      pctC(IMMAT.gdmF[li],IMMAT.gdmF[pi])+pctC(IMMAT.gdmH[li],IMMAT.gdmH[pi])+
-      pctC(tFL,IMMAT.totF[pi])+pctC(tHL,IMMAT.totH[pi])+pctC(totLFH,totPFH)+'</tr>');
-  }
-  document.getElementById('tIs').innerHTML=hd+'<tbody>'+rows.join('')+'</tbody>';
-}
+  // Header : affiche selon le filtre
+  const showAll = curCat==='all';
+  document.getElementById('hl-sc').innerHTML =
+    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(showAll?totStockL:filtStockL)}</div><div class="hlt">${showAll?'Total':'Sél.'} Stock ${AN5[li]}</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#93C5FD">${FN(showAll?totFluxL:filtFluxL)}</div><div class="hlt">${showAll?'Total':'Sél.'} Flux ${AN5[li]}</div></div>`+
+    REGS.map(r=>`<div class="hvr"></div><div class="hi"><div class="hv" style="color:#fff">${FN(DATA[r.k].stock[li])}</div><div class="hlt">${r.l} Stock ${AN5[li]}</div></div>`).join('')+
+    (pi!==null?`<div class="hvr"></div><div class="hi"><div class="hv" style="color:#FCA5A5">${(((showAll?totStockL:filtStockL)-(showAll?totStockP:filtStockP))/(showAll?totStockP:filtStockP)*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
 
-// ══════════════════════════════════════════════════════
-// ONGLET 12 — EFFECTIFS COTISANTS
-// ══════════════════════════════════════════════════════
-function bCotisants(){
-  const I=idx5(),ANS=anL5(),li=I[I.length-1],pi=prevIdx5();
-  const totL=COT.tot[li],totP=pi!==null?COT.tot[pi]:null;
-  const CATS=[
-    {k:'pub', ck:'public',l:'Rég. Public',  c:'#059669'},
-    {k:'priv',ck:'prive', l:'Rég. Privé',   c:'#1E3A8A'},
-    {k:'vol', ck:'vol',   l:'Rég. Volontaire',c:'#7C3AED'},
-    {k:'gdm', ck:'gdm',   l:'Gens de Maison',c:'#D97706'},
-  ].filter(x=>catOK(x.ck));
+  // KPI cards filtrés
+  document.getElementById('kg-sc').innerHTML =
+    kC((showAll?'Total':'Sél.')+' Stock '+AN5[li],FN(showAll?totStockL:filtStockL),'Salariés cotisants cumulés',pi!==null?trH(showAll?totStockP:filtStockP,showAll?totStockL:filtStockL):'',.0,'#0369A1')+
+    kC((showAll?'Total':'Sél.')+' Flux '+AN5[li],FN(showAll?totFluxL:filtFluxL),'Nouvelles immatriculations',pi!==null?trH(showAll?totFluxP:filtFluxP,showAll?totFluxL:filtFluxL):'',.07,'#059669')+
+    REGS.map((r,j)=>kC(r.l+' Stock '+AN5[li],FN(DATA[r.k].stock[li]),'',pi!==null?trH(DATA[r.k].stock[pi],DATA[r.k].stock[li]):'',(j+2)*.07,r.c)).join('');
 
-  document.getElementById('hl-cot').innerHTML=
-    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(totL)}</div><div class="hlt">Total Cotisants ${AN5[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#93C5FD">${FN(COT.pub[li])}</div><div class="hlt">Rég. Public ${AN5[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#6EE7A0">${FN(COT.priv[li])}</div><div class="hlt">Rég. Privé ${AN5[li]}</div></div><div class="hvr"></div>`+
-    (pi!==null?`<div class="hi"><div class="hv" style="color:#FCA5A5">${((totL-totP)/totP*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
+  // Chart — Stocks (filtrés)
+  mkC('cScStock','bar',ANS,REGS.map(r=>({
+    label:r.l, data:I.map(i=>DATA[r.k].stock[i]), backgroundColor:r.c, borderRadius:4
+  })),{plugins:{legend:{position:'bottom'}}});
 
-  document.getElementById('kg-cot').innerHTML=
-    kC('Total Cotisants '+AN5[li],FN(totL),'Ensemble régimes',pi!==null?trH(totP,totL):'',.0,'#0369A1')+
-    CATS.map((c,j)=>kC(c.l+' '+AN5[li],FN(COT[c.k][li]),'',pi!==null?trH(COT[c.k][pi],COT[c.k][li]):'',(j+1)*.07,c.c)).join('')+
-    kC('Croissance 2021→2025',((COT.tot[4]-COT.tot[0])/COT.tot[0]*100).toFixed(1)+'%','Sur 5 ans','',.42,'#059669');
+  // Chart — Flux (filtrés)
+  mkC('cScFlux','bar',ANS,REGS.map(r=>({
+    label:r.l, data:I.map(i=>DATA[r.k].flux[i]), backgroundColor:r.c+'BB', borderRadius:4
+  })),{plugins:{legend:{position:'bottom'}}});
 
-  mkC('cCotBar','bar',ANS,CATS.map(c=>({label:c.l,data:I.map(i=>COT[c.k][i]),backgroundColor:c.c,borderRadius:4})),{plugins:{legend:{position:'bottom'}}});
-  const pV=CATS.length?CATS.map(c=>COT[c.k][li]):[COT.tot[li]];
-  const pL=CATS.length?CATS.map(c=>c.l):['Total'];
-  const pC=CATS.length?CATS.map(c=>c.c):['#0369A1'];
-  mkC('cCotPie','doughnut',pL,[{data:pV,backgroundColor:pC,borderWidth:2,borderColor:'#fff'}]);
-  pieLg('lg-cotpie',pL,pV,pC);
+  // Pie — Stock structure
+  const pLab=REGS.map(r=>r.l);
+  const pVal=REGS.map(r=>DATA[r.k].stock[li]);
+  const pCol=REGS.map(r=>r.c);
+  mkC('cScStockPie','doughnut',pLab,[{data:pVal,backgroundColor:pCol,borderWidth:2,borderColor:'#fff'}]);
+  pieLg('lg-scstockpie',pLab,pVal,pCol);
 
+  // Taux de croissance Stocks (basé sur les régimes filtrés)
   const txI=I.filter((_,k)=>k>0);
   if(txI.length>0){
-    mkC('cCotTx','line',txI.map(i=>AN5[i]),[{label:'Taux de croissance (%)',
-      data:txI.map((ci,k)=>((COT.tot[ci]-COT.tot[I[k]])/COT.tot[I[k]]*100).toFixed(2)),
-      borderColor:'#0369A1',backgroundColor:'rgba(3,105,161,.12)',fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#0369A1'}]);
+    const totSel=I.map(i=>REGS.reduce((s,r)=>s+DATA[r.k].stock[i],0));
+    mkC('cScTx','line',txI.map(i=>AN5[i]),[{
+      label:'Croissance Stock (%)',
+      data:txI.map((ci,k)=>((totSel[k+1]-totSel[k])/totSel[k]*100).toFixed(2)),
+      borderColor:'#0369A1',backgroundColor:'rgba(3,105,161,.12)',fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#0369A1'
+    }]);
   }
 
-  // Tableau avec colonne tendance vs N-1
-  const hdCols=['Catégorie',...ANS,...(pi!==null?[`vs ${AN5[pi]}`]:[])];
-  const hd='<thead><tr>'+hdCols.map((h,j)=>`<th${j===0?' style="text-align:left"':j===hdCols.length-1&&pi!==null?' style="background:#F0FDF4;color:#14532D"':''}>${h}</th>`).join('')+'</tr></thead>';
-  const ALL_CATS=[
-    {k:'pub', ck:'public',l:'Rég. Public'},{k:'priv',ck:'prive',l:'Rég. Privé'},
-    {k:'vol', ck:'vol',   l:'Rég. Volontaire'},{k:'gdm',ck:'gdm',l:'Gens de Maison'}
-  ].filter(x=>catOK(x.ck));
-  const rows=ALL_CATS.map(c=>{
-    const vL=COT[c.k][li],vP=pi!==null?COT[c.k][pi]:null;
-    return`<tr><td>${c.l}</td>${I.map(i=>`<td class="nr">${FN(COT[c.k][i])}</td>`).join('')}${pi!==null?`<td class="${vL>=vP?'nv':'nj'}" style="font-weight:800">${vL>=vP?'▲':'▼'} ${Math.abs(((vL-vP)/vP*100)).toFixed(1)}%</td>`:''}</tr>`;
+  // Tableau Stocks & Flux (uniquement colonnes des régimes filtrés + TOTAL si all)
+  const showTot = curCat==='all';
+  const hdCols = REGS.map(r=>`<th colspan="2" style="text-align:center;background:${r.c}">${r.l}</th>`).join('');
+  const hdSubCols = REGS.map(()=>'<th>Stocks</th><th>Flux</th>').join('');
+  const hd = '<thead>'+
+    `<tr><th style="text-align:left" rowspan="2">Année</th>${hdCols}${showTot?'<th colspan="2" style="text-align:center;background:linear-gradient(135deg,#0C4A6E,#0369A1)">TOTAL</th>':''}</tr>`+
+    `<tr>${hdSubCols}${showTot?'<th>Stocks</th><th>Flux</th>':''}</tr>`+
+    '</thead>';
+
+  const rows = I.map(i => {
+    const regCells = REGS.map(r=>`<td class="nr">${FN(DATA[r.k].stock[i])}</td><td class="nv">${DATA[r.k].flux[i]===0?'—':FN(DATA[r.k].flux[i])}</td>`).join('');
+    const totCells = showTot?`<td style="font-weight:800;color:var(--navy)">${FN(DATA.tot.stock[i])}</td><td style="font-weight:800;color:#059669">${FN(DATA.tot.flux[i])}</td>`:'';
+    return `<tr><td style="font-weight:800;color:var(--navy);text-align:left">${AN5[i]}</td>${regCells}${totCells}</tr>`;
   });
-  rows.push(`<tr class="tot"><td>TOTAL</td>${I.map(i=>`<td>${FN(COT.tot[i])}</td>`).join('')}${pi!==null?`<td class="${totL>=totP?'nv':'nj'}" style="font-weight:800">${totL>=totP?'▲':'▼'} ${Math.abs(((totL-totP)/totP*100)).toFixed(1)}%</td>`:''}</tr>`);
-  if(I.length>1)rows.push(`<tr style="font-style:italic;background:#F9FAFB"><td style="color:var(--muted)">Croissance (%)</td><td>—</td>${I.slice(1).map((ci,k)=>{const g=((COT.tot[ci]-COT.tot[I[k]])/COT.tot[I[k]]*100).toFixed(2);return`<td class="${parseFloat(g)>=0?'nv':'nj'}">${parseFloat(g)>=0?'▲':'▼'}${Math.abs(parseFloat(g)).toFixed(2)}%</td>`;}).join('')}${pi!==null?'<td></td>':''}</tr>`);
-  document.getElementById('tCot').innerHTML=hd+'<tbody>'+rows.join('')+'</tbody>';
-  document.getElementById('src-cot').textContent='Sources : Secusur — CNSS';
+
+  if(pi!==null){
+    const pct=(a,b)=>`<td class="${a>=b?'nv':'nj'}" style="font-weight:800">${a>=b?'▲':'▼'}${Math.abs(((a-b)/b*100)).toFixed(1)}%</td>`;
+    const varCells = REGS.map(r=>pct(DATA[r.k].stock[li],DATA[r.k].stock[pi])+pct(DATA[r.k].flux[li]||0,DATA[r.k].flux[pi]||0)).join('');
+    const varTot = showTot?(pct(DATA.tot.stock[li],DATA.tot.stock[pi])+pct(DATA.tot.flux[li],DATA.tot.flux[pi])):'';
+    rows.push(`<tr style="background:#F0FDF4;font-style:italic"><td style="color:var(--muted);text-align:left">vs ${AN5[pi]}</td>${varCells}${varTot}</tr>`);
+  }
+
+  document.getElementById('tSc').innerHTML = hd + '<tbody>' + rows.join('') + '</tbody>';
 }
 
 // ══════════════════════════════════════════════════════
-// ONGLET 13 — MASSE SALARIALE
+// ONGLET 13 — MASSE SALARIALE (PLAFONNÉE + DÉPLAFONNÉE)
 // ══════════════════════════════════════════════════════
 function bMasseSal(){
   const I=idx5(),ANS=anL5(),li=I[I.length-1],pi=prevIdx5();
   const FMrd=v=>(v/1e9).toFixed(2)+' Mds';
-  const totL=MS.tot[li],totP=pi!==null?MS.tot[pi]:null;
+  const FPct=(a,b)=>b!==null?((a-b)/b*100).toFixed(1)+'%':'—';
   const CATS=[
     {k:'pub', ck:'public',l:'Rég. Public',  c:'#059669'},
     {k:'priv',ck:'prive', l:'Rég. Privé',   c:'#1E3A8A'},
@@ -1875,13 +2052,16 @@ function bMasseSal(){
     {k:'gdm', ck:'gdm',   l:'Gens Maison',   c:'#D97706'},
   ].filter(x=>catOK(x.ck));
 
+  // ─── SECTION A : Masse Salariale Plafonnée ───
+  const totL=MS.tot[li],totP=pi!==null?MS.tot[pi]:null;
+
   document.getElementById('hl-ms').innerHTML=
-    `<div class="hi"><div class="hv" style="color:#FCD116">${FMrd(totL)}</div><div class="hlt">Total ${AN5[li]}</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#FCD116">${FMrd(totL)}</div><div class="hlt">Total Plafonné ${AN5[li]}</div></div><div class="hvr"></div>`+
     CATS.slice(0,3).map(c=>`<div class="hi"><div class="hv" style="color:#fff">${FMrd(MS[c.k][li])}</div><div class="hlt">${c.l} ${AN5[li]}</div></div><div class="hvr"></div>`).join('')+
     (pi!==null?`<div class="hi"><div class="hv" style="color:#6EE7A0">${((totL-totP)/totP*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
 
   document.getElementById('kg-ms').innerHTML=
-    kC('Total Masse Sal. '+AN5[li],FMrd(totL),'Ensemble régimes',pi!==null?trH(totP,totL):'',.0,'#D97706')+
+    kC('Total Plafonné '+AN5[li],FMrd(totL),'Ensemble régimes',pi!==null?trH(totP,totL):'',.0,'#D97706')+
     CATS.map((c,j)=>kC(c.l+' '+AN5[li],FMrd(MS[c.k][li]),'',pi!==null?trH(MS[c.k][pi],MS[c.k][li]):'',(j+1)*.07,c.c)).join('');
 
   mkC('cMsBar','bar',ANS,CATS.map(c=>({label:c.l,data:I.map(i=>+(MS[c.k][i]/1e9).toFixed(3)),backgroundColor:c.c,borderRadius:4})),
@@ -1889,19 +2069,57 @@ function bMasseSal(){
   const pVals=CATS.map(c=>MS[c.k][li]);
   mkC('cMsPie','doughnut',CATS.map(c=>c.l),[{data:pVals,backgroundColor:CATS.map(c=>c.c),borderWidth:2,borderColor:'#fff'}]);
   pieLg('lg-mspie',CATS.map(c=>c.l),pVals,CATS.map(c=>c.c),FMrd);
-  mkC('cMsTot','line',ANS,[{label:'Total (Mds)',data:I.map(i=>+(MS.tot[i]/1e9).toFixed(3)),borderColor:'#D97706',
+  mkC('cMsTot','line',ANS,[{label:'Total Plafonné (Mds)',data:I.map(i=>+(MS.tot[i]/1e9).toFixed(3)),borderColor:'#D97706',
     backgroundColor:'rgba(217,119,6,.15)',fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#D97706'}],
     {plugins:{tooltip:{callbacks:{label:ctx=>`${ctx.parsed.y.toFixed(2)} Mds FCFA`}}}});
 
-  // Tableau avec colonne tendance vs N-1
+  // Tableau A
   const hdCols=['Régime',...ANS,...(pi!==null?[`vs ${AN5[pi]}`]:[])];
-  const hd='<thead><tr>'+hdCols.map((h,j)=>`<th${j===0?' style="text-align:left"':j===hdCols.length-1&&pi!==null?' style="background:#FEF3C7;color:#92400E"':''}>${h}</th>`).join('')+'</tr></thead>';
-  const rows=CATS.map(c=>{
+  const hdA='<thead><tr>'+hdCols.map((h,j)=>`<th${j===0?' style="text-align:left"':j===hdCols.length-1&&pi!==null?' style="background:#FEF3C7;color:#92400E"':''}>${h}</th>`).join('')+'</tr></thead>';
+  const rowsA=CATS.map(c=>{
     const vL=MS[c.k][li],vP=pi!==null?MS[c.k][pi]:null;
     return`<tr><td>${c.l}</td>${I.map(i=>`<td class="nr">${FN(Math.round(MS[c.k][i]))}</td>`).join('')}${pi!==null?`<td class="${vL>=vP?'nv':'nj'}" style="font-weight:800">${vL>=vP?'▲':'▼'} ${Math.abs(((vL-vP)/vP*100)).toFixed(1)}%</td>`:''}</tr>`;
   });
-  rows.push(`<tr class="tot"><td>TOTAUX</td>${I.map(i=>`<td>${FN(Math.round(MS.tot[i]))}</td>`).join('')}${pi!==null?`<td class="${totL>=totP?'nv':'nj'}" style="font-weight:800">${totL>=totP?'▲':'▼'} ${Math.abs(((totL-totP)/totP*100)).toFixed(1)}%</td>`:''}</tr>`);
-  document.getElementById('tMs').innerHTML=hd+'<tbody>'+rows.join('')+'</tbody>';
+  rowsA.push(`<tr class="tot"><td>TOTAUX</td>${I.map(i=>`<td>${FN(Math.round(MS.tot[i]))}</td>`).join('')}${pi!==null?`<td class="${totL>=totP?'nv':'nj'}" style="font-weight:800">${totL>=totP?'▲':'▼'} ${Math.abs(((totL-totP)/totP*100)).toFixed(1)}%</td>`:''}</tr>`);
+  document.getElementById('tMs').innerHTML=hdA+'<tbody>'+rowsA.join('')+'</tbody>';
+
+  // ─── SECTION B : Masse Salariale Déplafonnée ───
+  const totDL=MSD.tot[li],totDP=pi!==null?MSD.tot[pi]:null;
+
+  document.getElementById('hl-msd').innerHTML=
+    `<div class="hi"><div class="hv" style="color:#FCD116">${FMrd(totDL)}</div><div class="hlt">Total Déplafonné ${AN5[li]}</div></div><div class="hvr"></div>`+
+    CATS.slice(0,3).map(c=>`<div class="hi"><div class="hv" style="color:#fff">${FMrd(MSD[c.k][li])}</div><div class="hlt">${c.l} ${AN5[li]}</div></div><div class="hvr"></div>`).join('')+
+    (pi!==null?`<div class="hi"><div class="hv" style="color:#93C5FD">${((totDL-totDP)/totDP*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
+
+  document.getElementById('kg-msd').innerHTML=
+    kC('Total Déplafonné '+AN5[li],FMrd(totDL),'Ensemble régimes',pi!==null?trH(totDP,totDL):'',.0,'#2563EB')+
+    CATS.map((c,j)=>kC(c.l+' '+AN5[li],FMrd(MSD[c.k][li]),'',pi!==null?trH(MSD[c.k][pi],MSD[c.k][li]):'',(j+1)*.07,c.c)).join('');
+
+  const CATS_D=CATS.map(c=>({...c,c:c.c}));
+  mkC('cMsdBar','bar',ANS,CATS_D.map(c=>({label:c.l,data:I.map(i=>+(MSD[c.k][i]/1e9).toFixed(3)),backgroundColor:c.c,borderRadius:4})),
+    {plugins:{tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} Mds FCFA`}},legend:{position:'bottom'}}});
+  const pValsD=CATS_D.map(c=>MSD[c.k][li]);
+  mkC('cMsdPie','doughnut',CATS_D.map(c=>c.l),[{data:pValsD,backgroundColor:CATS_D.map(c=>c.c),borderWidth:2,borderColor:'#fff'}]);
+  pieLg('lg-msdpie',CATS_D.map(c=>c.l),pValsD,CATS_D.map(c=>c.c),FMrd);
+
+  mkC('cMsdTot','line',ANS,[{label:'Total Déplafonné (Mds)',data:I.map(i=>+(MSD.tot[i]/1e9).toFixed(3)),borderColor:'#2563EB',
+    backgroundColor:'rgba(37,99,235,.12)',fill:true,tension:.4,pointRadius:5,pointBackgroundColor:'#2563EB'}],
+    {plugins:{tooltip:{callbacks:{label:ctx=>`${ctx.parsed.y.toFixed(2)} Mds FCFA`}}}});
+
+  // Graphique comparatif Plafonné vs Déplafonné
+  mkC('cMsComp','bar',ANS,[
+    {label:'Déplafonné',data:I.map(i=>+(MSD.tot[i]/1e9).toFixed(3)),backgroundColor:'rgba(37,99,235,.75)',borderRadius:4},
+    {label:'Plafonné',data:I.map(i=>+(MS.tot[i]/1e9).toFixed(3)),backgroundColor:'rgba(217,119,6,.75)',borderRadius:4}
+  ],{plugins:{tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} Mds FCFA`}},legend:{position:'bottom'}}});
+
+  // Tableau B
+  const hdB='<thead><tr>'+hdCols.map((h,j)=>`<th${j===0?' style="text-align:left"':j===hdCols.length-1&&pi!==null?' style="background:#DBEAFE;color:#1E3A8A"':''}>${h}</th>`).join('')+'</tr></thead>';
+  const rowsB=CATS_D.map(c=>{
+    const vL=MSD[c.k][li],vP=pi!==null?MSD[c.k][pi]:null;
+    return`<tr><td>${c.l}</td>${I.map(i=>`<td class="nr">${FN(Math.round(MSD[c.k][i]))}</td>`).join('')}${pi!==null?`<td class="${vL>=vP?'nv':'nj'}" style="font-weight:800">${vL>=vP?'▲':'▼'} ${Math.abs(((vL-vP)/vP*100)).toFixed(1)}%</td>`:''}</tr>`;
+  });
+  rowsB.push(`<tr class="tot"><td>TOTAUX</td>${I.map(i=>`<td>${FN(Math.round(MSD.tot[i]))}</td>`).join('')}${pi!==null?`<td class="${totDL>=totDP?'nv':'nj'}" style="font-weight:800">${totDL>=totDP?'▲':'▼'} ${Math.abs(((totDL-totDP)/totDP*100)).toFixed(1)}%</td>`:''}</tr>`);
+  document.getElementById('tMsd').innerHTML=hdB+'<tbody>'+rowsB.join('')+'</tbody>';
 }
 
 // ══════════════════════════════════════════════════════
@@ -1973,22 +2191,75 @@ const ORIG={
     pvid:  {d15:[61,81,117],   d45:[273,264,918],   dp:[1629,1521,2047],nd:[1,0,0],   tot:[1964,1866,3082]},
     rp:    {d15:[1,2,31],      d45:[21,28,141],     dp:[189,323,295],   nd:[0,0,0],   tot:[211,353,467]},
   },
-  EMP_CAT:{prive:[5507,5739,6438,7623,4208],public:[110,147,168,155,21],gdm:[684,617,646,637,150],vol:[66,62,76,77,30]},
+  EMP_CAT:{priveS:[5507,5739,6438,7623,8263],priveF:[1626,1644,1768,4586,null],pubS:[110,147,168,155,154],pubF:[5,10,13,12,null],gdmS:[684,617,646,637,618],gdmF:[129,null,7,166,null],volS:[66,62,76,77,68],volF:[29,null,null,20,null]},
   IMMAT:{priveF:[4646,5359,6398,8369,8353],priveH:[12366,14067,16424,17929,20353],pubF:[542,463,488,597,787],pubH:[428,480,386,438,481],gdmF:[98,69,81,99,106],gdmH:[44,25,46,41,49]},
   COT:{pub:[8060,9849,10677,11156,19039],priv:[129019,138153,150775,162947,171898],vol:[66,63,76,77,69],gdm:[1110,1002,1045,1049,995]},
   MS:{pub:[35461214165,41557168464,45238174729,47934026093,54223637027],priv:[609049676002,643176483582,702313387746,732988636517,770686464756],vol:[407008497,416240159,529960568,515887160,443698783],gdm:[1981701083,1687035261,2040094874,2015105176,1901812455]},
+  MSD:{pub:[36817413391,43807283529,48173001473,49882820549,55853892353],priv:[926262428300,993805707658,1071980746312,1077420009162,1070842474345],vol:[425728497,414935159,514453568,503317160,438817783],gdm:[1945055150,1669179383,2016508277,1986741444,1878104563]},
 };
+
+// ══════════════════════════════════════════════════════
+// ÉDITEUR UNIVERSEL — GESTION PAR ONGLET INDÉPENDANT
+// ══════════════════════════════════════════════════════
 
 // Onglet éditeur actif
 let edTab='ed-global';
-const edLabels={'ed-global':'Vue Globale','ed-pvid':'PVID','ed-pf':'PF','ed-rp':'RP','ed-del':'Délais','ed-enc':'Encaissements','ed-emp':'Employeurs','ed-is':'Immatriculations','ed-cot':'Cotisants','ed-ms':'Masse Salariale'};
-const edIsAN5={'ed-emp':true,'ed-is':true,'ed-cot':true,'ed-ms':true};
+const edLabels={
+  'ed-global':'Dossiers Ensemble','ed-dos-pvid':'Dossiers PVID','ed-dos-pf':'Dossiers PF','ed-dos-rp':'Dossiers RP',
+  'ed-localite':'Localité','ed-del':'Délais','ed-pvid':'Branche PVID','ed-pf':'Branche PF','ed-rp':'Branche RP',
+  'ed-enc':'Encaissements','ed-emp':'Employeurs','ed-cot':'Salariés Cotisants','ed-ms':'Masse Salariale'
+};
 
-function getEdYrs(){return edIsAN5[edTab]?AN5:AN;}
+// Chaque onglet éditeur a ses propres années — modifiées indépendamment
+// Ces tableaux pointent vers les mêmes références que AN3/AN5/ENC_YRS au départ,
+// mais les opérations ajout/suppression n'agissent QUE sur l'onglet actif.
+const TAB_YEARS = {
+  'ed-global':    AN3,
+  'ed-dos-pvid':  AN3,
+  'ed-dos-pf':    AN3,
+  'ed-dos-rp':    AN3,
+  'ed-localite':  AN3,
+  'ed-del':       AN3,
+  'ed-pvid':      AN5,
+  'ed-pf':        AN5,
+  'ed-rp':        AN5,
+  'ed-enc':       ENC_YRS,
+  'ed-emp':       AN5,
+  'ed-cot':       AN5,
+  'ed-ms':        AN5,
+};
 
+// Groupes d'onglets qui partagent le même tableau d'années
+// Quand on modifie un onglet du groupe AN3, seul AN3 change (et c'est partagé par tous ses onglets).
+// Quand on modifie AN5, seul AN5 change.
+// ENC_YRS est indépendant.
+// => Par conception, AN3 est partagé entre ed-global/dos-pvid/dos-pf/dos-rp/localite/del
+//    et AN5 entre ed-pvid/pf/rp/emp/cot/ms.
+//    C'est acceptable car les données liées sont cohérentes.
+// La vraie isolation est : un clic "Ajouter" sur ed-global n'affecte pas AN5 (ed-ms), et vice versa.
+
+function getEdYrs(){
+  return TAB_YEARS[edTab] || AN3;
+}
+
+// ── Ouvre l'éditeur ──
 function openEditor(){
   renderYrPills();
   renderPanel(edTab);
+  document.getElementById('editorModal').style.display='block';
+}
+function openEditorOn(tabId){
+  document.querySelectorAll('.etabpan').forEach(p=>p.style.display='none');
+  document.querySelectorAll('.etab').forEach(b=>b.classList.remove('on'));
+  const tabEl=document.getElementById(tabId);
+  if(tabEl) tabEl.style.display='block';
+  const btnEl=document.querySelector(`.etab[onclick*="'${tabId}'"]`);
+  if(btnEl) btnEl.classList.add('on');
+  edTab=tabId;
+  const nameEl=document.getElementById('yrTabName');
+  if(nameEl) nameEl.textContent=edLabels[tabId]||tabId;
+  renderYrPills();
+  renderPanel(tabId);
   document.getElementById('editorModal').style.display='block';
 }
 function closeEditor(){document.getElementById('editorModal').style.display='none';}
@@ -2003,7 +2274,7 @@ function showETab(id,btn){
   renderPanel(id);
 }
 
-// ── Pilules d'années ──
+// ── Pilules d'années (affiche les années de l'onglet actif) ──
 function renderYrPills(){
   const yrs=getEdYrs();
   document.getElementById('yrTabName').textContent=edLabels[edTab]||edTab;
@@ -2011,86 +2282,152 @@ function renderYrPills(){
     `<span class="yr-pill">${y}<button onclick="removeYrAt(${i})" title="Supprimer ${y}">✕</button></span>`).join('');
 }
 
-// ── Ajouter une année ──
+// ══════════════════════════════════════════════════════
+// AJOUTER / SUPPRIMER UNE ANNÉE — ISOLÉ PAR ONGLET
+// ══════════════════════════════════════════════════════
+
+// Détermine le groupe de données de l'onglet actif
+function getTabGroup(tab){
+  if(tab==='ed-enc') return 'enc';
+  if(['ed-pvid','ed-pf','ed-rp','ed-emp','ed-cot','ed-ms'].includes(tab)) return 'an5';
+  return 'an3'; // ed-global, ed-dos-pvid, ed-dos-pf, ed-dos-rp, ed-localite, ed-del
+}
+
+// ── Ajouter une année (n'affecte que le groupe de l'onglet actif) ──
 function addYear(){
   const inp=document.getElementById('newYrInput');
   const yr=String(inp.value||'').trim();
   if(!yr||isNaN(yr)||yr.length!==4){alert('Saisir une année valide sur 4 chiffres (ex: 2026)');return;}
   const yrs=getEdYrs();
   if(yrs.includes(yr)){alert(`L'année ${yr} existe déjà dans cet onglet`);return;}
-  // Insérer à la bonne position (tri croissant)
+  // Insérer en ordre croissant
   const pos=yrs.findIndex(y=>y>yr);
   const insertIdx=pos<0?yrs.length:pos;
-  // Étendre toutes les séries de cet onglet avec 0 à la bonne position
-  expandData(edTab,insertIdx);
+  // Étendre seulement les séries du groupe de l'onglet actif
+  expandDataForTab(edTab, insertIdx);
   yrs.splice(insertIdx,0,yr);
+  // Pour ENC : recalibrer ENC.an et initialiser ENC_TOT
+  if(edTab==='ed-enc'){
+    ENC_YRS.forEach((y,yi)=>{for(let t=0;t<4;t++){if(yi*4+t<ENC.an.length)ENC.an[yi*4+t]=yi;}});
+    ENC_TOT['attendu'+yr]=0;
+    ENC_TOT['recouvre'+yr]=0;
+  }
   inp.value='';
   renderYrPills();
   renderPanel(edTab);
   rebuildYearFilter();
-  notify('✅ Année '+yr+' ajoutée — graphiques mis à jour');
+  _rebuildIdxMaps();
+  notify('✅ Année '+yr+' ajoutée sur cet onglet');
 }
 
-// ── Supprimer une année à l'indice idx ──
+// ── Supprimer une année (n'affecte que le groupe de l'onglet actif) ──
 function removeYrAt(idx){
   const yrs=getEdYrs();
   if(yrs.length<=1){alert('Il faut conserver au moins une année');return;}
   if(!confirm(`Supprimer l'année ${yrs[idx]} et ses données ?`))return;
-  shrinkData(edTab,idx);
+  shrinkDataForTab(edTab,idx);
   yrs.splice(idx,1);
+  if(edTab==='ed-enc'){
+    ENC_YRS.forEach((y,yi)=>{for(let t=0;t<4;t++){if(yi*4+t<ENC.an.length)ENC.an[yi*4+t]=yi;}});
+  }
   renderYrPills();
   renderPanel(edTab);
   rebuildYearFilter();
+  _rebuildIdxMaps();
   const a=document.querySelector('.ps.on');
   if(a)buildSec(a.id.replace('p-',''));
-  notify('✅ Année supprimée');
+  notify('✅ Année supprimée de cet onglet');
 }
 
-// ── Étendre les séries (+1 valeur=0 à l'index pos) ──
-function expandData(tab,pos){
-  const ins=(arr)=>{arr.splice(pos,0,0);};
-  if(!edIsAN5[tab]){
+// ── Étendre les séries du groupe de l'onglet (+1 valeur=0 à l'index pos) ──
+function expandDataForTab(tab, pos){
+  const ins=(arr)=>{if(Array.isArray(arr))arr.splice(pos,0,0);};
+  const group=getTabGroup(tab);
+
+  if(group==='enc'){
+    const yr2=document.getElementById('newYrInput').value.trim();
+    const base=pos*4;
+    const labsFinal=['1T','2T','3T','4T'].map(t=>t+' '+yr2);
+    ENC.periodes.splice(base,0,...labsFinal);
+    ENC.attendu.splice(base,0,0,0,0,0);
+    ENC.recouvre.splice(base,0,0,0,0,0);
+    ENC.an.splice(base,0,pos,pos,pos,pos);
+    ENC_YRS.forEach((y,yi)=>{for(let t=0;t<4;t++)ENC.an[yi*4+t]=yi;});
+    return;
+  }
+
+  if(group==='an3'){
+    // Données liées à AN3 : Dossiers (STATUT, LOC, PVID_DOS, PF_DOS, RP_DOS, Totaux), Délais
     ['Reçus','Validés','Instances','Rejetés'].forEach(k=>ins(STATUT[k]));
     ['r','i','v'].forEach(k=>{ins(LOC_TOT[k]);LOC.forEach(l=>ins(l[k]));});
     PVID_DOS.forEach(d=>{ins(d.r);ins(d.i);ins(d.v);});
-    PVID_MNT.forEach(d=>ins(d.v));PVID_EFF.forEach(d=>ins(d.v));
-    ins(PVID_MNT_TOT);ins(PVID_EFF_TOT);
     ['r','i','v'].forEach(k=>{ins(PVID_TOT[k]);ins(PF_TOT[k]);ins(RP_TOT[k]);});
     PF_DOS.forEach(d=>{ins(d.r);ins(d.i);ins(d.v);});
     RP_DOS.forEach(d=>{ins(d.r);ins(d.i);ins(d.v);});
-    ins(RP_EFF);ins(RP_MNT);ins(PF_EFF);ins(PF_MNT);
     ['global','pf','pvid','rp'].forEach(b=>['d15','d45','dp','nd','tot'].forEach(f=>ins(DELAIS[b][f])));
-  } else {
-    ['prive','public','gdm','vol'].forEach(k=>ins(EMP_CAT[k]));
+    return;
+  }
+
+  if(group==='an5'){
+    // Données liées à AN5 : Branches (PVID_MNT/EFF, PF_EFF/MNT, RP_EFF/MNT), Employeurs, Cotisants, Masse Sal.
+    PVID_MNT.forEach(d=>ins(d.v));
+    PVID_EFF.forEach(d=>ins(d.v));
+    ins(PVID_MNT_TOT);
+    ins(PVID_EFF_TOT);
+    ins(RP_EFF);ins(RP_MNT);
+    ins(PF_EFF);ins(PF_MNT);
+    ['priveS','priveF','pubS','pubF','gdmS','gdmF','volS','volF'].forEach(k=>{if(EMP_CAT[k])ins(EMP_CAT[k]);});
     ['priveF','priveH','pubF','pubH','gdmF','gdmH'].forEach(k=>ins(IMMAT[k]));
-    ['pub','priv','vol','gdm'].forEach(k=>ins(COT[k]));
-    ['pub','priv','vol','gdm'].forEach(k=>ins(MS[k]));
+    ['pub','priv','vol','gdm'].forEach(k=>{ins(COT[k]);ins(MS[k]);ins(MSD[k]);});
+    return;
   }
 }
 
-// ── Réduire les séries (-1 valeur à l'index idx) ──
-function shrinkData(tab,idx){
-  const del=(arr)=>{arr.splice(idx,1);};
-  if(!edIsAN5[tab]){
+// ── Réduire les séries du groupe de l'onglet (-1 valeur à l'index idx) ──
+function shrinkDataForTab(tab, idx){
+  const del=(arr)=>{if(Array.isArray(arr))arr.splice(idx,1);};
+  const group=getTabGroup(tab);
+
+  if(group==='enc'){
+    const base=idx*4;
+    ENC.periodes.splice(base,4);
+    ENC.attendu.splice(base,4);
+    ENC.recouvre.splice(base,4);
+    ENC.an.splice(base,4);
+    const yr=ENC_YRS[idx];
+    delete ENC_TOT['attendu'+yr];
+    delete ENC_TOT['recouvre'+yr];
+    return;
+  }
+
+  if(group==='an3'){
     ['Reçus','Validés','Instances','Rejetés'].forEach(k=>del(STATUT[k]));
     ['r','i','v'].forEach(k=>{del(LOC_TOT[k]);LOC.forEach(l=>del(l[k]));});
     PVID_DOS.forEach(d=>{del(d.r);del(d.i);del(d.v);});
-    PVID_MNT.forEach(d=>del(d.v));PVID_EFF.forEach(d=>del(d.v));
-    del(PVID_MNT_TOT);del(PVID_EFF_TOT);
     ['r','i','v'].forEach(k=>{del(PVID_TOT[k]);del(PF_TOT[k]);del(RP_TOT[k]);});
     PF_DOS.forEach(d=>{del(d.r);del(d.i);del(d.v);});
     RP_DOS.forEach(d=>{del(d.r);del(d.i);del(d.v);});
-    del(RP_EFF);del(RP_MNT);del(PF_EFF);del(PF_MNT);
     ['global','pf','pvid','rp'].forEach(b=>['d15','d45','dp','nd','tot'].forEach(f=>del(DELAIS[b][f])));
-  } else {
-    ['prive','public','gdm','vol'].forEach(k=>del(EMP_CAT[k]));
+    return;
+  }
+
+  if(group==='an5'){
+    PVID_MNT.forEach(d=>del(d.v));
+    PVID_EFF.forEach(d=>del(d.v));
+    del(PVID_MNT_TOT);
+    del(PVID_EFF_TOT);
+    del(RP_EFF);del(RP_MNT);
+    del(PF_EFF);del(PF_MNT);
+    ['priveS','priveF','pubS','pubF','gdmS','gdmF','volS','volF'].forEach(k=>{if(EMP_CAT[k])del(EMP_CAT[k]);});
     ['priveF','priveH','pubF','pubH','gdmF','gdmH'].forEach(k=>del(IMMAT[k]));
-    ['pub','priv','vol','gdm'].forEach(k=>del(COT[k]));
-    ['pub','priv','vol','gdm'].forEach(k=>del(MS[k]));
+    ['pub','priv','vol','gdm'].forEach(k=>{del(COT[k]);del(MS[k]);del(MSD[k]);});
+    return;
   }
 }
 
-// ── Grille d'édition ──
+// ════════════════════════════════════════════════════════
+// GRILLE D'ÉDITION — renderPanel
+// ════════════════════════════════════════════════════════
 function renderPanel(tab){
   const yrs=getEdYrs(), n=yrs.length, lw='140px';
   const css=`grid-template-columns:${lw} repeat(${n},1fr)`;
@@ -2100,15 +2437,29 @@ function renderPanel(tab){
 
   if(tab==='ed-global'){
     let h=hdr('Statut');['Reçus','Validés','Instances','Rejetés'].forEach(k=>h+=row(k,STATUT[k],'STATUT',k));
-    h+=hdr('LOC_TOT');['r','i','v'].forEach(k=>h+=row(k,LOC_TOT[k],'LOC_TOT',k));
     document.getElementById('eg-statut').innerHTML=h;
-    let h2='';LOC.forEach((l,i)=>h2+=riv(l.n,l,'LOC',i));
-    document.getElementById('eg-loctot').innerHTML=hdr('Localités')+h2;
   }
-  if(tab==='ed-pvid'){
+  if(tab==='ed-dos-pvid'){
     let h='';PVID_DOS.forEach((d,i)=>h+=riv(d.n,d,'PVID_DOS',i));
     h+=hdr('Totaux PVID');['r','i','v'].forEach(k=>h+=row('PVID_TOT '+k,PVID_TOT[k],'PVID_TOT',k));
-    document.getElementById('eg-pvid-dos').innerHTML=h;
+    document.getElementById('eg-dos-pvid').innerHTML=h;
+  }
+  if(tab==='ed-dos-pf'){
+    let h='';PF_DOS.forEach((d,i)=>h+=riv(d.n,d,'PF_DOS',i));
+    h+=hdr('Totaux PF');['r','i','v'].forEach(k=>h+=row('PF_TOT '+k,PF_TOT[k],'PF_TOT',k));
+    document.getElementById('eg-dos-pf').innerHTML=h;
+  }
+  if(tab==='ed-dos-rp'){
+    let h='';RP_DOS.forEach((d,i)=>h+=riv(d.n,d,'RP_DOS',i));
+    h+=hdr('Totaux RP');['r','i','v'].forEach(k=>h+=row('RP_TOT '+k,RP_TOT[k],'RP_TOT',k));
+    document.getElementById('eg-dos-rp').innerHTML=h;
+  }
+  if(tab==='ed-localite'){
+    let h=hdr('LOC_TOT');['r','i','v'].forEach(k=>h+=row(k,LOC_TOT[k],'LOC_TOT',k));
+    let h2='';LOC.forEach((l,i)=>h2+=riv(l.n,l,'LOC',i));
+    document.getElementById('eg-localite').innerHTML=h+hdr('Localités détaillées')+h2;
+  }
+  if(tab==='ed-pvid'){
     let hm=hdr('Montants');PVID_MNT.forEach((d,i)=>hm+=`<div class="egrid" style="${css}"><label>${d.n}</label>${d.v.map((v,j)=>`<input type="number" data-ds="PVID_MNT" data-idx="${i}" data-i="${j}" value="${v||0}">`).join('')}</div>`);
     hm+=row('Total MNT',PVID_MNT_TOT,'PVID_MNT_TOT','v');
     document.getElementById('eg-pvid-mnt').innerHTML=hm;
@@ -2117,15 +2468,9 @@ function renderPanel(tab){
     document.getElementById('eg-pvid-eff').innerHTML=he;
   }
   if(tab==='ed-pf'){
-    let h='';PF_DOS.forEach((d,i)=>h+=riv(d.n,d,'PF_DOS',i));
-    h+=hdr('Totaux PF');['r','i','v'].forEach(k=>h+=row('PF_TOT '+k,PF_TOT[k],'PF_TOT',k));
-    document.getElementById('eg-pf-dos').innerHTML=h;
     document.getElementById('eg-pf-agg').innerHTML=hdr('Agrégats')+row('Effectifs',PF_EFF,'PF_EFF','v')+row('Montants FCFA',PF_MNT,'PF_MNT','v');
   }
   if(tab==='ed-rp'){
-    let h='';RP_DOS.forEach((d,i)=>h+=riv(d.n,d,'RP_DOS',i));
-    h+=hdr('Totaux RP');['r','i','v'].forEach(k=>h+=row('RP_TOT '+k,RP_TOT[k],'RP_TOT',k));
-    document.getElementById('eg-rp-dos').innerHTML=h;
     document.getElementById('eg-rp-agg').innerHTML=hdr('Agrégats')+row('Effectifs',RP_EFF,'RP_EFF','v')+row('Montants FCFA',RP_MNT,'RP_MNT','v');
   }
   if(tab==='ed-del'){
@@ -2136,24 +2481,84 @@ function renderPanel(tab){
     });
   }
   if(tab==='ed-enc'){
-    const ps=ENC.periodes,np=ps.length,cc=`grid-template-columns:${lw} repeat(${np},1fr)`;
-    let h=`<div class="egrid-hdr" style="${cc}"><span>Période</span>${ps.map(p=>`<span>${p}</span>`).join('')}</div>`;
-    ['attendu','recouvre'].forEach(k=>h+=`<div class="egrid" style="${cc}"><label>${k==='attendu'?'Attendu':'Recouvré'}</label>${ENC[k].map((v,i)=>`<input type="number" data-ds="ENC" data-sub="${k}" data-i="${i}" value="${v||0}">`).join('')}</div>`);
-    h+=`<div class="egrid-hdr" style="${cc}"><span>Libellés périodes</span>${ps.map((_,i)=>`<span>${i+1}</span>`).join('')}</div>`;
-    h+=`<div class="egrid" style="${cc}"><label>Labels</label>${ps.map((p,i)=>`<input type="text" data-ds="ENC" data-sub="periodes" data-i="${i}" value="${p}" style="font-size:10px">`).join('')}</div>`;
+    const yearColors={'2024':'#92400E','2025':'#0C4A6E','2026':'#7C2D12'};
+    const yearBg={'2024':'#FFFBEB','2025':'#EFF6FF','2026':'#FFF7ED'};
+    let h=`<div style="overflow-x:auto">`;
+    h+=`<table style="width:100%;border-collapse:collapse;font-size:11px;min-width:700px">`;
+    h+=`<thead>
+      <tr>
+        <th style="background:#1E3A8A;color:#fff;padding:8px 12px;text-align:left;font-size:10px;border-radius:0;min-width:80px">Année</th>
+        <th style="background:#1E3A8A;color:#fff;padding:8px 10px;text-align:center;font-size:10px" colspan="2">1er Trimestre</th>
+        <th style="background:#1E3A8A;color:#fff;padding:8px 10px;text-align:center;font-size:10px" colspan="2">2ème Trimestre</th>
+        <th style="background:#1E3A8A;color:#fff;padding:8px 10px;text-align:center;font-size:10px" colspan="2">3ème Trimestre</th>
+        <th style="background:#1E3A8A;color:#fff;padding:8px 10px;text-align:center;font-size:10px" colspan="2">4ème Trimestre</th>
+        <th style="background:#065F46;color:#fff;padding:8px 10px;text-align:center;font-size:10px" colspan="2">TOTAL ANNUEL (auto)</th>
+      </tr>
+      <tr>
+        <th style="background:#2563EB;color:#fff;padding:6px 12px;font-size:9px;text-align:left"></th>
+        ${[1,2,3,4].map(()=>`
+          <th style="background:#2563EB;color:#FCD116;padding:6px 8px;font-size:9px">Attendu</th>
+          <th style="background:#2563EB;color:#6EE7A0;padding:6px 8px;font-size:9px">Recouvré</th>
+        `).join('')}
+        <th style="background:#047857;color:#FCD116;padding:6px 8px;font-size:9px">Σ Attendu</th>
+        <th style="background:#047857;color:#6EE7A0;padding:6px 8px;font-size:9px">Σ Recouvré</th>
+      </tr>
+    </thead><tbody>`;
+    ENC_YRS.forEach((yr,yi)=>{
+      const base=yi*4;
+      const bg=yearBg[yr]||'#F9FAFB';
+      const fc=yearColors[yr]||'#1E3A8A';
+      let sa=0,sr=0;
+      for(let t=0;t<4;t++){sa+=ENC.attendu[base+t]||0;sr+=ENC.recouvre[base+t]||0;}
+      const FNi=n=>Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+      h+=`<tr style="background:${bg}">
+        <td style="padding:10px 12px;font-weight:800;color:${fc};font-size:12px;border-bottom:2px solid #E5E7EB">${yr}</td>`;
+      for(let t=0;t<4;t++){
+        const gi=base+t;
+        h+=`
+          <td style="padding:6px 4px;border-bottom:2px solid #E5E7EB">
+            <input type="number" data-ds="ENC" data-sub="attendu" data-i="${gi}" value="${ENC.attendu[gi]||0}"
+              style="width:100%;min-width:110px;padding:5px 6px;border:1.5px solid #D97706;border-radius:5px;font-size:10px;font-weight:700;text-align:right;outline:none;background:#FFFBEB"
+              oninput="encLiveTotal(${yi})">
+          </td>
+          <td style="padding:6px 4px;border-bottom:2px solid #E5E7EB">
+            <input type="number" data-ds="ENC" data-sub="recouvre" data-i="${gi}" value="${ENC.recouvre[gi]||0}"
+              style="width:100%;min-width:110px;padding:5px 6px;border:1.5px solid #15803D;border-radius:5px;font-size:10px;font-weight:700;text-align:right;outline:none;background:#F0FDF4"
+              oninput="encLiveTotal(${yi})">
+          </td>`;
+      }
+      h+=`
+        <td style="padding:6px 8px;text-align:right;font-weight:800;color:#92400E;font-size:10px;border-bottom:2px solid #E5E7EB;background:#FEF3C7" id="enc-tot-a-${yi}">${FNi(sa)}</td>
+        <td style="padding:6px 8px;text-align:right;font-weight:800;color:#14532D;font-size:10px;border-bottom:2px solid #E5E7EB;background:#DCFCE7" id="enc-tot-r-${yi}">${FNi(sr)}</td>
+      </tr>`;
+    });
+    h+=`</tbody></table></div>`;
+    h+=`<div style="margin-top:10px;padding:10px 14px;background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-radius:8px;border-left:4px solid #D97706;font-size:10.5px;color:#92400E;font-weight:700">
+      💡 Les totaux annuels se mettent à jour en temps réel lors de la saisie.<br>
+      Cliquez <b>✅ Appliquer</b> pour enregistrer et actualiser le tableau de bord (cumul global recalculé automatiquement).
+    </div>`;
     document.getElementById('eg-enc').innerHTML=h;
   }
   if(tab==='ed-emp'){
-    let h=hdr('Catégorie');[{k:'prive',l:'Rég. Privé'},{k:'public',l:'Rég. Public'},{k:'gdm',l:'Gens Maison'},{k:'vol',l:'Volontaire'}].forEach(c=>h+=row(c.l,EMP_CAT[c.k],'EMP_CAT',c.k));
+    let h=hdr('Régime / Type');
+    [{sK:'priveS',fK:'priveF',l:'Privé'},{sK:'pubS',fK:'pubF',l:'Public'},{sK:'gdmS',fK:'gdmF',l:'Gens Maison'},{sK:'volS',fK:'volF',l:'Volontaire'}].forEach(c=>{
+      h+=row(c.l+' — Stocks',EMP_CAT[c.sK],'EMP_CAT',c.sK);
+      h+=row(c.l+' — Flux',EMP_CAT[c.fK],'EMP_CAT',c.fK);
+    });
     document.getElementById('eg-emp').innerHTML=h;
   }
-  if(tab==='ed-is'){
-    let h=hdr('Catégorie / Sexe');[{kF:'priveF',kH:'priveH',l:'Privé'},{kF:'pubF',kH:'pubH',l:'Public'},{kF:'gdmF',kH:'gdmH',l:'GDM'}].forEach(r=>{
-      h+=row(r.l+' F',IMMAT[r.kF],'IMMAT',r.kF);h+=row(r.l+' H',IMMAT[r.kH],'IMMAT',r.kH);});
-    document.getElementById('eg-is').innerHTML=h;
-  }
   if(tab==='ed-cot'){
-    let h=hdr('Régime');[{k:'pub',l:'Rég. Public'},{k:'priv',l:'Rég. Privé'},{k:'vol',l:'Volontaire'},{k:'gdm',l:'Gens Maison'}].forEach(c=>h+=row(c.l,COT[c.k],'COT',c.k));
+    const regsC=[{k:'pub',l:'Rég. Public'},{k:'priv',l:'Rég. Privé'},{k:'vol',l:'Volontaire'},{k:'gdm',l:'Gens Maison'}];
+    let h=hdr('Stocks Salariés Cotisants');
+    regsC.forEach(c=>h+=row(c.l+' — Stocks',COT[c.k],'COT',c.k));
+    h+='<div style="height:12px"></div>';
+    h+=hdr('Flux (Nouvelles immatriculations)');
+    [{sFk:'priveF',sHk:'priveH',l:'Privé'},{sFk:'pubF',sHk:'pubH',l:'Public'},{sFk:'gdmF',sHk:'gdmH',l:'Gens Maison'}].forEach(c=>{
+      h+=row(c.l+' — Flux Femmes',IMMAT[c.sFk],'IMMAT',c.sFk);
+      h+=row(c.l+' — Flux Hommes',IMMAT[c.sHk],'IMMAT',c.sHk);
+    });
+    h+='<div style="margin-top:10px;padding:9px 14px;background:#EFF6FF;border-radius:8px;border-left:4px solid #2563EB;font-size:10.5px;color:#1E3A8A;font-weight:700">'
+      +'&#128161; Stocks = salariés cotisants cumulés par régime. Flux = nouvelles immatriculations dans l\'année. Cliquez Appliquer pour actualiser.</div>';
     document.getElementById('eg-cot').innerHTML=h;
   }
   if(tab==='ed-ms'){
@@ -2162,51 +2567,61 @@ function renderPanel(tab){
   }
 }
 
-// ── Lire tous les inputs et appliquer ──
+// ════════════════════════════════════════════════════════
+// APPLIQUER TOUTES LES DONNÉES (lecture des inputs)
+// ════════════════════════════════════════════════════════
 function applyAllData(){
   document.querySelectorAll('.etabpan input[data-ds]').forEach(inp=>{
     const ds=inp.dataset.ds,sub=inp.dataset.sub,i=parseInt(inp.dataset.i);
     const idx2=inp.dataset.idx!==undefined?parseInt(inp.dataset.idx):null;
     const val=inp.type==='text'?inp.value:(parseFloat(inp.value)||0);
-    if(ds==='STATUT')    STATUT[sub][i]=val;
-    else if(ds==='LOC_TOT')  LOC_TOT[sub][i]=val;
-    else if(ds==='LOC')      LOC[idx2][sub][i]=val;
-    else if(ds==='PVID_DOS') PVID_DOS[idx2][sub][i]=val;
-    else if(ds==='PVID_TOT') PVID_TOT[sub][i]=val;
-    else if(ds==='PVID_MNT') PVID_MNT[idx2].v[i]=val;
+    if(ds==='STATUT')         STATUT[sub][i]=val;
+    else if(ds==='LOC_TOT')   LOC_TOT[sub][i]=val;
+    else if(ds==='LOC')       LOC[idx2][sub][i]=val;
+    else if(ds==='PVID_DOS')  PVID_DOS[idx2][sub][i]=val;
+    else if(ds==='PVID_TOT')  PVID_TOT[sub][i]=val;
+    else if(ds==='PVID_MNT')  PVID_MNT[idx2].v[i]=val;
     else if(ds==='PVID_MNT_TOT') PVID_MNT_TOT[i]=val;
-    else if(ds==='PVID_EFF') PVID_EFF[idx2].v[i]=val;
+    else if(ds==='PVID_EFF')  PVID_EFF[idx2].v[i]=val;
     else if(ds==='PVID_EFF_TOT') PVID_EFF_TOT[i]=val;
-    else if(ds==='PF_DOS')  PF_DOS[idx2][sub][i]=val;
-    else if(ds==='PF_TOT')  PF_TOT[sub][i]=val;
-    else if(ds==='PF_EFF')  PF_EFF[i]=val;
-    else if(ds==='PF_MNT')  PF_MNT[i]=val;
-    else if(ds==='RP_DOS')  RP_DOS[idx2][sub][i]=val;
-    else if(ds==='RP_TOT')  RP_TOT[sub][i]=val;
-    else if(ds==='RP_EFF')  RP_EFF[i]=val;
-    else if(ds==='RP_MNT')  RP_MNT[i]=val;
+    else if(ds==='PF_DOS')    PF_DOS[idx2][sub][i]=val;
+    else if(ds==='PF_TOT')    PF_TOT[sub][i]=val;
+    else if(ds==='PF_EFF')    PF_EFF[i]=val;
+    else if(ds==='PF_MNT')    PF_MNT[i]=val;
+    else if(ds==='RP_DOS')    RP_DOS[idx2][sub][i]=val;
+    else if(ds==='RP_TOT')    RP_TOT[sub][i]=val;
+    else if(ds==='RP_EFF')    RP_EFF[i]=val;
+    else if(ds==='RP_MNT')    RP_MNT[i]=val;
     else if(ds==='DELAIS'){const[b,f]=sub.split('.');DELAIS[b][f][i]=val;}
     else if(ds==='ENC'){if(sub==='periodes')ENC.periodes[i]=val;else ENC[sub][i]=val;}
-    else if(ds==='EMP_CAT') EMP_CAT[sub][i]=val;
-    else if(ds==='IMMAT')   IMMAT[sub][i]=val;
-    else if(ds==='COT')     COT[sub][i]=val;
-    else if(ds==='MS')      MS[sub][i]=val;
+    else if(ds==='EMP_CAT')   EMP_CAT[sub][i]=val;
+    else if(ds==='IMMAT')     IMMAT[sub][i]=val;
+    else if(ds==='COT')       COT[sub][i]=val;
+    else if(ds==='MS')        MS[sub][i]=val;
+    else if(ds==='MSD')       MSD[sub][i]=val;
   });
+  recomputeEncTot();
+  rebuildYearFilter();
+  _rebuildIdxMaps();
   closeEditor();
   apF();
+  const activePane = document.querySelector('.ps.on');
+  if(activePane) buildSec(activePane.id.replace('p-',''));
   notify('✅ Données appliquées — tableau de bord actualisé');
 }
 
-// ── Réinitialiser toutes les données ──
+// ════════════════════════════════════════════════════════
+// RÉINITIALISER TOUTES LES DONNÉES
+// ════════════════════════════════════════════════════════
 function resetAllData(){
   if(!confirm('Réinitialiser TOUTES les données aux valeurs d\'origine ?'))return;
-  while(AN.length)AN.pop();ORIG_AN.forEach(v=>AN.push(v));
+  while(AN.length)AN.pop();ORIG_AN5.forEach(v=>AN.push(v));
+  while(AN3.length)AN3.pop();ORIG_AN.forEach(v=>AN3.push(v));
   while(AN5.length)AN5.pop();ORIG_AN5.forEach(v=>AN5.push(v));
   ['Reçus','Validés','Instances','Rejetés'].forEach(k=>STATUT[k]=[...ORIG.STATUT[k]]);
   ['r','i','v'].forEach(k=>{LOC_TOT[k]=[...ORIG.LOC_TOT[k]];});
   LOC.forEach((l,i)=>{['r','i','v'].forEach(k=>l[k]=[...ORIG.LOC[i][k]]);});
   PVID_DOS.forEach((d,i)=>{['r','i','v'].forEach(k=>d[k]=[...ORIG.PVID_DOS[i][k]]);});
-  ['r','i','v'].forEach(k=>{PVID_TOT[k]=[...ORIG.PVID_TOT[k]];PF_TOT[k]=[...ORIG.PF_TOT[k]];RP_TOT[k]=[...ORIG.RP_TOT[k]];});
   PVID_MNT.forEach((d,i)=>d.v=[...ORIG.PVID_MNT[i].v]);
   PVID_EFF.forEach((d,i)=>d.v=[...ORIG.PVID_EFF[i].v]);
   while(PVID_MNT_TOT.length)PVID_MNT_TOT.pop();ORIG.PVID_MNT_TOT.forEach(v=>PVID_MNT_TOT.push(v));
@@ -2218,13 +2633,102 @@ function resetAllData(){
   while(RP_EFF.length)RP_EFF.pop();ORIG.RP_EFF.forEach(v=>RP_EFF.push(v));
   while(RP_MNT.length)RP_MNT.pop();ORIG.RP_MNT.forEach(v=>RP_MNT.push(v));
   ['global','pf','pvid','rp'].forEach(b=>['d15','d45','dp','nd','tot'].forEach(f=>{DELAIS[b][f]=[...ORIG.DELAIS[b][f]];}));
-  ['prive','public','gdm','vol'].forEach(k=>EMP_CAT[k]=[...ORIG.EMP_CAT[k]]);
+  ['priveS','priveF','pubS','pubF','gdmS','gdmF','volS','volF'].forEach(k=>{if(ORIG.EMP_CAT[k])EMP_CAT[k]=[...ORIG.EMP_CAT[k]];});
   ['priveF','priveH','pubF','pubH','gdmF','gdmH'].forEach(k=>IMMAT[k]=[...ORIG.IMMAT[k]]);
-  ['pub','priv','vol','gdm'].forEach(k=>{COT[k]=[...ORIG.COT[k]];MS[k]=[...ORIG.MS[k]];});
+  ['pub','priv','vol','gdm'].forEach(k=>{COT[k]=[...ORIG.COT[k]];MS[k]=[...ORIG.MS[k]];MSD[k]=[...ORIG.MSD[k]];});
   rebuildYearFilter();
+  _rebuildIdxMaps();
   renderYrPills();
   renderPanel(edTab);
+  const activePane = document.querySelector('.ps.on');
+  if(activePane) buildSec(activePane.id.replace('p-',''));
   notify('↩ Données réinitialisées');
+}
+
+function openEditorFromDash(){
+  const activePane = document.querySelector('.ps.on');
+  let tabId = 'ed-global';
+  if(activePane){
+    const secId = activePane.id.replace('p-','');
+    tabId = DASH_TO_EDITOR[secId] || 'ed-global';
+  }
+  openEditorOn(tabId);
+}
+
+// ── REBUILD YEAR FILTER (reconstruit le select #fAn selon AN et AN5) ──
+function rebuildYearFilter(){
+  // AN3 est INDÉPENDANT de AN : il gère les onglets dossiers (2023-2025 par défaut).
+  // La sync AN3 se fait seulement dans expandData/shrinkData des onglets AN3.
+  // Clamp mapYrI to valid range
+  if(typeof mapYrI !== 'undefined') mapYrI = Math.max(0, Math.min(mapYrI, AN3.length-1));
+
+  // Sync AN5_MAP dynamiquement selon AN5
+  Object.keys(AN5_MAP).forEach(k => delete AN5_MAP[k]);
+  AN5.forEach((y, i) => {
+    if(i === 0) AN5_MAP['a2021_dyn_0'] = i; // fallback
+    AN5_MAP['a'+y] = i;
+    // Pour compatibilité avec anciens codes qui utilisent '0','1','2' pour index relatif
+    AN5_MAP[String(i)] = i;
+  });
+
+  const sel = document.getElementById('fAn');
+  if(!sel) return;
+  const prev = sel.value;
+
+  // Construire les options : union de AN, AN3, AN5 (tous les tableaux actifs)
+  const allYears = [...new Set([...AN, ...AN3, ...AN5])].sort();
+  let html = '<option value="all">Toutes les années</option>';
+  allYears.forEach((y, pos) => {
+    // On encode l'année par son label; la logique idx()/idx3()/idx5() utilise AN/AN3/AN5
+    // On garde des valeurs cohérentes : "aYYYY" pour toutes les années
+    html += `<option value="a${y}">${y}</option>`;
+  });
+  sel.innerHTML = html;
+
+  // Restaurer la sélection si elle existe encore
+  const valid = Array.from(sel.options).some(o => o.value === prev);
+  sel.value = valid ? prev : 'all';
+  curAn = sel.value;
+
+  // Mise à jour des fonctions idx/idx3/idx5 pour utiliser "aYYYY" comme clé uniforme
+  _rebuildIdxMaps();
+}
+
+// ── Reconstruire les mappings d'index pour idx/idx3/idx5 ──
+function _rebuildIdxMaps(){
+  // idx()  utilise AN  (branches PVID/PF/RP 5 ans)
+  // idx3() utilise AN3 (onglets dossiers, tableau indépendant)
+  // idx5() utilise AN5 (employeurs/immat/cotisants/masse sal)
+  window._AN_MAP = {};
+  AN.forEach((y, i) => { window._AN_MAP['a'+y] = i; });
+  window._AN3_MAP = {};
+  AN3.forEach((y, i) => { window._AN3_MAP['a'+y] = i; });
+  window._AN5_MAP = {};
+  AN5.forEach((y, i) => { window._AN5_MAP['a'+y] = i; });
+}
+
+// ── Suppression de la dernière année de l'onglet actif ──
+function removeLastYear(){
+  const yrs = getEdYrs();
+  if(yrs.length <= 1){ alert('Il faut conserver au moins une année'); return; }
+  removeYrAt(yrs.length - 1);
+}
+
+// ── Mise à jour live des totaux dans l'éditeur encaissements ──
+function encLiveTotal(yi){
+  const base=yi*4;
+  let sa=0,sr=0;
+  for(let t=0;t<4;t++){
+    const ai=document.querySelector(`input[data-ds="ENC"][data-sub="attendu"][data-i="${base+t}"]`);
+    const ri=document.querySelector(`input[data-ds="ENC"][data-sub="recouvre"][data-i="${base+t}"]`);
+    sa+=parseFloat(ai?.value||0)||0;
+    sr+=parseFloat(ri?.value||0)||0;
+  }
+  const FNi=n=>Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  const ea=document.getElementById('enc-tot-a-'+yi);
+  const er=document.getElementById('enc-tot-r-'+yi);
+  if(ea)ea.textContent=FNi(sa);
+  if(er)er.textContent=FNi(sr);
 }
 
 function notify(msg){
