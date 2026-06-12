@@ -1069,10 +1069,23 @@ function pieLg(id,labels,vals,colors,fmt){
 function kC(l,v,s,tr,dl,col){
   return`<div class="kc" style="border-left-color:${col};animation-delay:${dl}s"><div class="kl">${l}</div><div class="kv">${v}</div>${s?`<div class="ks">${s}</div>`:''}${tr}</div>`;
 }
-function trH(a,b){
+function trH(a,b,lbl){
   if(!a||!b||a===0)return'';
   const v=((b-a)/a*100).toFixed(1);
-  return`<span class="kt ${parseFloat(v)>=0?'ku':'kd'}">${parseFloat(v)>=0?'▲':'▼'} ${Math.abs(v)}%</span>`;
+  const vsStr=lbl?` <span style="font-size:8px;opacity:.85">vs ${lbl}</span>`:'';
+  return`<span class="kt ${parseFloat(v)>=0?'ku':'kd'}">${parseFloat(v)>=0?'▲':'▼'} ${Math.abs(v)}%${vsStr}</span>`;
+}
+// trH dynamique AN3 : compare data[li] à data[li-1], affiche vs AN3[li-1]
+function trHd3(data,li){
+  const pi=li>0?li-1:-1;
+  if(pi<0||!data[pi]||data[pi]===0)return'';
+  return trH(data[pi],data[li],AN3[pi]);
+}
+// trH dynamique AN : compare data[li] à data[li-1], affiche vs AN[li-1]
+function trHd(data,li){
+  const pi=li>0?li-1:-1;
+  if(pi<0||!data[pi]||data[pi]===0)return'';
+  return trH(data[pi],data[li],AN[pi]);
 }
 
 // NAVIGATION — initialisation différée (après chargement complet du DOM et des variables)
@@ -1162,11 +1175,11 @@ function bGlobal(){
   const txv=(STATUT.Validés[li]/STATUT.Reçus[li]*100).toFixed(1);
   const _cbG=document.getElementById('cb-g'); if(_cbG) _cbG.textContent=ANS.join(' · ');
   document.getElementById('hl-g').innerHTML=
-    `<div class="hi"><div class="hv">${FN(STATUT.Reçus[li])}</div><div class="hlt">Dossiers Reçus ${AN3[li]}</div>${trH(STATUT.Reçus[0],STATUT.Reçus[li])?`<div style="font-size:9px;margin-top:2px">${trH(STATUT.Reçus[0],STATUT.Reçus[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(STATUT.Validés[li])}</div><div class="hlt">Validés ${AN3[li]}</div>${trH(STATUT.Validés[0],STATUT.Validés[li])?`<div style="font-size:9px;margin-top:2px">${trH(STATUT.Validés[0],STATUT.Validés[li])}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(STATUT.Reçus[li])}</div><div class="hlt">Dossiers Reçus ${AN3[li]}</div>${trHd3(STATUT.Reçus,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(STATUT.Reçus,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(STATUT.Validés[li])}</div><div class="hlt">Validés ${AN3[li]}</div>${trHd3(STATUT.Validés,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(STATUT.Validés,li)}</div>`:''}</div><div class="hvr"></div>`+
     `<div class="hi"><div class="hv">${txv}%</div><div class="hlt">Taux Validation</div><div class="hlt" style="font-size:8.5px">Validés/Reçus</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(STATUT.Instances[li])}</div><div class="hlt">Instances ${AN3[li]}</div>${trH(STATUT.Instances[0],STATUT.Instances[li])?`<div style="font-size:9px;margin-top:2px">${trH(STATUT.Instances[0],STATUT.Instances[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(STATUT.Rejetés[li])}</div><div class="hlt">Rejetés ${AN3[li]}</div>${trH(STATUT.Rejetés[0],STATUT.Rejetés[li])?`<div style="font-size:9px;margin-top:2px">${trH(STATUT.Rejetés[0],STATUT.Rejetés[li])}</div>`:''}</div>`;
+    `<div class="hi"><div class="hv">${FN(STATUT.Instances[li])}</div><div class="hlt">Instances ${AN3[li]}</div>${trHd3(STATUT.Instances,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(STATUT.Instances,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(STATUT.Rejetés[li])}</div><div class="hlt">Rejetés ${AN3[li]}</div>${trHd3(STATUT.Rejetés,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(STATUT.Rejetés,li)}</div>`:''}</div>`;
   mkC('cGEvo','bar',ANS,[
     {label:'Reçus',data:rec,backgroundColor:'#1E3A8A',borderRadius:4,borderSkipped:false},
     {label:'Validés',data:val,backgroundColor:'#15803D',borderRadius:4,borderSkipped:false},
@@ -1226,11 +1239,11 @@ function bDosPvid(){
   const I=idx3(),li=I[I.length-1],ANS=anL3();
   bDos('hl-dp','kg-dp','cb-dp','cDpBar','cDpEvo','cDpTaux','tDp',null,
     PVID_DOS,PVID_TOT,'hp',
-    [{v:FN(PVID_TOT.r[li]),l:'Reçus PVID '+AN3[li],tr:trH(PVID_TOT.r[0],PVID_TOT.r[li])},{v:FN(PVID_TOT.i[li]),l:'Instances '+AN3[li],tr:trH(PVID_TOT.i[0],PVID_TOT.i[li])},
-     {v:FN(PVID_TOT.v[li]),l:'Validés '+AN3[li],tr:trH(PVID_TOT.v[0],PVID_TOT.v[li])},{v:pct(PVID_TOT.v[li],PVID_TOT.r[li]),l:'Taux Validation'}],
-    (I,li)=>kC('Reçus PVID',FN(PVID_TOT.r[li]),'dossiers '+AN3[li],trH(PVID_TOT.r[0],PVID_TOT.r[li]),.04,'#0891B2')+
-      kC('Validés',FN(PVID_TOT.v[li]),'dossiers',trH(PVID_TOT.v[0],PVID_TOT.v[li]),.08,'#15803D')+
-      kC('Instances',FN(PVID_TOT.i[li]),'en attente',trH(PVID_TOT.i[0],PVID_TOT.i[li]),.12,'#D97706')+
+    [{v:FN(PVID_TOT.r[li]),l:'Reçus PVID '+AN3[li],tr:trHd3(PVID_TOT.r,li)},{v:FN(PVID_TOT.i[li]),l:'Instances '+AN3[li],tr:trHd3(PVID_TOT.i,li)},
+     {v:FN(PVID_TOT.v[li]),l:'Validés '+AN3[li],tr:trHd3(PVID_TOT.v,li)},{v:pct(PVID_TOT.v[li],PVID_TOT.r[li]),l:'Taux Validation'}],
+    (I,li)=>kC('Reçus PVID',FN(PVID_TOT.r[li]),'dossiers '+AN3[li],trHd3(PVID_TOT.r,li),.04,'#0891B2')+
+      kC('Validés',FN(PVID_TOT.v[li]),'dossiers',trHd3(PVID_TOT.v,li),.08,'#15803D')+
+      kC('Instances',FN(PVID_TOT.i[li]),'en attente',trHd3(PVID_TOT.i,li),.12,'#D97706')+
       kC('Taux Validation',pct(PVID_TOT.v[li],PVID_TOT.r[li]),'Validés/Reçus','',0.16,'#1E3A8A'),
     (elId,I,ANS)=>{
       const hd='<thead><tr><th style="text-align:left;min-width:50px">Prest.</th>'+ANS.map(a=>`<th colspan="2" class="hp" style="text-align:center">${a}</th>`).join('')+'</tr><tr><th></th>'+ANS.map(()=>'<th>Effectifs</th><th>Montants (FCFA)</th>').join('')+'</tr></thead>';
@@ -1246,11 +1259,11 @@ function bDosPf(){
   const I=idx3(),li=I[I.length-1],ANS=anL3();
   bDos('hl-dpf','kg-dpf','cb-dpf','cDpfBar','cDpfEvo','cDpfTaux','tDpf',null,
     PF_DOS,PF_TOT,'hpf',
-    [{v:FN(PF_TOT.r[li]),l:'Reçus PF '+AN3[li],tr:trH(PF_TOT.r[0],PF_TOT.r[li])},{v:FN(PF_TOT.i[li]),l:'Instances '+AN3[li],tr:trH(PF_TOT.i[0],PF_TOT.i[li])},
-     {v:FN(PF_TOT.v[li]),l:'Validés '+AN3[li],tr:trH(PF_TOT.v[0],PF_TOT.v[li])},{v:pct(PF_TOT.v[li],PF_TOT.r[li]),l:'Taux Validation'}],
-    (I,li)=>kC('Reçus PF',FN(PF_TOT.r[li]),'dossiers '+AN3[li],trH(PF_TOT.r[0],PF_TOT.r[li]),.04,'#059669')+
-      kC('Validés',FN(PF_TOT.v[li]),'dossiers',trH(PF_TOT.v[0],PF_TOT.v[li]),.08,'#15803D')+
-      kC('Instances',FN(PF_TOT.i[li]),'en attente',trH(PF_TOT.i[0],PF_TOT.i[li]),.12,'#D97706')+
+    [{v:FN(PF_TOT.r[li]),l:'Reçus PF '+AN3[li],tr:trHd3(PF_TOT.r,li)},{v:FN(PF_TOT.i[li]),l:'Instances '+AN3[li],tr:trHd3(PF_TOT.i,li)},
+     {v:FN(PF_TOT.v[li]),l:'Validés '+AN3[li],tr:trHd3(PF_TOT.v,li)},{v:pct(PF_TOT.v[li],PF_TOT.r[li]),l:'Taux Validation'}],
+    (I,li)=>kC('Reçus PF',FN(PF_TOT.r[li]),'dossiers '+AN3[li],trHd3(PF_TOT.r,li),.04,'#059669')+
+      kC('Validés',FN(PF_TOT.v[li]),'dossiers',trHd3(PF_TOT.v,li),.08,'#15803D')+
+      kC('Instances',FN(PF_TOT.i[li]),'en attente',trHd3(PF_TOT.i,li),.12,'#D97706')+
       kC('Taux Validation',pct(PF_TOT.v[li],PF_TOT.r[li]),'Validés/Reçus','',0.16,'#059669'),
     (elId,I,ANS)=>{
       const hd='<thead><tr><th style="text-align:left">Indicateur</th>'+ANS.map(a=>`<th class="hpf">${a}</th>`).join('')+'</tr></thead>';
@@ -1269,11 +1282,11 @@ function bDosRp(){
   const I=idx3(),li=I[I.length-1],ANS=anL3();
   bDos('hl-drp','kg-drp','cb-drp','cDrpBar','cDrpEvo',null,'tDrp',null,
     RP_DOS,RP_TOT,'hrp',
-    [{v:FN(RP_TOT.r[li]),l:'Reçus RP '+AN3[li],tr:trH(RP_TOT.r[0],RP_TOT.r[li])},{v:FN(RP_TOT.i[li]),l:'Instances '+AN3[li],tr:trH(RP_TOT.i[0],RP_TOT.i[li])},
-     {v:FN(RP_TOT.v[li]),l:'Validés '+AN3[li],tr:trH(RP_TOT.v[0],RP_TOT.v[li])},{v:pct(RP_TOT.v[li],RP_TOT.r[li]),l:'Taux Validation'}],
-    (I,li)=>kC('Reçus RP',FN(RP_TOT.r[li]),'dossiers '+AN3[li],trH(RP_TOT.r[0],RP_TOT.r[li]),.04,'#DC2626')+
-      kC('Validés',FN(RP_TOT.v[li]),'dossiers',trH(RP_TOT.v[0],RP_TOT.v[li]),.08,'#15803D')+
-      kC('Instances',FN(RP_TOT.i[li]),'en attente',trH(RP_TOT.i[0],RP_TOT.i[li]),.12,'#D97706')+
+    [{v:FN(RP_TOT.r[li]),l:'Reçus RP '+AN3[li],tr:trHd3(RP_TOT.r,li)},{v:FN(RP_TOT.i[li]),l:'Instances '+AN3[li],tr:trHd3(RP_TOT.i,li)},
+     {v:FN(RP_TOT.v[li]),l:'Validés '+AN3[li],tr:trHd3(RP_TOT.v,li)},{v:pct(RP_TOT.v[li],RP_TOT.r[li]),l:'Taux Validation'}],
+    (I,li)=>kC('Reçus RP',FN(RP_TOT.r[li]),'dossiers '+AN3[li],trHd3(RP_TOT.r,li),.04,'#DC2626')+
+      kC('Validés',FN(RP_TOT.v[li]),'dossiers',trHd3(RP_TOT.v,li),.08,'#15803D')+
+      kC('Instances',FN(RP_TOT.i[li]),'en attente',trHd3(RP_TOT.i,li),.12,'#D97706')+
       kC('Taux Validation',pct(RP_TOT.v[li],RP_TOT.r[li]),'Validés/Reçus','',0.16,'#DC2626'),
     (elId,I,ANS)=>{
       const hd='<thead><tr><th style="text-align:left">Indicateur</th>'+ANS.map(a=>`<th class="hrp">${a}</th>`).join('')+'</tr></thead>';
@@ -1301,17 +1314,31 @@ function setMapYr(i,btn){
   if(btn)btn.classList.add('on');
   const lbl=document.getElementById('map-yr-lbl');
   if(lbl)lbl.textContent=AN3[mapYrI]||AN3[AN3.length-1];
-  updateMap();
+  const locIdx=curLoc==='all'?undefined:parseInt(curLoc);
+  updateMap(locIdx!=null&&!isNaN(locIdx)?locIdx:undefined);
 }
-function updateMap(){
+function updateMap(focusIdx){
   const i=mapYrI,maxR=Math.max(...LOC.map(l=>l.r[i]));
   ['mp-0','mp-1','mp-2','mp-3','mp-4','mp-5','mp-6','mp-7','mp-8'].forEach((id,li)=>{
     const p=document.getElementById(id);if(!p)return;
-    const t=LOC[li].r[i]/maxR;
-    p.style.opacity=(0.4+t*0.6).toString();
+    if(focusIdx!=null){
+      // Province sélectionnée : pleine opacité ; les autres très atténuées
+      p.style.opacity=li===focusIdx?'1':'0.12';
+      p.style.filter=li===focusIdx?'drop-shadow(0 0 6px rgba(124,58,237,.8))':'grayscale(1)';
+    } else {
+      const t=LOC[li].r[i]/maxR;
+      p.style.opacity=(0.4+t*0.6).toString();
+      p.style.filter='';
+    }
   });
   const items=document.getElementById('map-legend-items');
-  const sorted=[...LOC].sort((a,b)=>b.r[i]-a.r[i]);
+  let sorted;
+  if(focusIdx!=null){
+    // Légende : uniquement la province sélectionnée
+    sorted=[LOC[focusIdx]];
+  } else {
+    sorted=[...LOC].sort((a,b)=>b.r[i]-a.r[i]);
+  }
   const hdrRow=`<div style="display:flex;justify-content:space-between;align-items:center;padding:3px 9px 6px;border-bottom:1px solid var(--brd);margin-bottom:4px"><span style="font-size:9px;font-weight:800;color:var(--muted);letter-spacing:.8px;text-transform:uppercase">Province</span><span style="font-size:9px;font-weight:800;color:var(--muted);letter-spacing:.8px;text-transform:uppercase">Total Reçu</span></div>`;
   items.innerHTML=hdrRow+sorted.map(l=>{
     const tx=l.r[i]>0?(l.v[i]/l.r[i]*100).toFixed(0)+'%':'—';
@@ -1364,7 +1391,7 @@ function bLoc(){
   mapYrI=li;
   document.querySelectorAll('.myrb').forEach((b,i)=>{b.classList.toggle('on',i===li);});
   document.getElementById('map-yr-lbl').textContent=AN3[li];
-  updateMap();
+  updateMap(locIdx!==null?locIdx:undefined);
 
   // ── Calcul totaux selon filtre branche ──
   function getTot(ld, yi){
@@ -1389,23 +1416,29 @@ function bLoc(){
   if(locIdx!==null && LOC_DETAIL[locIdx]){
     const l=LOC_DETAIL[locIdx];
     const tot=getTot(l,li), val=getVal(l,li), enc=getEnc(l,li);
+    const pi3=li>0?li-1:-1;
+    const totP=pi3>=0?getTot(l,pi3):0;
+    const valP=pi3>=0?getVal(l,pi3):0;
+    const encP=pi3>=0?getEnc(l,pi3):0;
     document.getElementById('hl-loc').innerHTML=
       `<div class="hi"><div class="hv" style="color:#FCD116">${l.n}</div><div class="hlt">Province sélectionnée</div></div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${FN(tot)}</div><div class="hlt">Total ${AN3[li]}</div></div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${FN(enc)}</div><div class="hlt">En cours ${AN3[li]}</div></div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${FN(val)}</div><div class="hlt">Validés ${AN3[li]}</div></div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${tot>0?(val/tot*100).toFixed(0)+'%':'—'}</div><div class="hlt">Taux Validation</div></div>`;
-    // kg-loc supprimé : données intégrées dans hl-loc
+      `<div class="hi"><div class="hv">${FN(tot)}</div><div class="hlt">Total ${AN3[li]}</div>${pi3>=0&&totP?trH(totP,tot,AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(totP,tot,AN3[pi3])}</div>`:'':''}</div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(enc)}</div><div class="hlt">En cours ${AN3[li]}</div>${pi3>=0&&encP?trH(encP,enc,AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(encP,enc,AN3[pi3])}</div>`:'':''}</div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(val)}</div><div class="hlt">Validés ${AN3[li]}</div>${pi3>=0&&valP?trH(valP,val,AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(valP,val,AN3[pi3])}</div>`:'':''}</div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${tot>0?(val/tot*100).toFixed(0)+'%':'—'}</div><div class="hlt">Taux Validation</div>${pi3>=0&&totP&&valP?trH(totP>0?valP/totP:0,tot>0?val/tot:0,AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(totP>0?valP/totP:0,tot>0?val/tot:0,AN3[pi3])}</div>`:'':''}</div>`;
+    // Carte : mettre en évidence uniquement la province sélectionnée
+    updateMap(locIdx);
   } else {
     const totNat=LOC_DETAIL.reduce((s,l)=>s+getTot(l,li),0);
     const valNat=LOC_DETAIL.reduce((s,l)=>s+getVal(l,li),0);
     const encNat=LOC_DETAIL.reduce((s,l)=>s+getEnc(l,li),0);
+    const pi3=li>0?li-1:-1;
     document.getElementById('hl-loc').innerHTML=
-      `<div class="hi"><div class="hv">${FN(totNat)}</div><div class="hlt">Total National ${AN3[li]}</div>${trH(LOC_DETAIL.reduce((s,l)=>s+getTot(l,0),0),totNat)?`<div style="font-size:9px;margin-top:2px">${trH(LOC_DETAIL.reduce((s,l)=>s+getTot(l,0),0),totNat)}</div>`:''}</div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${FN(encNat)}</div><div class="hlt">En cours ${AN3[li]}</div>${trH(LOC_DETAIL.reduce((s,l)=>s+getEnc(l,0),0),encNat)?`<div style="font-size:9px;margin-top:2px">${trH(LOC_DETAIL.reduce((s,l)=>s+getEnc(l,0),0),encNat)}</div>`:''}</div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${FN(getTot(LOC_DETAIL[0],li))}</div><div class="hlt">Estuaire ${AN3[li]}</div>${trH(getTot(LOC_DETAIL[0],0),getTot(LOC_DETAIL[0],li))?`<div style="font-size:9px;margin-top:2px">${trH(getTot(LOC_DETAIL[0],0),getTot(LOC_DETAIL[0],li))}</div>`:''}</div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${FN(getTot(LOC_DETAIL[7],li))}</div><div class="hlt">Ogooué-Maritime ${AN3[li]}</div>${trH(getTot(LOC_DETAIL[7],0),getTot(LOC_DETAIL[7],li))?`<div style="font-size:9px;margin-top:2px">${trH(getTot(LOC_DETAIL[7],0),getTot(LOC_DETAIL[7],li))}</div>`:''}</div><div class="hvr"></div>`+
-      `<div class="hi"><div class="hv">${totNat>0?(valNat/totNat*100).toFixed(0)+'%':'—'}</div><div class="hlt">Taux Valid. National</div>${trH(LOC_DETAIL.reduce((s,l)=>s+getTot(l,0),0)>0?(LOC_DETAIL.reduce((s,l)=>s+getVal(l,0),0)/LOC_DETAIL.reduce((s,l)=>s+getTot(l,0),0)):0,totNat>0?valNat/totNat:0)?`<div style="font-size:9px;margin-top:2px"></div>`:''}</div>`;
+      `<div class="hi"><div class="hv">${FN(totNat)}</div><div class="hlt">Total National ${AN3[li]}</div>${pi3>=0?trH(LOC_DETAIL.reduce((s,l)=>s+getTot(l,pi3),0),totNat,AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(LOC_DETAIL.reduce((s,l)=>s+getTot(l,pi3),0),totNat,AN3[pi3])}</div>`:'':''}</div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(encNat)}</div><div class="hlt">En cours ${AN3[li]}</div>${pi3>=0?trH(LOC_DETAIL.reduce((s,l)=>s+getEnc(l,pi3),0),encNat,AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(LOC_DETAIL.reduce((s,l)=>s+getEnc(l,pi3),0),encNat,AN3[pi3])}</div>`:'':''}</div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(getTot(LOC_DETAIL[0],li))}</div><div class="hlt">Estuaire ${AN3[li]}</div>${pi3>=0?trH(getTot(LOC_DETAIL[0],pi3),getTot(LOC_DETAIL[0],li),AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(getTot(LOC_DETAIL[0],pi3),getTot(LOC_DETAIL[0],li),AN3[pi3])}</div>`:'':''}</div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${FN(getTot(LOC_DETAIL[7],li))}</div><div class="hlt">Ogooué-Maritime ${AN3[li]}</div>${pi3>=0?trH(getTot(LOC_DETAIL[7],pi3),getTot(LOC_DETAIL[7],li),AN3[pi3])?`<div style="font-size:9px;margin-top:2px">${trH(getTot(LOC_DETAIL[7],pi3),getTot(LOC_DETAIL[7],li),AN3[pi3])}</div>`:'':''}</div><div class="hvr"></div>`+
+      `<div class="hi"><div class="hv">${totNat>0?(valNat/totNat*100).toFixed(0)+'%':'—'}</div><div class="hlt">Taux Valid. National</div></div>`;
   }
 
   // ── Graphiques basés sur LOC filtrée (sans Localité Indéterminée) ──
@@ -1527,11 +1560,11 @@ function bLoc(){
 function bBrPvid(){
   const I=idx(),ANS=anL(),li=I[I.length-1];
   document.getElementById('hl-bpvid').innerHTML=
-    `<div class="hi"><div class="hv">${FN(PVID_EFF_TOT[li])}</div><div class="hlt">Effectifs PVID ${AN[li]}</div>${trH(PVID_EFF_TOT[0],PVID_EFF_TOT[li])?`<div style="font-size:9px;margin-top:2px">${trH(PVID_EFF_TOT[0],PVID_EFF_TOT[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FB(PVID_MNT_TOT[li])}</div><div class="hlt">Montants ${AN[li]}</div>${trH(PVID_MNT_TOT[0],PVID_MNT_TOT[li])?`<div style="font-size:9px;margin-top:2px">${trH(PVID_MNT_TOT[0],PVID_MNT_TOT[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='PV').v[li])}</div><div class="hlt">Pension Vieillesse</div>${trH(PVID_EFF.find(p=>p.n==='PV').v[0],PVID_EFF.find(p=>p.n==='PV').v[li])?`<div style="font-size:9px;margin-top:2px">${trH(PVID_EFF.find(p=>p.n==='PV').v[0],PVID_EFF.find(p=>p.n==='PV').v[li])}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(PVID_EFF_TOT[li])}</div><div class="hlt">Effectifs PVID ${AN[li]}</div>${trHd(PVID_EFF_TOT,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF_TOT,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FB(PVID_MNT_TOT[li])}</div><div class="hlt">Montants ${AN[li]}</div>${trHd(PVID_MNT_TOT,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_MNT_TOT,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='PV').v[li])}</div><div class="hlt">Pension Vieillesse</div>${trHd(PVID_EFF.find(p=>p.n==='PV').v,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF.find(p=>p.n==='PV').v,li)}</div>`:''}</div><div class="hvr"></div>`+
     `<div class="hi"><div class="hv">${FB(PVID_MNT.find(p=>p.n==='PV').v[li])}</div><div class="hlt">Montants PV ${AN[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='PS').v[li])}</div><div class="hlt">Pension Survivant</div>${trH(PVID_EFF.find(p=>p.n==='PS').v[0],PVID_EFF.find(p=>p.n==='PS').v[li])?`<div style="font-size:9px;margin-top:2px">${trH(PVID_EFF.find(p=>p.n==='PS').v[0],PVID_EFF.find(p=>p.n==='PS').v[li])}</div>`:''}</div>`;
+    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='PS').v[li])}</div><div class="hlt">Pension Survivant</div>${trHd(PVID_EFF.find(p=>p.n==='PS').v,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF.find(p=>p.n==='PS').v,li)}</div>`:''}</div>`;
   mkC('cBpvidEff','bar',ANS,PVID_EFF.map(p=>({label:p.n,data:I.map(i=>p.v[i]),backgroundColor:p.c,borderRadius:4,borderSkipped:false})));
   mkC('cBpvidMnt','line',ANS,PVID_MNT.map(p=>({label:p.n,data:I.map(i=>p.v[i]/1e9),borderColor:p.c,backgroundColor:p.c+'20',borderWidth:2.5,fill:false,tension:.4,pointRadius:4,pointBackgroundColor:p.c})));
   mkC('cBpvidTot','bar',ANS,[
@@ -1551,10 +1584,10 @@ function bBrPvid(){
 function bBrPf(){
   const I=idx(),ANS=anL(),li=I[I.length-1];
   document.getElementById('hl-bpf').innerHTML=
-    `<div class="hi"><div class="hv">${FN(PF_EFF[li])}</div><div class="hlt">Effectifs PF ${AN[li]}</div>${trH(PF_EFF[0],PF_EFF[li])?`<div style="font-size:9px;margin-top:2px">${trH(PF_EFF[0],PF_EFF[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FB(PF_MNT[li])}</div><div class="hlt">Montants PF ${AN[li]}</div>${trH(PF_MNT[0],PF_MNT[li])?`<div style="font-size:9px;margin-top:2px">${trH(PF_MNT[0],PF_MNT[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${trH(PF_EFF[0],PF_EFF[li])?((PF_EFF[li]-PF_EFF[0])/PF_EFF[0]*100).toFixed(1)+'%':'—'}</div><div class="hlt">Évol. Effectifs 2021→${AN[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${((PF_MNT[li]-PF_MNT[0])/PF_MNT[0]*100).toFixed(1)}%</div><div class="hlt">Évol. Montants 2021→${AN[li]}</div></div>`;
+    `<div class="hi"><div class="hv">${FN(PF_EFF[li])}</div><div class="hlt">Effectifs PF ${AN[li]}</div>${trHd(PF_EFF,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PF_EFF,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FB(PF_MNT[li])}</div><div class="hlt">Montants PF ${AN[li]}</div>${trHd(PF_MNT,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PF_MNT,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${li>0?((PF_EFF[li]-PF_EFF[li-1])/PF_EFF[li-1]*100).toFixed(1)+'%':'—'}</div><div class="hlt">Évol. Effectifs ${li>0?AN[li-1]+'→':''}${AN[li]}</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${li>0?((PF_MNT[li]-PF_MNT[li-1])/PF_MNT[li-1]*100).toFixed(1)+'%':'—'}</div><div class="hlt">Évol. Montants ${li>0?AN[li-1]+'→':''}${AN[li]}</div></div>`;
   mkC('cBpfEff','line',ANS,[{label:'Effectifs PF',data:I.map(i=>PF_EFF[i]),borderColor:'#059669',backgroundColor:'rgba(5,150,105,.12)',borderWidth:3,fill:true,tension:.4,pointRadius:6,pointBackgroundColor:'#059669',pointBorderColor:'#fff',pointBorderWidth:2}]);
   mkC('cBpfMnt','line',ANS,[{label:'Montants (Mds FCFA)',data:I.map(i=>PF_MNT[i]/1e9),borderColor:'#D97706',backgroundColor:'rgba(217,119,6,.12)',borderWidth:3,fill:true,tension:.4,pointRadius:6,pointBackgroundColor:'#D97706',pointBorderColor:'#fff',pointBorderWidth:2}]);
   const hd='<thead><tr><th style="text-align:left">Indicateur</th>'+ANS.map(a=>`<th class="hpf">${a}</th>`).join('')+'</tr></thead>';
@@ -1570,10 +1603,10 @@ function bBrPf(){
 function bBrRp(){
   const I=idx(),ANS=anL(),li=I[I.length-1];
   document.getElementById('hl-brp').innerHTML=
-    `<div class="hi"><div class="hv">${FN(RP_EFF[li])}</div><div class="hlt">Effectifs RP ${AN[li]}</div>${trH(RP_EFF[0],RP_EFF[li])?`<div style="font-size:9px;margin-top:2px">${trH(RP_EFF[0],RP_EFF[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FM(RP_MNT[li])} FCFA</div><div class="hlt">Montants RP ${AN[li]}</div>${trH(RP_MNT[0],RP_MNT[li])?`<div style="font-size:9px;margin-top:2px">${trH(RP_MNT[0],RP_MNT[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${((RP_EFF[li]-RP_EFF[0])/RP_EFF[0]*100).toFixed(1)}%</div><div class="hlt">Évol. Effectifs 2021→${AN[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${((RP_MNT[li]-RP_MNT[0])/RP_MNT[0]*100).toFixed(1)}%</div><div class="hlt">Évol. Montants 2021→${AN[li]}</div></div>`;
+    `<div class="hi"><div class="hv">${FN(RP_EFF[li])}</div><div class="hlt">Effectifs RP ${AN[li]}</div>${trHd(RP_EFF,li)?`<div style="font-size:9px;margin-top:2px">${trHd(RP_EFF,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FM(RP_MNT[li])} FCFA</div><div class="hlt">Montants RP ${AN[li]}</div>${trHd(RP_MNT,li)?`<div style="font-size:9px;margin-top:2px">${trHd(RP_MNT,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${li>0?((RP_EFF[li]-RP_EFF[li-1])/RP_EFF[li-1]*100).toFixed(1)+'%':'—'}</div><div class="hlt">Évol. Effectifs ${li>0?AN[li-1]+'→':''}${AN[li]}</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${li>0?((RP_MNT[li]-RP_MNT[li-1])/RP_MNT[li-1]*100).toFixed(1)+'%':'—'}</div><div class="hlt">Évol. Montants ${li>0?AN[li-1]+'→':''}${AN[li]}</div></div>`;
   mkC('cBrpEff','line',ANS,[{label:'Effectifs RP',data:I.map(i=>RP_EFF[i]),borderColor:'#DC2626',backgroundColor:'rgba(220,38,38,.12)',borderWidth:3,fill:true,tension:.4,pointRadius:6,pointBackgroundColor:'#DC2626',pointBorderColor:'#fff',pointBorderWidth:2}]);
   mkC('cBrpMnt','line',ANS,[{label:'Montants RP (M FCFA)',data:I.map(i=>RP_MNT[i]/1e6),borderColor:'#D97706',backgroundColor:'rgba(217,119,6,.12)',borderWidth:3,fill:true,tension:.4,pointRadius:6,pointBackgroundColor:'#D97706',pointBorderColor:'#fff',pointBorderWidth:2}]);
   mkC('cBrpComp','bar',ANS,[
@@ -1622,8 +1655,8 @@ function bEncaiss(){
     const prevYr=ENC_YRS[ENC_YRS.indexOf(yr)-1]||null;
     const prevA=prevYr?(ENC_TOT['attendu'+prevYr]||0):0;
     const prevR=prevYr?(ENC_TOT['recouvre'+prevYr]||0):0;
-    const arrowA=prevYr&&prevA?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${totA>=prevA?'#86EFAC':'#FCA5A5'}">${totA>=prevA?'▲':'▼'} ${Math.abs((totA-prevA)/prevA*100).toFixed(1)}% vs ${prevYr}</div>`:'';
-    const arrowR=prevYr&&prevR?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${totR>=prevR?'#86EFAC':'#FCA5A5'}">${totR>=prevR?'▲':'▼'} ${Math.abs((totR-prevR)/prevR*100).toFixed(1)}% vs ${prevYr}</div>`:'';
+    const arrowA=prevYr&&prevA?`<div style="margin-top:2px">${trH(prevA,totA,prevYr)}</div>`:'';
+    const arrowR=prevYr&&prevR?`<div style="margin-top:2px">${trH(prevR,totR,prevYr)}</div>`:'';
     if(yi>0)hlHtml+=`<div class="hvr"></div>`;
     hlHtml+=`<div class="hi"><div class="hv">${FB(totA)}</div><div class="hlt">Attendu ${yr}</div>${arrowA}</div><div class="hvr"></div>`;
     hlHtml+=`<div class="hi"><div class="hv">${FB(totR)}</div><div class="hlt">Recouvré ${yr}</div>${arrowR}</div><div class="hvr"></div>`;
@@ -1781,11 +1814,11 @@ function bDelais(){
   const p45=(Dbr.d45[li]/totLi*100).toFixed(1);
   const pp=(Dbr.dp[li]/totLi*100).toFixed(1);
   document.getElementById('hl-del').innerHTML=
-    `<div class="hi"><div class="hv">${FN(totLi)}</div><div class="hlt">Total Validés ${AN3[li]}</div><div style="font-size:9px;margin-top:2px;color:rgba(255,255,255,.75)">${brLabel}</div>${trH(Dbr.tot[0],totLi)?`<div style="font-size:9px;margin-top:2px">${trH(Dbr.tot[0],totLi)}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#86EFAC">${FN(Dbr.d15[li])}</div><div class="hlt">< 15 jours (${p15}%)</div>${trH(Dbr.d15[0],Dbr.d15[li])?`<div style="font-size:9px;margin-top:2px">${trH(Dbr.d15[0],Dbr.d15[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#FDE68A">${FN(Dbr.d45[li])}</div><div class="hlt">15–45 jours (${p45}%)</div>${trH(Dbr.d45[0],Dbr.d45[li])?`<div style="font-size:9px;margin-top:2px">${trH(Dbr.d45[0],Dbr.d45[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#FCA5A5">${FN(Dbr.dp[li])}</div><div class="hlt">> 45 jours (${pp}%)</div>${trH(Dbr.dp[0],Dbr.dp[li])?`<div style="font-size:9px;margin-top:2px">${trH(Dbr.dp[0],Dbr.dp[li])}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:rgba(255,255,255,.55)">${FN(Dbr.nd[li])}</div><div class="hlt">Non déterminé</div>${trH(Dbr.nd[0],Dbr.nd[li])?`<div style="font-size:9px;margin-top:2px">${trH(Dbr.nd[0],Dbr.nd[li])}</div>`:''}</div>`;
+    `<div class="hi"><div class="hv">${FN(totLi)}</div><div class="hlt">Total Validés ${AN3[li]}</div><div style="font-size:9px;margin-top:2px;color:rgba(255,255,255,.75)">${brLabel}</div>${trHd3(Dbr.tot,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(Dbr.tot,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#86EFAC">${FN(Dbr.d15[li])}</div><div class="hlt">< 15 jours (${p15}%)</div>${trHd3(Dbr.d15,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(Dbr.d15,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#FDE68A">${FN(Dbr.d45[li])}</div><div class="hlt">15–45 jours (${p45}%)</div>${trHd3(Dbr.d45,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(Dbr.d45,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#FCA5A5">${FN(Dbr.dp[li])}</div><div class="hlt">> 45 jours (${pp}%)</div>${trHd3(Dbr.dp,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(Dbr.dp,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:rgba(255,255,255,.55)">${FN(Dbr.nd[li])}</div><div class="hlt">Non déterminé</div>${trHd3(Dbr.nd,li)?`<div style="font-size:9px;margin-top:2px">${trHd3(Dbr.nd,li)}</div>`:''}</div>`;
 
   const _cbDel=document.getElementById('cb-del'); if(_cbDel) _cbDel.textContent=ANS.join(' · ');
   const _cbDel2=document.getElementById('cb-del2'); if(_cbDel2) _cbDel2.textContent=AN3[li];
@@ -2294,9 +2327,9 @@ function bEmpCateg(){
 
   // Bandeau
   document.getElementById('hl-ec').innerHTML=
-    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(totSL)}</div><div class="hlt">Total Stock ${AN5[li]}</div>${pi!==null&&totSP?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${((totSL-totSP)/totSP)>=0?'#86EFAC':'#FCA5A5'}">${((totSL-totSP)/totSP)>=0?'▲':'▼'} ${Math.abs(((totSL-totSP)/totSP)*100).toFixed(1)}% vs ${AN5[pi]}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#6EE7A0">${FNn(totFL)}</div><div class="hlt">Total Flux ${AN5[li]}</div></div><div class="hvr"></div>`+
-    REGS.map(r=>`<div class="hi"><div class="hv" style="color:#fff">${FN(EMP_CAT[r.sK][li])}</div><div class="hlt">Stock ${r.l} ${AN5[li]}</div>${pi!==null&&EMP_CAT[r.sK][pi]?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${((EMP_CAT[r.sK][li]-EMP_CAT[r.sK][pi])/EMP_CAT[r.sK][pi])>=0?'#86EFAC':'#FCA5A5'}">${((EMP_CAT[r.sK][li]-EMP_CAT[r.sK][pi])/EMP_CAT[r.sK][pi])>=0?'▲':'▼'} ${Math.abs(((EMP_CAT[r.sK][li]-EMP_CAT[r.sK][pi])/EMP_CAT[r.sK][pi])*100).toFixed(1)}% vs ${AN5[pi]}</div>`:''}</div><div class="hvr"></div>`).join('')+
+    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(totSL)}</div><div class="hlt">Total Stock ${AN5[li]}</div>${pi!==null&&totSP?`<div style="margin-top:2px">${trH(totSP,totSL,AN5[pi])}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#6EE7A0">${FNn(totFL)}</div><div class="hlt">Total Flux ${AN5[li]}</div>${pi!==null&&totFP?`<div style="margin-top:2px">${trH(totFP,totFL,AN5[pi])}</div>`:''}</div><div class="hvr"></div>`+
+    REGS.map(r=>`<div class="hi"><div class="hv" style="color:#fff">${FN(EMP_CAT[r.sK][li])}</div><div class="hlt">Stock ${r.l} ${AN5[li]}</div>${pi!==null&&EMP_CAT[r.sK][pi]?`<div style="margin-top:2px">${trH(EMP_CAT[r.sK][pi],EMP_CAT[r.sK][li],AN5[pi])}</div>`:''}</div><div class="hvr"></div>`).join('')+
     (pi!==null&&totSP?`<div class="hi"><div class="hv" style="color:#93C5FD">${((totSL-totSP)/totSP*100).toFixed(1)}%</div><div class="hlt">Var. Stock vs ${AN5[pi]}</div></div>`:'');
 
   // Graphique Stocks par régime
@@ -2414,9 +2447,9 @@ function bSalCotisants(){
   // Header : affiche selon le filtre
   const showAll = curCat==='all';
   document.getElementById('hl-sc').innerHTML =
-    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(showAll?totStockL:filtStockL)}</div><div class="hlt">${showAll?'Total':'Sél.'} Stock ${AN5[li]}</div>${pi!==null?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${(((showAll?totStockL:filtStockL)-(showAll?totStockP:filtStockP))/(showAll?totStockP:filtStockP))>=0?'#86EFAC':'#FCA5A5'}">${(((showAll?totStockL:filtStockL)-(showAll?totStockP:filtStockP))/(showAll?totStockP:filtStockP))>=0?'▲':'▼'} ${Math.abs((((showAll?totStockL:filtStockL)-(showAll?totStockP:filtStockP))/(showAll?totStockP:filtStockP))*100).toFixed(1)}% vs ${AN5[pi]}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv" style="color:#93C5FD">${FN(showAll?totFluxL:filtFluxL)}</div><div class="hlt">${showAll?'Total':'Sél.'} Flux ${AN5[li]}</div></div>`+
-    REGS.map(r=>`<div class="hvr"></div><div class="hi"><div class="hv" style="color:#fff">${FN(DATA[r.k].stock[li])}</div><div class="hlt">${r.l} Stock ${AN5[li]}</div>${pi!==null&&DATA[r.k].stock[pi]?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${((DATA[r.k].stock[li]-DATA[r.k].stock[pi])/DATA[r.k].stock[pi])>=0?'#86EFAC':'#FCA5A5'}">${((DATA[r.k].stock[li]-DATA[r.k].stock[pi])/DATA[r.k].stock[pi])>=0?'▲':'▼'} ${Math.abs(((DATA[r.k].stock[li]-DATA[r.k].stock[pi])/DATA[r.k].stock[pi])*100).toFixed(1)}% vs ${AN5[pi]}</div>`:''}</div>`).join('')+
+    `<div class="hi"><div class="hv" style="color:#FCD116">${FN(showAll?totStockL:filtStockL)}</div><div class="hlt">${showAll?'Total':'Sél.'} Stock ${AN5[li]}</div>${pi!==null&&(showAll?totStockP:filtStockP)?`<div style="margin-top:2px">${trH(showAll?totStockP:filtStockP,showAll?totStockL:filtStockL,AN5[pi])}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv" style="color:#93C5FD">${FN(showAll?totFluxL:filtFluxL)}</div><div class="hlt">${showAll?'Total':'Sél.'} Flux ${AN5[li]}</div>${pi!==null&&(showAll?totFluxP:filtFluxP)?`<div style="margin-top:2px">${trH(showAll?totFluxP:filtFluxP,showAll?totFluxL:filtFluxL,AN5[pi])}</div>`:''}</div>`+
+    REGS.map(r=>`<div class="hvr"></div><div class="hi"><div class="hv" style="color:#fff">${FN(DATA[r.k].stock[li])}</div><div class="hlt">${r.l} Stock ${AN5[li]}</div>${pi!==null&&DATA[r.k].stock[pi]?`<div style="margin-top:2px">${trH(DATA[r.k].stock[pi],DATA[r.k].stock[li],AN5[pi])}</div>`:''}</div>`).join('')+
     (pi!==null?`<div class="hvr"></div><div class="hi"><div class="hv" style="color:#FCA5A5">${(((showAll?totStockL:filtStockL)-(showAll?totStockP:filtStockP))/(showAll?totStockP:filtStockP)*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
 
   // Chart — Stocks (filtrés)
@@ -2506,8 +2539,8 @@ function bMasseSal(){
   const totL=MS.tot[li],totP=pi!==null?MS.tot[pi]:null;
 
   document.getElementById('hl-ms').innerHTML=
-    `<div class="hi"><div class="hv" style="color:#FCD116">${FMrd(totL)}</div><div class="hlt">Total Plafonné ${AN5[li]}</div>${pi!==null?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${((totL-totP)/totP)>=0?'#86EFAC':'#FCA5A5'}">${((totL-totP)/totP)>=0?'▲':'▼'} ${Math.abs(((totL-totP)/totP)*100).toFixed(1)}% vs ${AN5[pi]}</div>`:''}</div><div class="hvr"></div>`+
-    CATS.slice(0,3).map(c=>`<div class="hi"><div class="hv" style="color:#fff">${FMrd(MS[c.k][li])}</div><div class="hlt">${c.l} ${AN5[li]}</div>${pi!==null&&MS[c.k][pi]?`<div style="font-size:9px;margin-top:2px;font-weight:700;color:${((MS[c.k][li]-MS[c.k][pi])/MS[c.k][pi])>=0?'#86EFAC':'#FCA5A5'}">${((MS[c.k][li]-MS[c.k][pi])/MS[c.k][pi])>=0?'▲':'▼'} ${Math.abs(((MS[c.k][li]-MS[c.k][pi])/MS[c.k][pi])*100).toFixed(1)}% vs ${AN5[pi]}</div>`:''}</div><div class="hvr"></div>`).join('')+
+    `<div class="hi"><div class="hv" style="color:#FCD116">${FMrd(totL)}</div><div class="hlt">Total Plafonné ${AN5[li]}</div>${pi!==null&&totP?`<div style="margin-top:2px">${trH(totP,totL,AN5[pi])}</div>`:''}</div><div class="hvr"></div>`+
+    CATS.slice(0,3).map(c=>`<div class="hi"><div class="hv" style="color:#fff">${FMrd(MS[c.k][li])}</div><div class="hlt">${c.l} ${AN5[li]}</div>${pi!==null&&MS[c.k][pi]?`<div style="margin-top:2px">${trH(MS[c.k][pi],MS[c.k][li],AN5[pi])}</div>`:''}</div><div class="hvr"></div>`).join('')+
     (pi!==null?`<div class="hi"><div class="hv" style="color:#6EE7A0">${((totL-totP)/totP*100).toFixed(1)}%</div><div class="hlt">Variation vs ${AN5[pi]}</div></div>`:'');
 
   const _msLgnd={position:'bottom',labels:{font:{size:10,weight:'700'},padding:8,boxWidth:12,usePointStyle:true}};
