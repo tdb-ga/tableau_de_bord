@@ -3,6 +3,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -213,6 +215,7 @@ td:first-child{text-align:left;font-weight:600}
    BARRE DE FILTRES CONTEXTUELLE DYNAMIQUE
    ═══════════════════════════════════════════════════════ */
 #ctx-bar{display:block!important}
+#ctx-bar.ctx-empty{display:none!important}
 .ctx-row{display:flex;align-items:center;gap:0;padding:0 22px;min-height:42px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--brd)}
 .ctx-row::-webkit-scrollbar{display:none}
 .ctx-row:last-child{border-bottom:none}
@@ -282,6 +285,7 @@ td:first-child{text-align:left;font-weight:600}
     <div class="nt" data-p="emp-categ">🏢 Employeurs Cotisants</div>
     <div class="nt" data-p="sal-cotisants">👥 Salariés Cotisants</div>
     <div class="nt" data-p="masse-sal">💼 Masse Salariale</div>
+    <div class="nt" data-p="cipres">📐 Ratios CIPRES BG 2025</div>
   </nav>
 
   <!-- BARRE FILTRES CONTEXTUELLE DYNAMIQUE -->
@@ -727,6 +731,48 @@ td:first-child{text-align:left;font-weight:600}
         </div>
       </div>
 
+    </div>
+
+    <!-- 14. RATIOS CIPRES BG 2025 -->
+    <div id="p-cipres" class="ps">
+      <div class="st">Ratios CIPRES — Budget de Gestion 2025</div>
+      <div class="sd">Ratios prudentiels de gestion administrative · Comparaison 2021–2025 · Normes CIPRES</div>
+      <div class="src">Source : Service Actuariat / Pool Statistique — CNSS · Rapports de Budget de Gestion 2021–2025</div>
+      <div class="hl" style="background:linear-gradient(135deg,#92400E,#D97706)" id="hl-cip"></div>
+
+      <div class="tw">
+        <div class="twh" style="background:linear-gradient(135deg,#1E3A8A,#2563EB)">
+          <div class="twt" style="color:#fff">📐 Ratios CIPRES — Budget de Gestion 2025 vs Exercices Antérieurs</div>
+        </div>
+        <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th rowspan="2" style="text-align:left;min-width:190px">Ratio</th>
+              <th colspan="2" class="hg" style="text-align:center">2021</th>
+              <th colspan="2" class="hg" style="text-align:center">2022</th>
+              <th colspan="2" class="hg" style="text-align:center">2023</th>
+              <th colspan="2" class="hg" style="text-align:center">2024</th>
+              <th colspan="2" class="hg" style="text-align:center">2025</th>
+              <th rowspan="2" style="text-align:center;min-width:80px">Norme<br>CIPRES</th>
+            </tr>
+            <tr>
+              <th>Montant (FCFA)</th><th>Taux</th>
+              <th>Montant (FCFA)</th><th>Taux</th>
+              <th>Montant (FCFA)</th><th>Taux</th>
+              <th>Montant (FCFA)</th><th>Taux</th>
+              <th>Montant (FCFA)</th><th>Taux</th>
+            </tr>
+          </thead>
+          <tbody id="tbCipres"></tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="cc" style="margin-top:14px;padding:12px 16px;font-size:11px;color:var(--muted)">
+        <span style="display:inline-flex;align-items:center;gap:5px;margin-right:22px"><span style="width:11px;height:11px;border-radius:3px;background:#DCFCE7;border:1px solid #86EFAC;display:inline-block"></span> Taux conforme à la norme CIPRES</span>
+        <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:11px;height:11px;border-radius:3px;background:#FEE2E2;border:1px solid #FCA5A5;display:inline-block"></span> Taux au-delà de la norme CIPRES</span>
+      </div>
     </div>
 
   </div>
@@ -2246,6 +2292,7 @@ function renderCtxBar(tabId){
   bar.innerHTML = rows.join('');
   // Afficher ou masquer selon qu'il y a du contenu
   bar.style.display = rows.length ? 'block' : 'none';
+  bar.classList.toggle('ctx-empty', rows.length===0);
 }
 
 // ── Setters de filtres ──
@@ -3243,5 +3290,64 @@ function notify(msg){
 <select id="fLoc" style="display:none"><option value="all">all</option></select>
 <select id="fCat" style="display:none"><option value="all">all</option></select>
 <select id="fBranche" style="display:none"><option value="all">all</option></select>
+
+<script>
+// ── Onglet RATIOS CIPRES BG 2025 — table statique ──
+(function(){
+  const CIPRES_ROWS = [
+    { num:'FRAIS DU PERSONNEL', den:'CHARGES TOTALES', norme:15,
+      montNum:[35942327751,30253601488,26895182191,26470024842,28965075846],
+      montDen:[182423503240,189026925968,202208532421,226454683730,228656562638],
+      taux:[20,16,13,12,13] },
+    { num:'FRAIS DU PERSONNEL', den:'CHARGES DE FONCTIONNEMENT', norme:85,
+      montNum:[35942327751,30253601488,26895182191,26470024842,28965075846],
+      montDen:[63796163809,60781830433,39798578395,55489963616,49800252063],
+      taux:[56,50,68,48,58] },
+    { num:'FRAIS DU PERSONNEL', den:'CHARGES TECHNIQUES', norme:25,
+      montNum:[35942327751,30253601488,26895182191,26470024842,28965075846],
+      montDen:[115478290681,106810623108,115478290681,116421262327,120824967423],
+      taux:[31,28,23,23,24] },
+    { num:'FRAIS DU PERSONNEL', den:'COTISATIONS', norme:15,
+      montNum:[35942327751,30253601488,26895182191,26470024842,28965075846],
+      montDen:[118064670828,152639347840,151349113423,169324608703,194162687782],
+      taux:[30,20,18,16,15] },
+    { num:'CHARGES DE FONCTIONNEMENT', den:'COTISATIONS', norme:15,
+      montNum:[63796163809,60781830433,39798578395,55489963616,49800252063],
+      montDen:[118064670828,152639347840,151349113423,169324608703,194162687782],
+      taux:[54,40,26,33,26] },
+    { num:'CHARGES DE FONCTIONNEMENT', den:'CHARGES TOTALES', norme:15,
+      montNum:[63796163809,60781830433,39798578395,55489963616,49800252063],
+      montDen:[182423503240,189026925968,202208532421,226454683730,228656562638],
+      taux:[35,32,20,25,22] }
+  ];
+  function fmt(n){ return n.toLocaleString('fr-FR').replace(/\u202f/g,' '); }
+  function tauxCell(v,norme){
+    const ok = v <= norme;
+    const bg = ok ? '#DCFCE7' : '#FEE2E2';
+    const col = ok ? '#14532D' : '#991B1B';
+    return `<td><span style="display:inline-block;padding:2px 8px;border-radius:5px;background:${bg};color:${col};font-weight:800">${v}%</span></td>`;
+  }
+  const tb = document.getElementById('tbCipres');
+  if(!tb) return;
+  let html = '';
+  CIPRES_ROWS.forEach(r=>{
+    html += '<tr>';
+    html += `<td style="text-align:left;font-weight:700">${r.num}</td>`;
+    for(let i=0;i<5;i++){
+      html += `<td>${fmt(r.montNum[i])}</td>`;
+      html += tauxCell(r.taux[i], r.norme);
+    }
+    html += `<td rowspan="2" style="text-align:center;font-weight:800;color:var(--navy);vertical-align:middle;background:#FFFBEB">˂ ${r.norme}%</td>`;
+    html += '</tr>';
+    html += '<tr>';
+    html += `<td style="text-align:left;font-weight:700">${r.den}</td>`;
+    for(let i=0;i<5;i++){
+      html += `<td>${fmt(r.montDen[i])}</td><td></td>`;
+    }
+    html += '</tr>';
+  });
+  tb.innerHTML = html;
+})();
+</script>
 </body>
 </html>
