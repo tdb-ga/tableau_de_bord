@@ -1037,25 +1037,23 @@ const LOC_TOT={
 const RP_EFF=[2516,1766,2242,1654,1799],RP_MNT=[1141667423,3009831989,1021105232,951773872,987331497];
 const PF_EFF=[46749,51818,43878,47052,47242],PF_MNT=[5568748657,5012758204,6939625443,5792251148,7498590415];
 const PVID_MNT=[
-  {n:'AS',c:'#DC2626',v:[212004129,345011004,187687893,103040925,288529623]},
-  {n:'AV',c:'#D97706',v:[4169097918,8598360666,6207787541,2552743120,6431743781]},
-  {n:'PA',c:'#059669',v:[1688543062,1930985762,1687071102,1543974940,1699424588]},
-  {n:'PI',c:'#7C3AED',v:[106100768,114890570,136764288,122569118,154199035]},
-  {n:'PS',c:'#0891B2',v:[7753077152,7753046742,9044649538,10011172234,11011876534]},
-  {n:'PV',c:'#1E3A8A',v:[76043386094,76937135937,85633841811,90653634800,96961724133]},
-  {n:'RC',c:'#BE185D',v:[93655796,248233889,23100700,30490041,85843015]},
+  {n:'Allocation aux survivant',c:'#DC2626',v:[212709071,121046374,262859078,121968814,262979970]},
+  {n:'Allocation de vieillesse',c:'#D97706',v:[4265109086,2006501854,7404211011,3000536129,3485945176]},
+  {n:"Pension d'incapacité",c:'#7C3AED',v:[107699405,132695198,144222470,137288989,105183702]},
+  {n:'Pension de survivants',c:'#0891B2',v:[7241165428,9951413896,9313938341,10969784554,10785501840]},
+  {n:'Pension de vieillesse',c:'#1E3A8A',v:[78014692482,88088168117,89202984629,99638126679,98235276529]},
+  {n:'Autres charges techniques',c:'#BE185D',v:[26039415,0,0,0,0]},
 ];
-const PVID_MNT_TOT=[90065864919,95927664570,102920897073,105017616274,116633340709];
+const PVID_MNT_TOT=[89867414887,100299825439,106328215529,113867705165,112874887217];
 const PVID_EFF=[
-  {n:'AS',c:'#DC2626',v:[108,161,98,69,113]},
-  {n:'AV',c:'#D97706',v:[1528,2707,2301,1049,2041]},
-  {n:'PA',c:'#059669',v:[508,512,510,462,466]},
-  {n:'PI',c:'#7C3AED',v:[110,115,113,115,115]},
-  {n:'PS',c:'#0891B2',v:[9415,9483,9647,9947,10847]},
-  {n:'PV',c:'#1E3A8A',v:[26621,27435,28073,28756,30773]},
-  {n:'RC',c:'#BE185D',v:[70,194,25,50,55]},
+  {n:'Allocation aux survivant',c:'#DC2626',v:[108,161,98,69,113]},
+  {n:'Allocation de vieillesse',c:'#D97706',v:[1598,2901,2326,1099,2116]},
+  {n:"Pension d'incapacité",c:'#7C3AED',v:[110,115,113,115,124]},
+  {n:'Pension de survivants',c:'#0891B2',v:[9415,9483,9647,9947,10449]},
+  {n:'Pension de vieillesse',c:'#1E3A8A',v:[27129,27947,28583,29218,30520]},
+  {n:'Autres charges techniques',c:'#BE185D',v:[0,0,0,0,0]},
 ];
-const PVID_EFF_TOT=[38360,40607,40767,40448,44410];
+const PVID_EFF_TOT=[38360,40607,40767,40448,43322];
 
 // ENCAISSEMENTS
 const ENC={
@@ -1608,9 +1606,9 @@ function bBrPvid(){
   document.getElementById('hl-bpvid').innerHTML=
     `<div class="hi"><div class="hv">${FN(PVID_EFF_TOT[li])}</div><div class="hlt">Effectifs PVID ${AN[li]}</div>${trHd(PVID_EFF_TOT,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF_TOT,li)}</div>`:''}</div><div class="hvr"></div>`+
     `<div class="hi"><div class="hv">${FB(PVID_MNT_TOT[li])}</div><div class="hlt">Montants ${AN[li]}</div>${trHd(PVID_MNT_TOT,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_MNT_TOT,li)}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='PV').v[li])}</div><div class="hlt">Pension Vieillesse</div>${trHd(PVID_EFF.find(p=>p.n==='PV').v,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF.find(p=>p.n==='PV').v,li)}</div>`:''}</div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FB(PVID_MNT.find(p=>p.n==='PV').v[li])}</div><div class="hlt">Montants PV ${AN[li]}</div></div><div class="hvr"></div>`+
-    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='PS').v[li])}</div><div class="hlt">Pension Survivant</div>${trHd(PVID_EFF.find(p=>p.n==='PS').v,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF.find(p=>p.n==='PS').v,li)}</div>`:''}</div>`;
+    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='Pension de vieillesse').v[li])}</div><div class="hlt">Pension Vieillesse</div>${trHd(PVID_EFF.find(p=>p.n==='Pension de vieillesse').v,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF.find(p=>p.n==='Pension de vieillesse').v,li)}</div>`:''}</div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FB(PVID_MNT.find(p=>p.n==='Pension de vieillesse').v[li])}</div><div class="hlt">Montants PV ${AN[li]}</div></div><div class="hvr"></div>`+
+    `<div class="hi"><div class="hv">${FN(PVID_EFF.find(p=>p.n==='Pension de survivants').v[li])}</div><div class="hlt">Pension Survivant</div>${trHd(PVID_EFF.find(p=>p.n==='Pension de survivants').v,li)?`<div style="font-size:9px;margin-top:2px">${trHd(PVID_EFF.find(p=>p.n==='Pension de survivants').v,li)}</div>`:''}</div>`;
   mkC('cBpvidEff','bar',ANS,PVID_EFF.map(p=>({label:p.n,data:I.map(i=>p.v[i]),backgroundColor:p.c,borderRadius:4,borderSkipped:false})));
   mkC('cBpvidMnt','line',ANS,PVID_MNT.map(p=>({label:p.n,data:I.map(i=>p.v[i]/1e9),borderColor:p.c,backgroundColor:p.c+'20',borderWidth:2.5,fill:false,tension:.4,pointRadius:4,pointBackgroundColor:p.c})));
   mkC('cBpvidTot','bar',ANS,[
@@ -2710,25 +2708,23 @@ const ORIG={
   RP_EFF:[2516,1766,2242,1654,1799],RP_MNT:[1141667423,3009831989,1021105232,951773872,987331497],
   PF_EFF:[46749,51818,43878,47052,47242],PF_MNT:[5568748657,5012758204,6939625443,5792251148,7498590415],
   PVID_MNT:[
-    {n:'AS',c:'#DC2626',v:[212004129,345011004,187687893,103040925,288529623]},
-    {n:'AV',c:'#D97706',v:[4169097918,8598360666,6207787541,2552743120,6431743781]},
-    {n:'PA',c:'#059669',v:[1688543062,1930985762,1687071102,1543974940,1699424588]},
-    {n:'PI',c:'#7C3AED',v:[106100768,114890570,136764288,122569118,154199035]},
-    {n:'PS',c:'#0891B2',v:[7753077152,7753046742,9044649538,10011172234,11011876534]},
-    {n:'PV',c:'#1E3A8A',v:[76043386094,76937135937,85633841811,90653634800,96961724133]},
-    {n:'RC',c:'#BE185D',v:[93655796,248233889,23100700,30490041,85843015]},
+    {n:'Allocation aux survivant',c:'#DC2626',v:[212709071,121046374,262859078,121968814,262979970]},
+    {n:'Allocation de vieillesse',c:'#D97706',v:[4265109086,2006501854,7404211011,3000536129,3485945176]},
+    {n:"Pension d'incapacité",c:'#7C3AED',v:[107699405,132695198,144222470,137288989,105183702]},
+    {n:'Pension de survivants',c:'#0891B2',v:[7241165428,9951413896,9313938341,10969784554,10785501840]},
+    {n:'Pension de vieillesse',c:'#1E3A8A',v:[78014692482,88088168117,89202984629,99638126679,98235276529]},
+    {n:'Autres charges techniques',c:'#BE185D',v:[26039415,0,0,0,0]},
   ],
-  PVID_MNT_TOT:[90065864919,95927664570,102920897073,105017616274,116633340709],
+  PVID_MNT_TOT:[89867414887,100299825439,106328215529,113867705165,112874887217],
   PVID_EFF:[
-    {n:'AS',c:'#DC2626',v:[108,161,98,69,113]},
-    {n:'AV',c:'#D97706',v:[1528,2707,2301,1049,2041]},
-    {n:'PA',c:'#059669',v:[508,512,510,462,466]},
-    {n:'PI',c:'#7C3AED',v:[110,115,113,115,115]},
-    {n:'PS',c:'#0891B2',v:[9415,9483,9647,9947,10847]},
-    {n:'PV',c:'#1E3A8A',v:[26621,27435,28073,28756,30773]},
-    {n:'RC',c:'#BE185D',v:[70,194,25,50,55]},
+    {n:'Allocation aux survivant',c:'#DC2626',v:[108,161,98,69,113]},
+    {n:'Allocation de vieillesse',c:'#D97706',v:[1598,2901,2326,1099,2116]},
+    {n:"Pension d'incapacité",c:'#7C3AED',v:[110,115,113,115,124]},
+    {n:'Pension de survivants',c:'#0891B2',v:[9415,9483,9647,9947,10449]},
+    {n:'Pension de vieillesse',c:'#1E3A8A',v:[27129,27947,28583,29218,30520]},
+    {n:'Autres charges techniques',c:'#BE185D',v:[0,0,0,0,0]},
   ],
-  PVID_EFF_TOT:[38360,40607,40767,40448,44410],
+  PVID_EFF_TOT:[38360,40607,40767,40448,43322],
   DELAIS:{
     global:{d15:[689,777,1638],d45:[1186,2112,3023],dp:[3993,3678,3508],nd:[6,1,313],tot:[5874,6568,8482]},
     pf:    {d15:[627,694,1490],d45:[892,1820,1964], dp:[2175,1834,1166],nd:[5,1,313], tot:[3699,4349,4933]},
